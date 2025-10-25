@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fa">
+  <head>
+    <title>راهکارهای سرمایه گذاری آنلاین | گروه مالی کاریزما</title>
+
+    <%- include('partials/meta.ejs') %> <%- include('partials/link.ejs') %> <%-
+    include('partials/style.ejs') %> <%- include('partials/ga.ejs') %>
+    <script type="text/javascript">
+      var numerals = {
+        persian: ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
+        english: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      };
+
+      function toPersianNumber(str) {
+        var index,
+          result = "";
+
+        for (var i = 0; i < str.length; i++) {
+          index = numerals.english.indexOf(str[i]);
+          if (index == -1) result += str[i];
+          else result += numerals.persian[index];
+        }
+
+        return result;
+      }
+    </script>
+    <style>
+      :root {
+        /*--vh: 1vh;*/
+        --vw: 1vw;
+        --ratio: 2.16;
+        --margin: 0px;
+      }
+
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      input:focus,
+      button:focus {
+        outline-width: 0;
+      }
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      textarea:-webkit-autofill,
+      textarea:-webkit-autofill:hover,
+      textarea:-webkit-autofill:focus,
+      select:-webkit-autofill,
+      select:-webkit-autofill:hover,
+      select:-webkit-autofill:focus {
+        -webkit-text-fill-color: #fff;
+        /*-webkit-box-shadow: none;*/
+        transition: background-color 5000s ease-in-out 0s;
+      }
+
+      body {
+        background: linear-gradient(0deg, #2f4251 0%, #121e29 100%);
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        /*height: calc(100 * var(--vh, 1vh));*/
+        width: 100%;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+
+      .alert-error {
+        color: #df1d17 !important;
+        border: none;
+        background: none;
+      }
+      .alert-success {
+        color: #22a958 !important;
+        border: none;
+        background: none;
+      }
+      .input-error {
+        border-color: #df1d17 !important;
+      }
+      .input-success {
+        border-color: #22a958 !important;
+      }
+
+      .full-screen {
+        display: block;
+        width: calc(100 * var(--vh) / var(--ratio));
+        height: calc(100 * var(--vh));
+        margin: 0 auto;
+        /*margin-top: var(--margin);*/
+        padding: 0;
+      }
+      .container {
+        background-size: contain;
+      }
+      .layer {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        height: calc(100 * var(--vh, 1vh));
+        /*top: var(--margin);*/
+        left: 0;
+      }
+      .layer .wrapper {
+        width: calc(100 * var(--vh) / var(--ratio));
+        height: calc(100 * var(--vh));
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      .layer1 {
+        z-index: 2;
+        background: linear-gradient(0deg, #304353 0%, #121e29 100%);
+      }
+
+      .layer1 .bg {
+        background: url(<%=domainURL%>/images/bg.png?ver=<%=version%>) no-repeat
+          center;
+        background-size: contain;
+        height: calc(100 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer1 .header {
+        background: url(<%=domainURL%>/images/header.png?ver=<%=version%>)
+          no-repeat top center;
+        background-size: contain;
+        height: calc(6 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer1 .logo {
+        background: url(<%=domainURL%>/images/logo.png?ver=<%=version%>)
+          no-repeat top center;
+        background-size: contain;
+        height: calc(2.8 * var(--vh));
+        width: calc(30 * var(--vh) / var(--ratio));
+        top: calc(1 * var(--vh));
+        margin-left: calc(35 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .layer1 .login-img {
+        background: url(<%=domainURL%>/images/login-img.png?ver=<%=version%>)
+          no-repeat top center;
+        background-size: contain;
+        height: calc(15 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(16 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+
+      .layer1 .form-box {
+        background: linear-gradient(
+          21.44deg,
+          #6e9fc5 -48.69%,
+          #43637c 8.45%,
+          #121e29 73.97%
+        );
+        height: calc(60 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(45 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        border-top-left-radius: calc(10 * var(--vh) / var(--ratio));
+        border-top-right-radius: calc(10 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer1 .text1 {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(50 * var(--vh));
+        z-index: 99;
+        width: calc(75.8 * var(--vh) / var(--ratio));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2.5 * var(--vh));
+        color: #ffffff;
+        direction: rtl;
+        font-weight: semibold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 #login-form #fullname {
+        background: #0c141c;
+        position: absolute;
+        height: calc(3.5 * var(--vh));
+        top: calc(63 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        width: calc(73 * var(--vh) / var(--ratio));
+        margin-left: calc(10 * var(--vh) / var(--ratio));
+        color: #fff !important;
+        text-align: right;
+        font-size: calc(1.8 * var(--vh));
+        padding: calc(3 * var(--vh) / var(--ratio));
+        font-weight: bold;
+        outline: none;
+        font-family: "Yekan Bakh", sans-serif;
+        border: 1px solid #9b9b9b;
+        border-radius: calc(4 * var(--vh) / var(--ratio));
+      }
+      .layer1 #login-form #phone {
+        background: #0c141c;
+        position: absolute;
+        height: calc(3.5 * var(--vh));
+        top: calc(71 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        width: calc(73 * var(--vh) / var(--ratio));
+        margin-left: calc(10 * var(--vh) / var(--ratio));
+        color: #fff !important;
+        text-align: right;
+        font-size: calc(1.8 * var(--vh));
+        padding: calc(3 * var(--vh) / var(--ratio));
+        font-weight: bold;
+        outline: none;
+        font-family: "Yekan Bakh", sans-serif;
+        border: 1px solid #9b9b9b;
+        border-radius: calc(4 * var(--vh) / var(--ratio));
+      }
+      .layer1 #login-form .alert {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(79 * var(--vh));
+        z-index: 99;
+        width: calc(75.8 * var(--vh) / var(--ratio));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2 * var(--vh));
+        color: #ffffff;
+        direction: rtl;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 .page2_btn {
+        background: url(<%=domainURL%>/images/login-btn.png?ver=<%=version%>)
+          no-repeat center;
+        background-size: contain;
+        height: calc(8 * var(--vh));
+        top: calc(84 * var(--vh));
+        margin-left: calc(20 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+        width: calc(60 * var(--vh) / var(--ratio));
+        border: none;
+        outline: none;
+      }
+
+      .layer2 {
+        left: 100%;
+        z-index: 4;
+        background: linear-gradient(0deg, #304353 0%, #121e29 100%);
+      }
+      .layer2 .bg {
+        background: url(<%=domainURL%>/images/bg.png?ver=<%=version%>) no-repeat
+          center;
+        background-size: contain;
+        height: calc(100 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer2 .header {
+        background: url(<%=domainURL%>/images/header.png?ver=<%=version%>)
+          no-repeat top center;
+        background-size: contain;
+        height: calc(6 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer2 .logo {
+        background: url(<%=domainURL%>/images/logo.png?ver=<%=version%>)
+          no-repeat top center;
+        background-size: contain;
+        height: calc(2.8 * var(--vh));
+        width: calc(30 * var(--vh) / var(--ratio));
+        top: calc(1 * var(--vh));
+        margin-left: calc(35 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .layer2 .otp-img {
+        background: url(<%=domainURL%>/images/otp-img.png?ver=<%=version%>)
+          no-repeat top center;
+        background-size: contain;
+        height: calc(15 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(16 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+
+      .layer2 .form-box {
+        background: linear-gradient(
+          21.44deg,
+          #6e9fc5 -48.69%,
+          #43637c 8.45%,
+          #121e29 73.97%
+        );
+        height: calc(60 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(45 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        border-top-left-radius: calc(10 * var(--vh) / var(--ratio));
+        border-top-right-radius: calc(10 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer2 .text1 {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(50 * var(--vh));
+        z-index: 99;
+        width: calc(75.8 * var(--vh) / var(--ratio));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2.5 * var(--vh));
+        color: #ffffff;
+        direction: rtl;
+        font-weight: semibold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer2 #sms-form #sms {
+        background: #0c141c;
+        position: absolute;
+        height: calc(3.5 * var(--vh));
+        top: calc(63 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        width: calc(73 * var(--vh) / var(--ratio));
+        margin-left: calc(10 * var(--vh) / var(--ratio));
+        color: #fff !important;
+        text-align: center;
+        font-size: calc(2.5 * var(--vh));
+        padding: calc(3 * var(--vh) / var(--ratio));
+        font-weight: bold;
+        outline: none;
+        font-family: "Yekan Bakh", sans-serif;
+        border: 1px solid #9b9b9b;
+        border-radius: calc(4 * var(--vh) / var(--ratio));
+      }
+      .layer2 #sms-form .alert {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(71 * var(--vh));
+        z-index: 99;
+        width: calc(75.8 * var(--vh) / var(--ratio));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2.5 * var(--vh));
+        color: #ffffff;
+        direction: rtl;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+
+      .layer2 ._text3 {
+        height: calc(3.2 * var(--vh));
+        width: calc(76 * var(--vh) / var(--ratio));
+        top: calc(71 * var(--vh));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer2 ._text3 p {
+        font-family: "Yekan Bakh", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        direction: rtl;
+        font-size: calc(2.4 * var(--vh));
+        align-items: center;
+        text-align: center;
+        color: #000;
+        line-height: calc(3.5 * var(--vh));
+        margin: 0;
+        padding: 0;
+      }
+      .layer2 ._text4 {
+        height: calc(3.2 * var(--vh));
+        width: calc(76 * var(--vh) / var(--ratio));
+        top: calc(71 * var(--vh));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer2 ._text4 p {
+        font-family: "Yekan Bakh", sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        direction: rtl;
+        font-size: calc(2.6 * var(--vh));
+        align-items: center;
+        text-align: center;
+        color: #112bd6;
+        cursor: pointer;
+        line-height: calc(3.5 * var(--vh));
+        margin: 0;
+        padding: 0;
+      }
+
+      .layer2 .page3_btn {
+        background: url(<%=domainURL%>/images/otp-btn.png?ver=<%=version%>)
+          no-repeat center;
+        background-size: contain;
+        height: calc(8 * var(--vh));
+        top: calc(84 * var(--vh));
+        margin-left: calc(20 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+        width: calc(60 * var(--vh) / var(--ratio));
+        border: none;
+        outline: none;
+      }
+
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999999;
+        background: linear-gradient(45deg, #43627c 0%, #121e29 100%);
+      }
+      #loader {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        width: 80px;
+        height: 80px;
+        margin: -75px 0 0 -75px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #9fa19f;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+      }
+      #loader:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #d14923;
+        -webkit-animation: spin 3s linear infinite;
+        animation: spin 3s linear infinite;
+      }
+      #loader:after {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #ff0606;
+        -webkit-animation: spin 1.5s linear infinite;
+        animation: spin 1.5s linear infinite;
+      }
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @media only screen and (min-width: 320px) and (max-width: 768px) {
+        #loader {
+          left: 60%;
+        }
+      }
+    </style>
+  </head>
+  <body style="margin: 0; padding: 0; overflow: hidden">
+    <%- include('partials/ga2.ejs') %>
+    <div id="preloader">
+      <div id="loader"></div>
+    </div>
+    <div class="full-screen container">
+      <div class="layer layer1">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="header"></div>
+          <div class="logo"></div>
+          <div class="login-img"></div>
+          <div class="form-box"></div>
+          <div class="text1">
+            برای ورود به مسابقه<br />اطلاعات خواسته شده رو وارد کن
+          </div>
+          <form
+            id="login-form"
+            data-form-output="form-output-global"
+            accept-charset="utf-8"
+            enctype="multipart/form-data"
+          >
+            <input
+              class="input _csrf"
+              id="_csrf"
+              type="hidden"
+              name="_csrf"
+              placeholder=""
+              value="<%=csrfToken%>"
+            />
+            <input
+              class="input fullname"
+              id="fullname"
+              type="text"
+              name="fullname"
+              placeholder="نام و نام خانوادگی"
+            />
+            <input
+              class="input phone"
+              id="phone"
+              min="0"
+              maxlength="11"
+              type="text"
+              pattern="^[0-9۰-۹]*$"
+              inputmode="numeric"
+              name="phone"
+              placeholder="شماره موبایل"
+            />
+            <p class="alert hide"></p>
+            <button type="submit" class="page2_btn" disabled></button>
+          </form>
+        </div>
+      </div>
+      <div class="layer layer2" style="display: none">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="header"></div>
+          <div class="logo"></div>
+          <div class="otp-img"></div>
+          <div class="form-box"></div>
+          <div class="text1">کد ارسال شده رو وارد کن</div>
+          <form
+            id="sms-form"
+            data-form-output="form-output-global"
+            accept-charset="utf-8"
+            enctype="multipart/form-data"
+            data-autosubmit="true"
+            autocomplete="off"
+          >
+            <input
+              class="input _csrf"
+              id="_csrf"
+              type="hidden"
+              name="_csrf"
+              placeholder=""
+              value="<%=csrfToken%>"
+            />
+            <input
+              class="input phone"
+              id="phone"
+              type="hidden"
+              name="phone"
+              placeholder=""
+            />
+            <input
+              class="input fullname"
+              id="fullname"
+              type="hidden"
+              name="fullname"
+              placeholder=""
+            />
+            <input
+              class="input sms"
+              id="sms"
+              min="0"
+              maxlength="5"
+              type="text"
+              pattern="^[0-9۰-۹]*$"
+              inputmode="numeric"
+              name="sms"
+              placeholder="X X X X X"
+            />
+            <p class="alert hide"></p>
+            <div class="_text3">
+              <p>زمان باقیمانده تا ارسال کد: <span class="timer"></span></p>
+            </div>
+            <div class="_text4 hide">
+              <p class="resendSms">ارسال مجدد کد تایید</p>
+            </div>
+            <button type="submit" class="page3_btn" disabled></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="<%=domainURL%>/js/jquery.min.js"></script>
+
+    <script type="text/javascript">
+      let baseRatio = 2.168;
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+      document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+      window.addEventListener("resize", () => {
+        if (window.innerHeight > window.innerWidth) {
+          baseRatio = 2.168;
+          vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty("--vh", `${vh}px`);
+          document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+          if (window.innerHeight / window.innerWidth > baseRatio) {
+            vh = window.innerWidth * 0.01 * baseRatio;
+            document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+            let diff = window.innerHeight - window.innerWidth * baseRatio;
+            document.documentElement.style.setProperty(
+              "--margin",
+              `${diff / 2}px`
+            );
+          }
+        } else {
+          baseRatio = 2.168;
+          vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty("--vh", `${vh}px`);
+          document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+        }
+      });
+
+      if (window.innerHeight > window.innerWidth) {
+        if (window.innerHeight / window.innerWidth > baseRatio) {
+          vh = window.innerWidth * 0.01 * baseRatio;
+          document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+          let diff = window.innerHeight - window.innerWidth * baseRatio;
+          document.documentElement.style.setProperty(
+            "--margin",
+            `${diff / 2}px`
+          );
+        }
+      } else {
+        baseRatio = 2.168;
+        vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+        document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+        // document.documentElement.style.setProperty('--vw', `${(vh / 1.78)}px`);
+      }
+    </script>
+    <script type="text/javascript">
+      var timerStarted = false;
+      var submitCompleted = false;
+      var timerCount = new Date().getTime() + 120000;
+
+      function startTimer() {
+        timerCount = new Date().getTime() + 120000;
+        if (timerStarted) return;
+        timerStarted = true;
+        var x = setInterval(function () {
+          // Get todays date and time
+          var now = new Date().getTime();
+
+          // Find the distance between now and the count down date
+          var distance = timerCount - now;
+
+          // Time calculations for days, hours, minutes and seconds
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Display the result in the element with id="demo"
+
+          var foo = "";
+          if (seconds < 10) seconds = "0" + seconds;
+          foo = minutes + ":" + seconds;
+          foo = toPersianNumber(foo);
+          $(".timer").html(foo);
+
+          if (distance < 0) {
+            $(".timer").html("۰:۰۰");
+            clearInterval(x);
+            timerStarted = false;
+            $(".layer2 .alert").text("");
+            $(".layer2 ._text3").addClass("hide");
+            $(".layer2 ._text4").removeClass("hide");
+          }
+        }, 1000);
+      }
+
+      function replaceAll(string, search, replace) {
+        return string.split(search).join(replace);
+      }
+      var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+          sParameterName;
+        sPageURL = sPageURL.split("&");
+        for (var i = 0; i < sPageURL.length; i++) {
+          if (sPageURL[i].indexOf(sParam) !== -1) {
+            sParameterName = sPageURL[i].split(sParam + "=");
+            return sParameterName[1];
+          }
+        }
+        return "";
+      };
+
+      $(window).ready(function () {
+        $("#preloader").delay(200).fadeOut("fade");
+
+        var currentPage = 1;
+        var moving = false;
+
+        $("#phone").on("keypress", function (event) {
+          event.preventDefault();
+          var regex = new RegExp("^[0-9۰-۹]*$");
+          var key = String.fromCharCode(
+            !event.charCode ? event.which : event.charCode
+          );
+          if (!regex.test(key)) {
+            return false;
+          }
+          $("#phone").val($("#phone").val() + toPersianNumber(key));
+          var val = $("#phone").val();
+          if (val.length > 11) $("#phone").val(val.slice(0, 11));
+        });
+
+        $("#sms").on("keypress", function (event) {
+          event.preventDefault();
+          var regex = new RegExp("^[0-9۰-۹]*$");
+          var key = String.fromCharCode(
+            !event.charCode ? event.which : event.charCode
+          );
+          if (!regex.test(key)) {
+            return false;
+          }
+          $("#sms").val($("#sms").val() + toPersianNumber(key));
+          var val = $("#sms").val();
+          if (val.length > 5) $("#sms").val(val.slice(0, 5));
+        });
+
+        $("#phone").on("keyup", () => {
+          if ($("#phone").val() === "") {
+            $(".layer1 .page2_btn")
+              .removeClass("active")
+              .attr("disabled", "disabled");
+          } else {
+            $(".layer1 .page2_btn").addClass("active").removeAttr("disabled");
+          }
+        });
+
+        $("#sms").on("keyup", () => {
+          if ($("#sms").val() === "") {
+            $(".layer2 .page3_btn")
+              .removeClass("active")
+              .attr("disabled", "disabled");
+          } else {
+            $(".layer2 .page3_btn").addClass("active").removeAttr("disabled");
+          }
+        });
+
+        let acceptAjax = true;
+        let resend = false;
+
+        $(".resendSms").on("click", function (e) {
+          e.preventDefault();
+          $(".layer2 ._text4").addClass("hide");
+          $("#login-form").trigger("submit");
+          resend = true;
+        });
+
+        $("#login-form").on("submit", function (e) {
+          e.preventDefault();
+          if (acceptAjax) {
+            acceptAjax = false;
+
+            $("#login-form button").html(
+              '<span class="fa fa-spinner fa-spin" style="font-size: calc(2.5* var(--vh)); margin: 0; color: #fff; left: calc(55* var(--vh) / var(--ratio)); top: calc(1.5* var(--vh)); width: calc(3* var(--vh)); height: calc(3* var(--vh));"></span>'
+            );
+            // $('#login-form button').html('');
+
+            const data = new FormData(this);
+            const alert = $("#login-form .alert");
+            const input = $("#login-form input");
+            alert.removeClass("alert-error alert-success").addClass("hide");
+            input.removeClass("input-error input-success");
+
+            $.ajax({
+              type: "POST",
+              url: "<%=domainURL%>/sendSmsCode",
+              data: data,
+              processData: false,
+              contentType: false,
+              cache: false,
+              async: true,
+              headers: {
+                "cache-control": "no-cache",
+              },
+              success: function (res) {
+                if (res.status === 500) {
+                  alert.text("خطا در ارسال کد ورود!");
+                  alert.removeClass("hide").addClass("alert-error");
+                  input.addClass("input-error");
+                } else if (res.status === 501) {
+                  alert.text(
+                    " خطا! " +
+                      (res.error?.["phone"] || "شماره تلفن خود را وارد کنید")
+                  );
+                  alert.removeClass("hide").addClass("alert-error");
+                  input.addClass("input-error");
+                } else if (res.status === 502) {
+                  alert.text("خطا در ارسال کد ورود!");
+                  alert.removeClass("hide").addClass("alert-error");
+                  input.addClass("input-error");
+                } else if (res.status === 425) {
+                  alert.text(res.message);
+                  alert.removeClass("hide").addClass("alert-error");
+                  input.addClass("input-error");
+                } else if (res.status === 200) {
+                  alert.text("کد ورود برایتان ارسال شد");
+                  alert.removeClass("hide").addClass("alert-success");
+                  input.addClass("input-success");
+                  $("#sms-form .phone").val($("#login-form .phone").val());
+                  $("#sms-form .fullname").val(
+                    $("#login-form .fullname").val()
+                  );
+                  $(".layer2 .phoneSpan").html($("#login-form .phone").val());
+                  startTimer();
+
+                  if (!resend) {
+                    setTimeout(() => {
+                      $(".layer2").css("display", "block");
+                      $(".layer2").animate({ left: "0" }, 1000);
+                      $(".layer1").animate({ left: "-100%" }, 1000);
+                      setTimeout(() => {
+                        $(".layer1").css("display", "none");
+                        moving = false;
+                      }, 1000);
+                    }, 1000);
+                  } else {
+                    $(".layer2 ._text4").addClass("hide");
+                  }
+                }
+                setTimeout(function () {
+                  acceptAjax = true;
+                  $("#login-form button").html("");
+                  return true;
+                }, 2000);
+              },
+              error: function () {
+                // alert("اینترنت خود را بررسی نمایید!");
+                setTimeout(function () {
+                  acceptAjax = true;
+                  $("#login-form button").html("");
+                  return true;
+                }, 2000);
+              },
+            });
+          }
+        });
+
+        $("#sms-form").on("submit", function (e) {
+          e.preventDefault();
+
+          if (acceptAjax) {
+            acceptAjax = false;
+            $("#sms-form button").html(
+              '<span class="fa fa-spinner fa-spin" style="font-size: calc(2.5* var(--vh)); margin: 0; color: #fff; left: calc(55* var(--vh) / var(--ratio)); top: calc(1.5* var(--vh)); width: calc(3* var(--vh)); height: calc(3* var(--vh));"></span>'
+            );
+
+            $(".layer2 ._text3").addClass("hide");
+            $(".layer2 ._text4").addClass("hide");
+
+            var data = new FormData(this);
+            var alert = jQuery("#sms-form .alert");
+            var input = jQuery("#sms-form input");
+            alert.removeClass("alert-error alert-success").addClass("hide");
+            input.removeClass("input-error input-success");
+
+            $.ajax({
+              type: "POST",
+              url:
+                "<%=domainURL%>/verifyCode?link=" + getUrlParameter("friend"),
+              data: data,
+              processData: false,
+              contentType: false,
+              cache: false,
+              async: true,
+              headers: {
+                "cache-control": "no-cache",
+              },
+              success: function (res) {
+                if (res.status === 500) {
+                  alert.text("خطا در سرور! لطفا به ما اطلاع دهید. باتشکر");
+                  alert.removeClass("hide").addClass("alert-error");
+                  input.addClass("input-error");
+                } else if (res.status === 501) {
+                  alert.text(
+                    "خطا! " + (res.error["phone"] || res.error["sms"])
+                  );
+                  alert.removeClass("hide").addClass("alert-error");
+                  input.addClass("input-error");
+                } else if (res.status === 400) {
+                  alert.text("خطا! کد وارد شده معتبر نیست.");
+                  alert.removeClass("hide").addClass("alert-error");
+                  input.addClass("input-error");
+                } else if (res.status === 200) {
+                  alert.text("کد ورود تایید شد.");
+                  alert.removeClass("hide").addClass("alert-success");
+                  input.addClass("input-success");
+                  return (window.location.href =
+                    "<%=domainURL%>/home" + window.location.search);
+                } else {
+                  alert.text("خطا! کد وارد شده معتبر نیست.");
+                  alert.removeClass("hide").addClass("alert-error");
+                  input.addClass("input-error");
+                }
+                setTimeout(function () {
+                  acceptAjax = true;
+                  $("#sms-form button").html("");
+                  return true;
+                }, 1000);
+              },
+              error: function () {
+                // alert("اینترنت خود را بررسی نمایید!");
+                setTimeout(function () {
+                  acceptAjax = true;
+                  $("#sms-form button").html("");
+                  return true;
+                }, 2000);
+                return false;
+              },
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

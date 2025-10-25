@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+    volumes:
+      - .:/usr/src/app
+    command: npm run dev
+
+  mongo:
+    image: mongo:6.0
+    container_name: charisma-landing-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+    volumes:
+      - db-data:/data/db
+
+volumes:
+  db-data:

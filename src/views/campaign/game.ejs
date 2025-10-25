@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fa">
+  <head>
+    <title>کاریزما، شکست‌ناپذیر!</title>
+
+    <%- include('partials/meta.ejs') %> <%- include('partials/link.ejs') %> <%-
+    include('partials/style.ejs') %> <%- include('partials/ga.ejs') %> <% var
+    numerals = { persian : ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
+    english : ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"] }; function
+    toPersianNumber (str) { var index, result = ""; for( var i = 0; i <
+    str.length; i++ ) { index = numerals.english.indexOf(str[i]); if( index ==
+    -1 ) result += str[i]; else result += numerals.persian[index]; } return
+    result; } %>
+
+    <script type="text/javascript">
+      var numerals = {
+        persian: ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
+        english: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      };
+
+      function toPersianNumber(str) {
+        var index,
+          result = "";
+
+        for (var i = 0; i < str.length; i++) {
+          index = numerals.english.indexOf(str[i]);
+          if (index == -1) result += str[i];
+          else result += numerals.persian[index];
+        }
+
+        return result;
+      }
+    </script>
+    <style>
+      :root {
+          /*--vh: 1vh;*/
+          --vw: 1vw;
+          --ratio: 2.168;
+          --margin: 0px;
+      }
+
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+
+      input:focus, button:focus {
+        outline-width: 0;
+      }
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      textarea:-webkit-autofill,
+      textarea:-webkit-autofill:hover,
+      textarea:-webkit-autofill:focus,
+      select:-webkit-autofill,
+      select:-webkit-autofill:hover,
+      select:-webkit-autofill:focus {
+        -webkit-text-fill-color: #000;
+        /*-webkit-box-shadow: none;*/
+        transition: background-color 5000s ease-in-out 0s;
+      }
+
+      body {
+          background: #0A1E6C;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          /*height: calc(100 * var(--vh, 1vh));*/
+          width: 100%;
+          font-family: 'Yekan Bakh', sans-serif;
+      }
+
+      .alert-error {
+        color: #DF1D17!important;
+        border: none;
+        background: none;
+      }
+      .alert-success {
+        color: #22A958!important;
+        border: none;
+        background: none;
+      }
+      .input-error {
+        border-color: #DF1D17!important;
+      }
+      .input-success {
+        border-color: #22A958!important;
+      }
+
+      .full-screen {
+          display: block;
+          width: calc(100 * var(--vh) / var(--ratio));
+          height: calc(100 * var(--vh));
+          margin: 0 auto;
+          /*margin-top: var(--margin);*/
+          padding: 0;
+      }
+      .container {
+          background-size: contain;
+      }
+      .layer {
+          position: absolute;
+          width: 100%;
+          height: 100vh;
+          height: calc(100 * var(--vh, 1vh));
+          /*top: var(--margin);*/
+          left: 0;
+      }
+      .layer .wrapper {
+          width: calc(100 * var(--vh) / var(--ratio));
+          height: calc(100 * var(--vh));
+          margin: 0 auto;
+          overflow: hidden;
+      }
+
+      .layer1 {
+          z-index: 2;
+          background: #0A1E6C;
+      }
+      .layer1 .bg {
+          background: url(<%=domainURL%>/images/game-bg.png?ver=<%=version%>) no-repeat top;
+          background-size: cover;
+          height: calc(100 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer1 .header {
+          background: url(<%=domainURL%>/images/game-header.png?ver=<%=version%>) no-repeat top;
+          background-size: contain;
+          height: calc(33 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer1 .room1 {
+          background: url(<%=domainURL%>/images/room1.png?ver=<%=version%>) no-repeat top;
+          background-size: contain;
+          height: calc(100 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(9 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer1 .description-box {
+          background: url(<%=domainURL%>/images/room-text.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(26 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          bottom: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer1 .domestos-on {
+          height: calc(15 * var(--vh));
+          width: calc(23 * var(--vh) / var(--ratio));
+          bottom: calc(12 * var(--vh));
+          margin-left: calc(40.5 * var(--vh) / var(--ratio));
+          position: absolute;
+          cursor: pointer;
+      }
+      .layer1 .domestos {
+          background: url(<%=domainURL%>/images/domestos.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(13 * var(--vh));
+          width: calc(21 * var(--vh) / var(--ratio));
+          bottom: calc(1 * var(--vh));
+          left: calc(0.5 * var(--vh) / var(--ratio));
+          position: absolute;
+          cursor: pointer;touch-action: none; /* prevents default scroll or zoom gestures */
+          user-select: none;  /* optional: prevents text selection while dragging */
+          -webkit-user-drag: none; /* optional for iOS Safari */
+
+      }
+      .layer1 .gift-lvl-1 {
+           background: url(<%=domainURL%>/images/gift-level-1.png?ver=<%=version%>) no-repeat center;
+           background-size: contain;
+           height: calc(8 * var(--vh));
+           width: calc(100 * var(--vh) / var(--ratio));
+           top: calc(12 * var(--vh));
+           margin-left: calc(0 * var(--vh) / var(--ratio));
+           position: absolute;
+       }
+      .layer1 .timer-wrap {
+          background: url(<%=domainURL%>/images/timer-wrap.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(5 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(21 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          font-family: "Yekan Bakh", sans-serif;
+          font-style: normal;
+          font-weight: bolder;
+          direction: rtl;
+          font-size: calc(5 * var(--vh));
+          color: #fff;
+          padding-top: calc(1 * var(--vh));
+      }
+      .layer1 .dust1-1 {
+          background: url(<%=domainURL%>/images/dust1-1.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(36 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          bottom: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer1 .dust1-2 {
+          background: url(<%=domainURL%>/images/dust1-2.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(34 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(17 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer1 .dust1-3 {
+          background: url(<%=domainURL%>/images/dust1-3.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(56 * var(--vh));
+          width: calc(70 * var(--vh) / var(--ratio));
+          top: calc(30 * var(--vh));
+          margin-left: calc(-3 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer1 .dust1-4 {
+          background: url(<%=domainURL%>/images/dust1-4.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(50 * var(--vh));
+          width: calc(50 * var(--vh) / var(--ratio));
+          top: calc(36 * var(--vh));
+          margin-left: calc(50 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer1 .hand {
+          background: url(<%=domainURL%>/images/hand.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(8 * var(--vh));
+          top: calc(80 * var(--vh));
+          margin-left: calc(55 * var(--vh) / var(--ratio));
+          position: absolute;
+          cursor: pointer;
+          width: calc(14 * var(--vh) / var(--ratio));
+          border: none;
+          outline: none;
+          -webkit-animation: help 2s infinite linear; /* Safari, Chrome and Opera > 12.1 */
+          -moz-animation: help 2s infinite linear; /* Firefox < 16 */
+          -ms-animation: help 2s infinite linear; /* Internet Explorer */
+          -o-animation: help 2s infinite linear; /* Opera < 12.1 */
+          animation: help 2s infinite linear;
+      }
+      .shine-effect {
+          background: url(<%=domainURL%>/images/shine-effect.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(15 * var(--vh));
+          width: calc(15 * var(--vh));
+          position: absolute;
+          animation: shineFrames 0.7s ease-in-out forwards infinite;
+      }
+      .shine-effect1 {
+          height: calc(16 * var(--vh));
+          width: calc(16 * var(--vh));
+          top: calc(25 * var(--vh));
+          margin-left: calc(20 * var(--vh) / var(--ratio));
+      }
+      .shine-effect2 {
+          height: calc(18 * var(--vh));
+          width: calc(18 * var(--vh));
+          top: calc(55 * var(--vh));
+          margin-left: calc(15 * var(--vh) / var(--ratio));
+          animation-delay: 0.4s;
+      }
+      .shine-effect3 {
+          height: calc(14 * var(--vh));
+          width: calc(14 * var(--vh));
+          top: calc(15 * var(--vh));
+          margin-left: calc(67 * var(--vh) / var(--ratio));
+          animation-delay: 0.5s;
+      }
+      .shine-effect4 {
+          height: calc(13 * var(--vh));
+          width: calc(13 * var(--vh));
+          top: calc(50 * var(--vh));
+          margin-left: calc(55 * var(--vh) / var(--ratio));
+          animation-delay: 0.3s;
+      }
+      .shine-effect5 {
+          height: calc(15 * var(--vh));
+          width: calc(15 * var(--vh));
+          top: calc(40 * var(--vh));
+          margin-left: calc(69 * var(--vh) / var(--ratio));
+          animation-delay: 0.1s;
+      }
+      .shine-effect6 {
+          height: calc(14 * var(--vh));
+          width: calc(14 * var(--vh));
+          top: calc(80 * var(--vh));
+          margin-left: calc(10 * var(--vh) / var(--ratio));
+          animation-delay: 0.4s;
+      }
+      .shine-effect7 {
+          height: calc(18 * var(--vh));
+          width: calc(18 * var(--vh));
+          top: calc(70 * var(--vh));
+          margin-left: calc(42 * var(--vh) / var(--ratio));
+          animation-delay: 0.6s;
+      }
+
+
+
+      .layer2 {
+          z-index: 2;
+          background: #0A1E6C;
+      }
+      .layer2 .bg {
+          background: url(<%=domainURL%>/images/game-bg.png?ver=<%=version%>) no-repeat top;
+          background-size: cover;
+          height: calc(100 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer2 .header {
+          background: url(<%=domainURL%>/images/game-header.png?ver=<%=version%>) no-repeat top;
+          background-size: contain;
+          height: calc(33 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer2 .room2 {
+          background: url(<%=domainURL%>/images/room2.png?ver=<%=version%>) no-repeat top;
+          background-size: contain;
+          height: calc(100 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(9 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer2 .description-box {
+          background: url(<%=domainURL%>/images/room-text.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(26 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          bottom: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer2 .domestos-on {
+          height: calc(15 * var(--vh));
+          width: calc(23 * var(--vh) / var(--ratio));
+          bottom: calc(12 * var(--vh));
+          margin-left: calc(40.5 * var(--vh) / var(--ratio));
+          position: absolute;
+          cursor: pointer;
+      }
+      .layer2 .domestos {
+          background: url(<%=domainURL%>/images/domestos.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(13 * var(--vh));
+          width: calc(21 * var(--vh) / var(--ratio));
+          bottom: calc(1 * var(--vh));
+          left: calc(0.5 * var(--vh) / var(--ratio));
+          position: absolute;
+          cursor: pointer;touch-action: none; /* prevents default scroll or zoom gestures */
+          user-select: none;  /* optional: prevents text selection while dragging */
+          -webkit-user-drag: none; /* optional for iOS Safari */
+
+      }
+      .layer2 .gift-lvl-2 {
+          background: url(<%=domainURL%>/images/gift-level-2.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(8 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(12 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer2 .timer-wrap {
+          background: url(<%=domainURL%>/images/timer-wrap.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(5 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(21 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          font-family: "Yekan Bakh", sans-serif;
+          font-style: normal;
+          font-weight: bolder;
+          direction: rtl;
+          font-size: calc(5 * var(--vh));
+          color: #fff;
+          padding-top: calc(1 * var(--vh));
+      }
+      .layer2 .dust2-1 {
+          background: url(<%=domainURL%>/images/dust2-1.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(49 * var(--vh));
+          width: calc(104 * var(--vh) / var(--ratio));
+          top: calc(9 * var(--vh));
+          margin-left: calc(-2 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer2 .dust2-2 {
+          background: url(<%=domainURL%>/images/dust2-2.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(49 * var(--vh));
+          width: calc(43 * var(--vh) / var(--ratio));
+          top: calc(30 * var(--vh));
+          margin-left: calc(59 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer2 .dust2-3 {
+          background: url(<%=domainURL%>/images/dust2-3.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(34 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(46 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer2 .dust2-4 {
+          background: url(<%=domainURL%>/images/dust2-4.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(31 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          bottom: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer2 .hand {
+          background: url(<%=domainURL%>/images/hand.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(8 * var(--vh));
+          top: calc(80 * var(--vh));
+          margin-left: calc(55 * var(--vh) / var(--ratio));
+          position: absolute;
+          cursor: pointer;
+          width: calc(14 * var(--vh) / var(--ratio));
+          border: none;
+          outline: none;
+          -webkit-animation: help 2s infinite linear; /* Safari, Chrome and Opera > 12.1 */
+          -moz-animation: help 2s infinite linear; /* Firefox < 16 */
+          -ms-animation: help 2s infinite linear; /* Internet Explorer */
+          -o-animation: help 2s infinite linear; /* Opera < 12.1 */
+          animation: help 2s infinite linear;
+      }
+
+      .layer3 {
+          z-index: 2;
+          background: #0A1E6C;
+      }
+      .layer3 .bg {
+          background: url(<%=domainURL%>/images/game-bg.png?ver=<%=version%>) no-repeat top;
+          background-size: cover;
+          height: calc(100 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer3 .header {
+          background: url(<%=domainURL%>/images/game-header.png?ver=<%=version%>) no-repeat top;
+          background-size: contain;
+          height: calc(33 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer3 .room3 {
+          background: url(<%=domainURL%>/images/room3.png?ver=<%=version%>) no-repeat top;
+          background-size: contain;
+          height: calc(100 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(9 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer3 .description-box {
+          background: url(<%=domainURL%>/images/room-text.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(26 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          bottom: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer3 .domestos-on {
+          height: calc(15 * var(--vh));
+          width: calc(23 * var(--vh) / var(--ratio));
+          bottom: calc(12 * var(--vh));
+          margin-left: calc(40.5 * var(--vh) / var(--ratio));
+          position: absolute;
+          cursor: pointer;
+      }
+      .layer3 .domestos {
+          background: url(<%=domainURL%>/images/domestos.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(13 * var(--vh));
+          width: calc(21 * var(--vh) / var(--ratio));
+          bottom: calc(1 * var(--vh));
+          left: calc(0.5 * var(--vh) / var(--ratio));
+          position: absolute;
+          cursor: pointer;touch-action: none; /* prevents default scroll or zoom gestures */
+          user-select: none;  /* optional: prevents text selection while dragging */
+          -webkit-user-drag: none; /* optional for iOS Safari */
+
+      }
+      .layer3 .gift-lvl-3 {
+          background: url(<%=domainURL%>/images/gift-level-3.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(8 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(12 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .layer3 .timer-wrap {
+          background: url(<%=domainURL%>/images/timer-wrap.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(5 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(21 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          font-family: "Yekan Bakh", sans-serif;
+          font-style: normal;
+          font-weight: bolder;
+          direction: rtl;
+          font-size: calc(5 * var(--vh));
+          color: #fff;
+          padding-top: calc(1 * var(--vh));
+      }
+      .layer3 .dust3-1 {
+          background: url(<%=domainURL%>/images/dust3-1.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(34 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          bottom: calc(0 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer3 .dust3-2 {
+          background: url(<%=domainURL%>/images/dust3-2.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(26 * var(--vh));
+          width: calc(71 * var(--vh) / var(--ratio));
+          top: calc(52 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer3 .dust3-3 {
+          background: url(<%=domainURL%>/images/dust3-3.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(34 * var(--vh));
+          width: calc(86 * var(--vh) / var(--ratio));
+          top: calc(47 * var(--vh));
+          margin-left: calc(14 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer3 .dust3-4 {
+          background: url(<%=domainURL%>/images/dust3-4.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(34 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(40 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer3 .dust3-5 {
+          background: url(<%=domainURL%>/images/dust3-5.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(39 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(9 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          mix-blend-mode: color-burn;
+      }
+      .layer3 .hand {
+          background: url(<%=domainURL%>/images/hand.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(8 * var(--vh));
+          top: calc(80 * var(--vh));
+          margin-left: calc(55 * var(--vh) / var(--ratio));
+          position: absolute;
+          cursor: pointer;
+          width: calc(14 * var(--vh) / var(--ratio));
+          border: none;
+          outline: none;
+          -webkit-animation: help 2s infinite linear; /* Safari, Chrome and Opera > 12.1 */
+          -moz-animation: help 2s infinite linear; /* Firefox < 16 */
+          -ms-animation: help 2s infinite linear; /* Internet Explorer */
+          -o-animation: help 2s infinite linear; /* Opera < 12.1 */
+          animation: help 2s infinite linear;
+      }
+
+
+      .blurEffect {
+        z-index: 100;
+      }
+      .blurEffect div {
+        background-color: #000;
+        opacity: 0.8;
+        width: calc(100 * var(--vh) / var(--ratio));
+        height: calc(100 * var(--vh));
+        margin: 0 auto;
+        filter: blur(50px);
+        -webkit-filter: blur(50px);
+      }
+
+      .modal {
+        width: 100%;
+        height: calc(100 * var(--vh));
+        margin: 0 auto;
+        z-index: 101;
+      }
+      .modal .wrapper {
+        position: relative;
+      }
+
+      .start-modal-1 .wrapper {}
+      .start-modal-1 .bg {
+          background: url(<%=domainURL%>/images/start-modal-1.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(67 * var(--vh));
+          width: calc(94 * var(--vh) / var(--ratio));
+          top: calc(15 * var(--vh));
+          margin-left: calc(2 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .start-modal-1 .btn {
+          position: absolute;
+          height: calc(11 * var(--vh));
+          top: calc(53 * var(--vh));
+          cursor: pointer;
+          z-index: 99;
+          margin-left: calc(15 * var(--vh) / var(--ratio));
+          width: calc(70 * var(--vh) / var(--ratio));
+          border: none;
+          background: transparent url(<%=domainURL%>/images/start-modal-btn.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+
+      }
+
+
+      .start-modal-2 .wrapper {}
+      .start-modal-2 .bg {
+          background: url(<%=domainURL%>/images/start-modal-2.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(67 * var(--vh));
+          width: calc(94 * var(--vh) / var(--ratio));
+          top: calc(15 * var(--vh));
+          margin-left: calc(2 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .start-modal-2 .btn {
+          position: absolute;
+          height: calc(11 * var(--vh));
+          top: calc(53 * var(--vh));
+          cursor: pointer;
+          z-index: 99;
+          margin-left: calc(15 * var(--vh) / var(--ratio));
+          width: calc(70 * var(--vh) / var(--ratio));
+          border: none;
+          background: transparent url(<%=domainURL%>/images/start-modal-btn.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+
+      }
+
+      .start-modal-3 .wrapper {}
+      .start-modal-3 .bg {
+          background: url(<%=domainURL%>/images/start-modal-3.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(67 * var(--vh));
+          width: calc(94 * var(--vh) / var(--ratio));
+          top: calc(15 * var(--vh));
+          margin-left: calc(2 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .start-modal-3 .btn {
+          position: absolute;
+          height: calc(11 * var(--vh));
+          top: calc(53 * var(--vh));
+          cursor: pointer;
+          z-index: 99;
+          margin-left: calc(15 * var(--vh) / var(--ratio));
+          width: calc(70 * var(--vh) / var(--ratio));
+          border: none;
+          background: transparent url(<%=domainURL%>/images/start-modal-btn.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+
+      }
+
+      .video-modal .wrapper {
+
+      }
+      .video-modal .video {
+        border: calc(3 * var(--vh) / var(--ratio)) solid #fff;
+        border-radius: calc(3 * var(--vh) / var(--ratio));
+        box-shadow: 0 0 .1rem #121111,
+        0 0 .1rem #121111,
+        0 0 0.8rem #121111,
+        inset 0 0 0.8rem #121111;
+        background: #fff;
+        height: calc(27 * var(--vh));
+        width: calc(80 * var(--vh) / var(--ratio));
+        bottom: calc(35 * var(--vh));
+        margin-left: calc(8.5 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .video-modal .close {
+        position: absolute;
+        height: calc(6 * var(--vh));
+        top: calc(33 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        width: calc(18 * var(--vh) / var(--ratio));
+        margin-left: calc(81 * var(--vh) / var(--ratio));
+        border: none;
+        background: transparent;
+        background-image: url(<%=domainURL%>/images/close.png?ver=<%=version%>);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .win-modal-1 .wrapper {}
+      .win-modal-1 .bg {
+        background: url(<%=domainURL%>/images/win-modal-1.png?ver=<%=version%>) no-repeat center;
+        background-size: contain;
+        height: calc(73 * var(--vh));
+        width: calc(92 * var(--vh) / var(--ratio));
+        top: calc(10 * var(--vh));
+        margin-left: calc(4 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .win-modal-1 .instagram-btn {
+        position: absolute;
+        height: calc(12 * var(--vh));
+        top: calc(53 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        margin-left: calc(15 * var(--vh) / var(--ratio));
+        width: calc(70 * var(--vh) / var(--ratio));
+        border: none;
+        background: transparent url(<%=domainURL%>/images/instagram-btn.png?ver=<%=version%>) no-repeat center;
+        background-size: contain;
+
+      }
+      .win-modal-1 .alert {
+          height: calc(5 * var(--vh));
+          width: calc(100 * var(--vh) / var(--ratio));
+          top: calc(60.5 * var(--vh));
+          margin-left: calc(0 * var(--vh) / var(--ratio));
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          font-family: "Yekan Bakh", sans-serif;
+          font-style: normal;
+          font-weight: bolder;
+          direction: rtl;
+          font-size: calc(1.7 * var(--vh));
+          color: #fff;
+      }
+      .win-modal-1 .next-btn {
+          position: absolute;
+          height: calc(10 * var(--vh));
+          top: calc(67 * var(--vh));
+          cursor: pointer;
+          z-index: 99;
+          margin-left: calc(15 * var(--vh) / var(--ratio));
+          width: calc(70 * var(--vh) / var(--ratio));
+          border: none;
+          background: transparent url(<%=domainURL%>/images/next-btn.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+
+      }
+
+      .win-modal-2 .wrapper {}
+      .win-modal-2 .bg {
+          background: url(<%=domainURL%>/images/win-modal-2.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(73 * var(--vh));
+          width: calc(92 * var(--vh) / var(--ratio));
+          top: calc(10 * var(--vh));
+          margin-left: calc(4 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .win-modal-2 .next-btn {
+          position: absolute;
+          height: calc(10 * var(--vh));
+          top: calc(63 * var(--vh));
+          cursor: pointer;
+          z-index: 99;
+          margin-left: calc(15 * var(--vh) / var(--ratio));
+          width: calc(70 * var(--vh) / var(--ratio));
+          border: none;
+          background: transparent url(<%=domainURL%>/images/next-btn.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+
+      }
+
+      .win-modal-3 .wrapper {}
+      .win-modal-3 .bg {
+          background: url(<%=domainURL%>/images/win-modal-3.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(73 * var(--vh));
+          width: calc(92 * var(--vh) / var(--ratio));
+          top: calc(10 * var(--vh));
+          margin-left: calc(4 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .win-modal-3 .instagram-btn {
+          position: absolute;
+          height: calc(8 * var(--vh));
+          top: calc(54 * var(--vh));
+          cursor: pointer;
+          z-index: 99;
+          margin-left: calc(15 * var(--vh) / var(--ratio));
+          width: calc(70 * var(--vh) / var(--ratio));
+          border: none;
+          background: transparent url(<%=domainURL%>/images/instagram-btn.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+
+      }
+      .win-modal-3 .snapp-btn {
+          position: absolute;
+          height: calc(5 * var(--vh));
+          top: calc(68.5 * var(--vh));
+          cursor: pointer;
+          z-index: 99;
+          border-radius: 1000px;
+          margin-left: calc(11 * var(--vh) / var(--ratio));
+          width: calc(38 * var(--vh) / var(--ratio));
+          border: 1px solid #0A1E6C;
+          background: transparent url(<%=domainURL%>/images/snapp-logo.png?ver=<%=version%>) no-repeat center;
+          background-size: 50%;
+
+      }
+      .win-modal-3 .snapp-btn:hover {
+          background-color: #0A1E6C;
+      }
+      .win-modal-3 .tap30-btn {
+          position: absolute;
+          height: calc(5 * var(--vh));
+          top: calc(74.5 * var(--vh));
+          cursor: pointer;
+          z-index: 99;
+          border-radius: 1000px;
+          margin-left: calc(31 * var(--vh) / var(--ratio));
+          width: calc(38 * var(--vh) / var(--ratio));
+          border: 1px solid #0A1E6C;
+          display: flex;
+          background-size: 50%;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          font-family: "Yekan Bakh", sans-serif;
+          font-style: normal;
+          font-weight: bolder;
+          direction: rtl;
+          text-decoration: none;
+          font-size: calc(2.3 * var(--vh));
+          color: #0A1E6C;
+
+      }
+      .win-modal-3 .tap30-btn:hover {
+          background-color: #0A1E6C;
+          color: #fff;
+
+      }
+
+      .win-modal-3 .digi-btn {
+          position: absolute;
+          height: calc(5 * var(--vh));
+          top: calc(68.5 * var(--vh));
+          cursor: pointer;
+          z-index: 99;
+          border-radius: 1000px;
+          margin-left: calc(52 * var(--vh) / var(--ratio));
+          width: calc(38 * var(--vh) / var(--ratio));
+          border: 1px solid #0A1E6C;
+          background: transparent url(<%=domainURL%>/images/digi-logo.png?ver=<%=version%>) no-repeat center;
+          background-size: 80%;
+
+      }.win-modal-3 .digi-btn:hover {
+          background-color: #0A1E6C;
+      }
+
+      .lose-modal .wrapper {}
+      .lose-modal .bg {
+          background: url(<%=domainURL%>/images/lose-modal.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+          height: calc(73 * var(--vh));
+          width: calc(92 * var(--vh) / var(--ratio));
+          top: calc(10 * var(--vh));
+          margin-left: calc(4 * var(--vh) / var(--ratio));
+          position: absolute;
+      }
+      .lose-modal .share-btn {
+          position: absolute;
+          height: calc(12 * var(--vh));
+          top: calc(59 * var(--vh));
+          cursor: pointer;
+          z-index: 99;
+          margin-left: calc(15 * var(--vh) / var(--ratio));
+          width: calc(70 * var(--vh) / var(--ratio));
+          border: none;
+          background: transparent url(<%=domainURL%>/images/share-btn-3.png?ver=<%=version%>) no-repeat center;
+          background-size: contain;
+
+      }
+      .lose-modal .video-btn {
+          position: absolute;
+          height: calc(12 * var(--vh));
+          top: calc(49 * var(--vh));
+          cursor: pointer;
+          z-index: 99;
+          margin-left: calc(15 * var(--vh) / var(--ratio));
+          width: calc(70 * var(--vh) / var(--ratio));
+          border: none;
+      <%if(profile.videoHeal) {%>
+          background: transparent url(<%=domainURL%>/images/share-btn-2-checked.png?ver=<%=version%>) no-repeat center;
+      <%}else {%>
+          background: transparent url(<%=domainURL%>/images/share-btn-2.png?ver=<%=version%>) no-repeat center;
+      <%}%>
+          background-size: contain;
+
+      }
+
+      .lose-modal .logout {
+        height: calc(5 * var(--vh));
+        width: calc(50 * var(--vh) / var(--ratio));
+        top: calc(71.5 * var(--vh));
+        margin-left: calc(25 * var(--vh) / var(--ratio));
+        position: absolute;
+        font-family: 'Yekan Bakh', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: calc(2 * var(--vh));
+        align-items: center;
+        text-align: center;
+        color: red;
+        /*text-shadow: 0px 2px 0px #424242, 0px 0px 1px #000, 0px 0px 1px #000, 0px 0px 1px #000, 0px 0px 1px #000, 0px 0px 1px #000;*/
+        padding: 0;
+        direction: rtl;
+      }
+
+      .lose-modal .tooltiptext {
+        display: none;
+        position: absolute;
+        height: calc(4 * var(--vh));
+        top: calc(55 * var(--vh));
+        cursor: pointer;
+        z-index: 100;
+        left: calc(23 * var(--vh) / var(--ratio));
+        width: calc(50 * var(--vh) / var(--ratio));
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        transition: opacity 0.3s;
+        font-size: calc(4 * var(--vh) / var(--ratio));
+      }
+      .lose-modal .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+      }
+
+
+      #preloader {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 99999999;
+          background: #0A1E6C;
+      }
+      #loader {
+          display: block;
+          position: relative;
+          left: 50%;
+          top: 50%;
+          width: 80px;
+          height: 80px;
+          margin: -75px 0 0 -75px;
+          border-radius: 50%;
+          border: 3px solid transparent;
+          border-top-color: #07b810;
+          -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite
+      }
+      #loader:before {
+          content: "";
+          position: absolute;
+          top: 5px;
+          left: 5px;
+          right: 5px;
+          bottom: 5px;
+          border-radius: 50%;
+          border: 3px solid transparent;
+          border-top-color: #23D1AE;
+          -webkit-animation: spin 3s linear infinite;
+          animation: spin 3s linear infinite
+      }
+      #loader:after {
+          content: "";
+          position: absolute;
+          top: 15px;
+          left: 15px;
+          right: 15px;
+          bottom: 15px;
+          border-radius: 50%;
+          border: 3px solid transparent;
+          border-top-color: #d782d9;
+          -webkit-animation: spin 1.5s linear infinite;
+          animation: spin 1.5s linear infinite
+      }
+      @-webkit-keyframes spin {
+          0% {
+              -webkit-transform: rotate(0deg);
+              -ms-transform: rotate(0deg);
+              transform: rotate(0deg)
+          }
+          100% {
+              -webkit-transform: rotate(360deg);
+              -ms-transform: rotate(360deg);
+              transform: rotate(360deg)
+          }
+      }
+      @keyframes spin {
+          0% {
+              -webkit-transform: rotate(0deg);
+              -ms-transform: rotate(0deg);
+              transform: rotate(0deg)
+          }
+          100% {
+              -webkit-transform: rotate(360deg);
+              -ms-transform: rotate(360deg);
+              transform: rotate(360deg)
+          }
+      }
+      @media only screen and (min-width: 320px) and (max-width: 768px) {
+          #loader {
+              left: 60%
+          }
+      }
+
+      .scale3 {
+        transform: scale(1.2);
+        transform-origin: bottom center;
+        /* or 'top center', 'center center', etc. Depending on how you want the bottle to enlarge */
+      }
+      .spray-effect {
+        animation: sprayShake 2s ease-in-out forwards;
+      }
+
+      .clear-shadow {
+        animation: clearShadow 3s ease-in-out forwards;
+      }
+
+      .clear-shadow2 {
+        animation: clearShadow2 3s ease-in-out forwards;
+      }
+
+      /* Keyframes: The spray starts small (0% scale) and near the bottle tip,
+         then moves outward, grows a bit, and fades away (opacity = 0). */
+      @keyframes sprayShake {
+        0%   { transform: rotate(10deg)    scale(0.8);   }
+        20%  { transform: rotate(15deg)   scale(0.85); }
+        40%  { transform: rotate(5deg)    scale(0.8);   }
+        60%  { transform: rotate(15deg)   scale(0.85); }
+        80%  { transform: rotate(5deg)    scale(0.8);   }
+        100% { transform: rotate(10deg)    scale(0.8);   }
+      }
+
+      @keyframes shineFrames {
+        0%   { transform: rotate(0deg)    scale(0.5);   }
+        50%  { transform: rotate(80deg)    scale(1);   }
+        100% { transform: rotate(0deg)    scale(0.5);   }
+      }
+
+      /*help*/
+      @keyframes help {
+        0% {transform: translateX(0) translateY(0) scale(1);}
+        100% {transform: translateX(calc(-25 * var(--vh) / var(--ratio))) translateY(calc(-25 * var(--vh))) scale(1.5);}
+      }
+
+      /* Firefox < 16 */
+      @-moz-keyframes help {
+        0% {transform: translateX(0) translateY(0) scale(1);}
+        100% {transform: translateX(calc(-25 * var(--vh) / var(--ratio))) translateY(calc(-25 * var(--vh))) scale(1.5);}
+      }
+
+      /* Safari, Chrome and Opera > 12.1 */
+      @-webkit-keyframes help {
+        0% {transform: translateX(0) translateY(0) scale(1);}
+        100% {transform: translateX(calc(-25 * var(--vh) / var(--ratio))) translateY(calc(-25 * var(--vh))) scale(1.5);}
+      }
+
+
+      /* Internet Explorer */
+      @-ms-keyframes help {
+        0% {transform: translateX(0) translateY(0) scale(1);}
+        100% {transform: translateX(calc(-25 * var(--vh) / var(--ratio))) translateY(calc(-25 * var(--vh))) scale(1.5);}
+      }
+
+      /* Opera < 12.1 */
+      @-o-keyframes help {
+        0% {transform: translateX(0) translateY(0) scale(1);}
+        100% {transform: translateX(calc(-25 * var(--vh) / var(--ratio))) translateY(calc(-25 * var(--vh))) scale(1.5);}
+      }
+
+      @keyframes clearShadow {
+        0%   { opacity: 1; }
+        100% { opacity: 0; }
+      }
+
+      @keyframes clearShadow2 {
+        0%   { opacity: 1; }
+        100% { opacity: 0.5; }
+      }
+    </style>
+  </head>
+  <body style="margin: 0; padding: 0; overflow: hidden">
+    <%- include('partials/ga2.ejs') %>
+    <div id="preloader">
+      <div id="loader"></div>
+    </div>
+    <div class="full-screen container">
+      <%if(profile.giftLevel <= 1) {%>
+      <div class="layer layer1">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="room1"></div>
+          <div class="header"></div>
+
+          <%if(profile.giftLevel < 1) {%>
+          <div class="dust1-1"></div>
+          <div class="dust1-2"></div>
+          <div class="dust1-3"></div>
+          <div class="dust1-4"></div>
+          <% } %>
+
+          <div class="shine-effect shine-effect1 hide"></div>
+          <div class="shine-effect shine-effect2 hide"></div>
+          <div class="shine-effect shine-effect3 hide"></div>
+          <div class="shine-effect shine-effect4 hide"></div>
+          <div class="shine-effect shine-effect5 hide"></div>
+          <div class="shine-effect shine-effect6 hide"></div>
+          <div class="shine-effect shine-effect7 hide"></div>
+
+          <div class="gift-lvl-1"></div>
+          <div class="timer-wrap">۰۰:۳۰</div>
+          <div class="description-box hide"></div>
+          <div class="domestos-on hide">
+            <div class="domestos"></div>
+          </div>
+
+          <div class="hand hide"></div>
+        </div>
+      </div>
+      <%} else if(profile.giftLevel <= 3) {%>
+
+      <div class="layer layer2">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="room2"></div>
+          <div class="header"></div>
+          <%if(profile.giftLevel < 3) {%>
+          <div class="dust2-1"></div>
+          <div class="dust2-2"></div>
+          <div class="dust2-3"></div>
+          <div class="dust2-4"></div>
+          <%}%>
+          <div class="shine-effect shine-effect1 hide"></div>
+          <div class="shine-effect shine-effect2 hide"></div>
+          <div class="shine-effect shine-effect3 hide"></div>
+          <div class="shine-effect shine-effect4 hide"></div>
+          <div class="shine-effect shine-effect5 hide"></div>
+          <div class="shine-effect shine-effect6 hide"></div>
+          <div class="shine-effect shine-effect7 hide"></div>
+
+          <div class="gift-lvl-2"></div>
+          <div class="timer-wrap">۰۰:۲۰</div>
+          <div class="description-box hide"></div>
+          <div class="domestos-on hide">
+            <div class="domestos"></div>
+          </div>
+
+          <div class="hand hide"></div>
+        </div>
+      </div>
+      <%} else {%>
+      <div class="layer layer3">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="room3"></div>
+          <div class="header"></div>
+          <%if(profile.giftLevel < 5) {%>
+          <div class="dust3-1"></div>
+          <div class="dust3-2"></div>
+          <div class="dust3-3"></div>
+          <div class="dust3-4"></div>
+          <div class="dust3-5"></div>
+          <%}%>
+
+          <div class="shine-effect shine-effect1 hide"></div>
+          <div class="shine-effect shine-effect2 hide"></div>
+          <div class="shine-effect shine-effect3 hide"></div>
+          <div class="shine-effect shine-effect4 hide"></div>
+          <div class="shine-effect shine-effect5 hide"></div>
+          <div class="shine-effect shine-effect6 hide"></div>
+          <div class="shine-effect shine-effect7 hide"></div>
+
+          <div class="gift-lvl-3"></div>
+          <div class="timer-wrap">۰۰:۱۵</div>
+          <div class="description-box hide"></div>
+          <div class="domestos-on hide">
+            <div class="domestos"></div>
+          </div>
+
+          <div class="hand hide"></div>
+        </div>
+      </div>
+      <%}%>
+      <div class="layer blurEffect" style="display: none"><div></div></div>
+
+      <div class="layer modal start-modal-1 hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="btn"></div>
+        </div>
+      </div>
+      <div class="layer modal start-modal-2 hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="btn"></div>
+        </div>
+      </div>
+      <div class="layer modal start-modal-3 hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="btn"></div>
+        </div>
+      </div>
+
+      <div class="layer modal win-modal-1 hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="instagram-btn"></div>
+          <p class="alert alert-error hide">هنوز پیج کاریزما رو فالو نکردی!</p>
+          <div class="next-btn"></div>
+        </div>
+      </div>
+      <div class="layer modal win-modal-2 hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="next-btn"></div>
+        </div>
+      </div>
+      <div class="layer modal win-modal-3 hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <a
+            href="https://www.instagram.com/domestos.ir"
+            target="_blank"
+            class="instagram-btn"
+          ></a>
+          <a
+            href="https://digikala.com/brand/domestos"
+            target="_blank"
+            class="digi-btn"
+          ></a>
+          <a
+            href="https://d.snpx.link/r394"
+            target="_blank"
+            class="snapp-btn"
+          ></a>
+
+          <a
+            href="https://www.tapsi.markets/brands/Damestos"
+            target="_blank"
+            class="tap30-btn"
+            >خرید از تپسی</a
+          >
+        </div>
+      </div>
+
+      <div class="layer modal lose-modal hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <span class="tooltiptext" id="myTooltip"
+            >لینک اختصاصی شما کپی شد</span
+          >
+          <div class="video-btn"></div>
+          <div
+            class="share-btn copyToClipboard"
+            data-value="<%=domainURL%>/?friend=<%=user.shareLink%>"
+          ></div>
+          <div class="logout">
+            <a
+              href="/logout"
+              style="color: red; text-align: center; text-decoration: none"
+              >خروج از بازی</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="layer modal video-modal hide">
+        <div class="wrapper">
+          <div class="video">
+            <video id="myVideo" controls style="width: 100%; height: 100%">
+              <source src="<%=domainURL%>/videos/video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <button class="close"></button>
+        </div>
+      </div>
+    </div>
+    <audio
+      id="clock-sound"
+      src="<%=domainURL%>/sounds/clock.mp3"
+      loop
+      preload="auto"
+    ></audio>
+
+    <script src="<%=domainURL%>/js/jquery.min.js"></script>
+    <script src="<%=domainURL%>/js/jquery.animatecss.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      try {
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+          history.go(1);
+        };
+      } catch (e) {
+        console.error(e);
+      }
+    </script>
+    <script type="text/javascript">
+      let baseRatio = 2.168;
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+      document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+      window.addEventListener("resize", () => {
+        if (window.innerHeight > window.innerWidth) {
+          baseRatio = 2.168;
+          vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty("--vh", `${vh}px`);
+          document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+          if (window.innerHeight / window.innerWidth > baseRatio) {
+            vh = window.innerWidth * 0.01 * baseRatio;
+            document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+            let diff = window.innerHeight - window.innerWidth * baseRatio;
+            document.documentElement.style.setProperty(
+              "--margin",
+              `${diff / 2}px`
+            );
+          }
+        } else {
+          baseRatio = 2.168;
+          vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty("--vh", `${vh}px`);
+          document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+        }
+      });
+
+      if (window.innerHeight > window.innerWidth) {
+        if (window.innerHeight / window.innerWidth > baseRatio) {
+          vh = window.innerWidth * 0.01 * baseRatio;
+          document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+          let diff = window.innerHeight - window.innerWidth * baseRatio;
+          document.documentElement.style.setProperty(
+            "--margin",
+            `${diff / 2}px`
+          );
+        }
+      } else {
+        baseRatio = 2.168;
+        vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+        document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+        // document.documentElement.style.setProperty('--vw', `${(vh / 1.78)}px`);
+      }
+    </script>
+    <script type="text/javascript">
+      function replaceAll(string, search, replace) {
+        return string.split(search).join(replace);
+      }
+      var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+          sParameterName;
+        sPageURL = sPageURL.split("&");
+        for (var i = 0; i < sPageURL.length; i++) {
+          if (sPageURL[i].indexOf(sParam) !== -1) {
+            sParameterName = sPageURL[i].split(sParam + "=");
+            return sParameterName[1];
+          }
+        }
+        return "";
+      };
+
+      var forceBlurEffect = false;
+      function blurEffect(flag) {
+        if (flag === "show") {
+          $(".blurEffect").show();
+        } else if (!forceBlurEffect) {
+          $(".blurEffect").hide();
+        }
+      }
+
+      var acceptAjax = true;
+      var playerInfo = "<%=JSON.stringify(profile)%>";
+
+      // playerInfo = JSON.parse(playerInfo.replaceAll('&#34;', "\""));
+      playerInfo = JSON.parse(replaceAll(playerInfo, "&#34;", '"'));
+
+      function showModal(className) {
+        forceBlurEffect = true;
+        setTimeout(function () {
+          blurEffect("show");
+          $(className).removeClass("hide");
+          $(className)
+            .find(".wrapper")
+            .addClass("animate__animated animate__bounceInUp");
+          setTimeout(function () {
+            $(className)
+              .find(".wrapper")
+              .removeClass(
+                "animate__animated animate__bounceInUp animate__bounceOutDown"
+              );
+          }, 1000);
+        }, 1000);
+      }
+
+      function hideModal(className) {
+        forceBlurEffect = false;
+        $(className)
+          .find(".wrapper")
+          .addClass("animate__animated animate__bounceOutDown");
+        setTimeout(function () {
+          blurEffect("hide");
+          $(className).addClass("hide");
+          $(className)
+            .find(".wrapper")
+            .removeClass(
+              "animate__animated animate__bounceInUp animate__bounceOutDown"
+            );
+        }, 1000);
+      }
+
+      var allowSkip = false;
+      let isDragging = false;
+
+      function loseScore() {
+        if (!acceptAjax) return;
+        acceptAjax = false;
+        $.ajax({
+          type: "POST",
+          url: "/loseScore",
+          processData: false,
+          contentType: false,
+          cache: false,
+          async: true,
+          headers: {
+            "cache-control": "no-cache",
+            token: "<%=csrfToken%>",
+          },
+          success: function (res) {
+            if (res.status === 200) {
+              window.location.href = "/game";
+            } else {
+              acceptAjax = true;
+            }
+          },
+          error: function () {
+            alert("عدم ارتباط با سرور!");
+            acceptAjax = true;
+            return false;
+          },
+        });
+      }
+
+      function submitScore(score = 1, type = "none") {
+        if (!acceptAjax) return;
+        acceptAjax = false;
+
+        if (type === "win1") {
+          $(".win-modal-1 .next-btn").html(
+            '<span class="fa fa-spinner fa-spin" style="font-size: calc(2.5* var(--vh)); margin: 0; color: #fff; left: calc(55* var(--vh) / var(--ratio)); top: calc(1.5* var(--vh)); width: calc(3* var(--vh)); height: calc(3* var(--vh));"></span>'
+          );
+        } else if (type === "win2") {
+          $(".win-modal-2 .next-btn").html(
+            '<span class="fa fa-spinner fa-spin" style="font-size: calc(2.5* var(--vh)); margin: 0; color: #fff; left: calc(55* var(--vh) / var(--ratio)); top: calc(1.5* var(--vh)); width: calc(3* var(--vh)); height: calc(3* var(--vh));"></span>'
+          );
+        }
+
+        let payload = CryptoJS.AES.encrypt(score.toString(), "<%=csrfToken%>");
+        payload = encodeURIComponent(payload);
+        $.ajax({
+          type: "POST",
+          url: "/submitScore/" + payload,
+          processData: false,
+          contentType: false,
+          cache: false,
+          async: true,
+          headers: {
+            "cache-control": "no-cache",
+            token: "<%=csrfToken%>",
+          },
+          success: function (res) {
+            if (res.status === 200) {
+              if (type !== "none") {
+                window.location.href = "/game";
+              }
+            } else {
+              $(".win-modal-1 .next-btn").html("");
+              $(".win-modal-2 .next-btn").html("");
+            }
+            acceptAjax = true;
+          },
+          error: function () {
+            alert("عدم ارتباط با سرور!");
+            acceptAjax = true;
+            return false;
+          },
+        });
+      }
+
+      let showHelp = true;
+      let moving = false;
+      let clearCount = 0;
+
+      let timerStarted = false;
+      let pause = false;
+      let timerCount = new Date().getTime() + 30000;
+
+      let instagramTry = 0;
+
+      function startTimer() {
+        if (timerStarted) return;
+        timerStarted = true;
+        document.getElementById("clock-sound").play();
+        var x = setInterval(function () {
+          if (pause) return;
+          // Get todays date and time
+          var now = new Date().getTime();
+
+          // Find the distance between now and the count down date
+          var distance = timerCount - now;
+
+          // Time calculations for days, hours, minutes and seconds
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Display the result in the element with id="demo"
+
+          var foo = "";
+          if (seconds < 10) seconds = "0" + seconds;
+          foo = minutes + ":" + seconds;
+          foo = toPersianNumber(foo);
+          $(".timer-wrap").html(foo);
+
+          if (distance < 0) {
+            $(".timer-wrap").html("۰۰:۰۰");
+            document.getElementById("clock-sound").pause();
+            clearInterval(x);
+            pause = true;
+            // showModal('.lose-modal');
+            loseScore();
+          }
+        }, 1000);
+      }
+
+      function addHeal(type = "instagram") {
+        if (!acceptAjax) return;
+        acceptAjax = false;
+        $(".video-modal .close").html(
+          '<span class="fa fa-spinner fa-spin" style="font-size: calc(2.5* var(--vh)); margin: 0; color: #fff; left: calc(55* var(--vh) / var(--ratio)); top: calc(1.5* var(--vh)); width: calc(3* var(--vh)); height: calc(3* var(--vh));"></span>'
+        );
+
+        $.ajax({
+          type: "POST",
+          url: "/addHeal/" + type,
+          processData: false,
+          contentType: false,
+          cache: false,
+          async: true,
+          headers: {
+            "cache-control": "no-cache",
+            token: "<%=csrfToken%>",
+          },
+          success: function (res) {
+            if (res.status === 200) {
+              if (type !== "instagram") {
+                window.location.href = "/game";
+              }
+            } else {
+              if (type === "video") {
+                $(".video-modal .close").html("");
+                hideModal(".video-modal");
+                video.pause();
+              }
+            }
+
+            acceptAjax = true;
+          },
+          error: function () {
+            alert("عدم ارتباط با سرور!");
+            acceptAjax = true;
+            return false;
+          },
+        });
+      }
+
+      function makeDraggable(draggableSelector, dropZoneSelectors) {
+        const el = document.querySelector(draggableSelector);
+        const dropZones = document.querySelectorAll(dropZoneSelectors); // Select all drop zones
+        if (!el || dropZones.length === 0) return;
+
+        // Store original positions (from the CSS)
+        const originalLeft = el.style.left;
+        const originalTop = el.style.top;
+
+        let offsetX = 0,
+          offsetY = 0;
+        let isDragging = false;
+        let canMove = true;
+
+        // MOUSE DOWN
+        el.addEventListener("pointerdown", function (e) {
+          if (!acceptAjax || !canMove) return;
+          isDragging = true;
+          canMove = false;
+          showHelp = false;
+          $(".hand").addClass("hide");
+          el.classList.add("scale3");
+
+          el.style.cursor = "grabbing";
+
+          // The offset between mouse and element’s current top-left
+          offsetX = e.clientX - el.offsetLeft;
+          offsetY = e.clientY - el.offsetTop;
+
+          el.setPointerCapture(e.pointerId);
+        });
+
+        // MOUSE MOVE
+        el.addEventListener("pointermove", function (e) {
+          if (!acceptAjax || !isDragging) return;
+          el.style.left = e.clientX - offsetX + "px";
+          el.style.top = e.clientY - offsetY + "px";
+        });
+
+        // MOUSE UP
+        el.addEventListener("pointerup", function (e) {
+          if (!acceptAjax || !isDragging) return;
+          isDragging = false;
+
+          el.style.cursor = "grab";
+
+          // Check for overlap with any drop zone
+          let overlapped = false;
+          const mouseX = e.clientX;
+          const mouseY = e.clientY;
+
+          dropZones.forEach((dropZone) => {
+            if (
+              dropZone.classList.contains("clear-shadow") ||
+              dropZone.classList.contains("clear-shadow2")
+            ) {
+              return; // Skip drop zones that are already cleared
+            }
+
+            const dropRect = dropZone.getBoundingClientRect();
+            const overlap =
+              mouseX >= dropRect.left &&
+              mouseX <= dropRect.right &&
+              mouseY >= dropRect.top &&
+              mouseY <= dropRect.bottom;
+
+            if (overlap) {
+              if ($(dropZone).hasClass("temp")) return;
+              overlapped = true;
+              $(".spray-foam").removeClass("hide");
+
+              el.classList.add("animate__animated", "spray-effect");
+              $(dropZone).addClass("temp");
+              // When the animation ends, handle the drop zone
+              el.addEventListener("animationend", function handler() {
+                el.classList.remove("animate__animated", "spray-effect");
+                el.classList.remove("scale3");
+                el.removeEventListener("animationend", handler);
+                $(dropZone).fadeOut();
+
+                canMove = true;
+                clearCount++;
+                if (playerInfo.giftLevel >= 4) {
+                  if (clearCount >= 5) {
+                    pause = true;
+                    document.getElementById("clock-sound").pause();
+                    $(".shine-effect").removeClass("hide");
+                    setTimeout(() => {
+                      submitScore();
+                      if (playerInfo.giftLevel < 2) showModal(".win-modal-1");
+                      else if (playerInfo.giftLevel < 4)
+                        showModal(".win-modal-2");
+                      else if (playerInfo.giftLevel < 6)
+                        showModal(".win-modal-3");
+                    }, 2000);
+                  }
+                } else if (clearCount >= 4) {
+                  pause = true;
+                  document.getElementById("clock-sound").pause();
+                  $(".shine-effect").removeClass("hide");
+                  setTimeout(() => {
+                    submitScore();
+                    submitScore();
+                    if (playerInfo.giftLevel < 2) showModal(".win-modal-1");
+                    else if (playerInfo.giftLevel < 4)
+                      showModal(".win-modal-2");
+                    else if (playerInfo.giftLevel < 6)
+                      showModal(".win-modal-3");
+                  }, 2000);
+                }
+
+                // Add shadow class based on playerInfo.giftLevel
+                // if (playerInfo.giftLevel === 0 || playerInfo.giftLevel === 2 || playerInfo.giftLevel === 5) {
+                //   document.getElementById('win-sound').play();
+                //   $(dropZone).find('.shadow').addClass('clear-shadow');
+                // } else {
+                //   $(dropZone).find('.shadow').addClass('clear-shadow2');
+                // }
+
+                // Move the element back to original location
+                el.style.left = originalLeft;
+                el.style.top = originalTop;
+                el.releasePointerCapture(e.pointerId);
+              });
+            }
+          });
+
+          // If no overlap with any drop zone, reset the element
+          if (!overlapped) {
+            el.classList.remove("scale3");
+            el.style.left = originalLeft;
+            el.style.top = originalTop;
+            el.releasePointerCapture(e.pointerId);
+            canMove = true;
+          }
+        });
+      }
+
+      $(window).ready(function () {
+        $("#preloader").delay(200).fadeOut("fade");
+
+        if (playerInfo.giftLevel < 2) {
+          makeDraggable(".domestos", ".dust1-1, .dust1-2, .dust1-3, .dust1-4");
+        } else if (playerInfo.giftLevel < 4) {
+          makeDraggable(".domestos", ".dust2-1, .dust2-2, .dust2-3, .dust2-4");
+        } else {
+          makeDraggable(
+            ".domestos",
+            ".dust3-1, .dust3-2, .dust3-3, .dust3-4, .dust3-5"
+          );
+        }
+
+        var video = $("#myVideo")[0];
+
+        $(".win-modal-1 .instagram-btn").on("click", () => {
+          $(".win-modal-1 .alert").addClass("hide");
+          instagramTry = 1;
+          addHeal("instagram");
+          window.open("https://www.instagram.com/domestos.ir", "_blank");
+        });
+
+        $(".video-btn").on("click", () => {
+          showModal(".video-modal");
+          video.play();
+        });
+
+        $(".video-modal .close").on("click", function () {
+          if (!playerInfo.videoHeal) addHeal("video");
+          else {
+            hideModal(".video-modal");
+            video.pause();
+          }
+        });
+
+        $(".lose-modal")
+          .find(".copyToClipboard")
+          .on("click", function (e) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(".copyToClipboard").data("value")).select();
+            document.execCommand("copy");
+            $temp.remove();
+
+            var tooltip = $("#myTooltip");
+            tooltip.text("آدرس اختصاصی شما کپی شد");
+            tooltip.fadeIn();
+            setTimeout(function () {
+              tooltip.fadeOut();
+            }, 3000);
+          });
+
+        $(".win-modal-1 .next-btn").on("click", function () {
+          if (instagramTry === 0) {
+            $(".win-modal-1 .alert").removeClass("hide");
+            // instagramTry = 1;
+          } else {
+            submitScore(1, "win1");
+          }
+        });
+        $(".win-modal-2 .next-btn").on("click", function () {
+          submitScore(1, "win2");
+        });
+
+        function start() {
+          if (moving) return;
+          moving = true;
+          if (playerInfo.giftLevel === 0) {
+            timerCount = new Date().getTime() + 33000;
+            hideModal(".start-modal-1");
+            setTimeout(() => {
+              $(".layer1 .description-box").removeClass("hide");
+              $(".layer1 .domestos-on").removeClass("hide");
+              $(".layer1 .description-box").addClass(
+                "animate__animated animate__bounceInUp"
+              );
+              $(".layer1 .domestos-on").addClass(
+                "animate__animated animate__bounceInUp"
+              );
+              setTimeout(function () {
+                $(".layer1 .description-box").removeClass(
+                  "animate__animated animate__bounceInUp animate__bounceOutDown"
+                );
+                $(".layer1 .domestos-on").removeClass(
+                  "animate__animated animate__bounceInUp animate__bounceOutDown"
+                );
+                moving = false;
+                startTimer();
+                pause = false;
+                setTimeout(() => {
+                  if (!showHelp || playerInfo.heal <= 0) return;
+                  $(".hand").removeClass("hide");
+                }, 3000);
+              }, 1000);
+            }, 1000);
+          } else if (playerInfo.giftLevel === 2) {
+            timerCount = new Date().getTime() + 23000;
+            hideModal(".start-modal-2");
+            setTimeout(() => {
+              $(".layer2 .description-box").removeClass("hide");
+              $(".layer2 .domestos-on").removeClass("hide");
+              $(".layer2 .description-box").addClass(
+                "animate__animated animate__bounceInUp"
+              );
+              $(".layer2 .domestos-on").addClass(
+                "animate__animated animate__bounceInUp"
+              );
+              setTimeout(function () {
+                $(".layer2 .description-box").removeClass(
+                  "animate__animated animate__bounceInUp animate__bounceOutDown"
+                );
+                $(".layer2 .domestos-on").removeClass(
+                  "animate__animated animate__bounceInUp animate__bounceOutDown"
+                );
+                moving = false;
+                startTimer();
+                pause = false;
+                setTimeout(() => {
+                  if (!showHelp || playerInfo.heal <= 0) return;
+                  $(".hand").removeClass("hide");
+                }, 3000);
+              }, 1000);
+            }, 1000);
+          } else if (playerInfo.giftLevel === 4) {
+            timerCount = new Date().getTime() + 18000;
+            hideModal(".start-modal-3");
+            setTimeout(() => {
+              $(".layer3 .description-box").removeClass("hide");
+              $(".layer3 .domestos-on").removeClass("hide");
+              $(".layer3 .description-box").addClass(
+                "animate__animated animate__bounceInUp"
+              );
+              $(".layer3 .domestos-on").addClass(
+                "animate__animated animate__bounceInUp"
+              );
+              setTimeout(function () {
+                $(".layer3 .description-box").removeClass(
+                  "animate__animated animate__bounceInUp animate__bounceOutDown"
+                );
+                $(".layer3 .domestos-on").removeClass(
+                  "animate__animated animate__bounceInUp animate__bounceOutDown"
+                );
+                moving = false;
+                startTimer();
+                pause = false;
+                setTimeout(() => {
+                  if (!showHelp || playerInfo.heal <= 0) return;
+                  $(".hand").removeClass("hide");
+                }, 3000);
+              }, 1000);
+            }, 1000);
+          }
+        }
+
+        $(".start-modal-1 .btn").on("click", function () {
+          start();
+        });
+        $(".start-modal-2 .btn").on("click", function () {
+          start();
+        });
+        $(".start-modal-3 .btn").on("click", function () {
+          start();
+        });
+
+        setTimeout(() => {
+          if (playerInfo.giftLevel >= 5) {
+            showModal(".win-modal-3");
+          } else if (playerInfo.heal <= 0) {
+            showModal(".lose-modal");
+          } else {
+            if (playerInfo.giftLevel === 0) {
+              showModal(".start-modal-1");
+            } else if (playerInfo.giftLevel === 1) {
+              showModal(".win-modal-1");
+            } else if (playerInfo.giftLevel === 2) {
+              showModal(".start-modal-2");
+            } else if (playerInfo.giftLevel === 3) {
+              showModal(".win-modal-2");
+            } else if (playerInfo.giftLevel === 4) {
+              showModal(".start-modal-3");
+            } else if (playerInfo.giftLevel === 5) {
+              showModal(".win-modal-3");
+            }
+          }
+        }, 300);
+      });
+    </script>
+  </body>
+</html>

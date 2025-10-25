@@ -1,0 +1,67 @@
+{
+  "name": "charisma-landing",
+  "version": "1.0.0",
+  "description": "charisma campaign...",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "data:init": "node src/init-data.js",
+    "build:css": "tailwindcss -i ./src/public/css/tailwind.css -o ./src/public/css/styles.css --watch",
+    "lint": "eslint .",
+    "test": "jest --coverage"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mvc",
+    "mongodb",
+    "mongoose",
+    "passport",
+    "ejs",
+    "tailwind"
+  ],
+  "author": "Adrogame",
+  "license": "ISC",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "compression": "^1.7.4",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-minify-html": "^0.12.0",
+    "express-session": "^1.17.3",
+    "express-validator": "^7.0.1",
+    "helmet": "^6.0.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.8.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "node-xlsx": "^0.24.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "validator": "^13.12.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.21.0",
+    "@types/jest": "^29.5.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.31.0",
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.20",
+    "postcss": "^8.5.1",
+    "supertest": "^6.3.3",
+    "tailwindcss": "^3.4.17"
+  }
+}

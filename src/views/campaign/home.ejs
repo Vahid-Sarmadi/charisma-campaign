@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fa">
+  <head>
+    <title>راهکارهای سرمایه گذاری آنلاین | گروه مالی کاریزما</title>
+
+    <%- include('partials/meta.ejs') %> <%- include('partials/link.ejs') %> <%-
+    include('partials/style.ejs') %> <%- include('partials/ga.ejs') %> <% var
+    numerals = { persian : ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
+    english : ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"] }; function
+    toPersianNumber (str) { var index, result = ""; for( var i = 0; i <
+    str.length; i++ ) { index = numerals.english.indexOf(str[i]); if( index ==
+    -1 ) result += str[i]; else result += numerals.persian[index]; } return
+    result; } %>
+
+    <script type="text/javascript">
+      var numerals = {
+        persian: ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
+        english: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      };
+
+      function toPersianNumber(str) {
+        var index,
+          result = "";
+
+        for (var i = 0; i < str.length; i++) {
+          index = numerals.english.indexOf(str[i]);
+          if (index == -1) result += str[i];
+          else result += numerals.persian[index];
+        }
+
+        return result;
+      }
+    </script>
+    <style>
+      :root {
+        /*--vh: 1vh;*/
+        --vw: 1vw;
+        --ratio: 2.168;
+        --margin: 0px;
+      }
+
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      input:focus,
+      button:focus {
+        outline-width: 0;
+      }
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      textarea:-webkit-autofill,
+      textarea:-webkit-autofill:hover,
+      textarea:-webkit-autofill:focus,
+      select:-webkit-autofill,
+      select:-webkit-autofill:hover,
+      select:-webkit-autofill:focus {
+        -webkit-text-fill-color: #fff;
+        /*-webkit-box-shadow: none;*/
+        transition: background-color 5000s ease-in-out 0s;
+      }
+
+      body {
+        background: linear-gradient(0deg, #2f4251 0%, #121e29 100%);
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        /*height: calc(100 * var(--vh, 1vh));*/
+        width: 100%;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+
+      .alert-error {
+        color: #df1d17 !important;
+        border: none;
+        background: none;
+      }
+      .alert-success {
+        color: #22a958 !important;
+        border: none;
+        background: none;
+      }
+      .input-error {
+        border-color: #df1d17 !important;
+      }
+      .input-success {
+        border-color: #22a958 !important;
+      }
+
+      .full-screen {
+        display: block;
+        width: calc(100 * var(--vh) / var(--ratio));
+        height: calc(100 * var(--vh));
+        margin: 0 auto;
+        /*margin-top: var(--margin);*/
+        padding: 0;
+      }
+      .container {
+        background-size: contain;
+      }
+      .layer {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        height: calc(100 * var(--vh, 1vh));
+        /*top: var(--margin);*/
+        left: 0;
+      }
+      .layer .wrapper {
+        width: calc(100 * var(--vh) / var(--ratio));
+        height: calc(100 * var(--vh));
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      .static-layer {
+        background: linear-gradient(0deg, #304353 0%, #121e29 100%);
+      }
+
+      .static-layer .bg {
+        background: linear-gradient(29.71deg, #6e9fc5 -65.16%, #121e29 62.53%);
+        background-size: contain;
+        height: calc(100 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .static-layer .header {
+        background: url(<%=domainURL%>/images/header.png?ver=<%=version%>)
+          no-repeat top center;
+        background-size: contain;
+        height: calc(6 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .static-layer .logo {
+        background: url(<%=domainURL%>/images/logo.png?ver=<%=version%>)
+          no-repeat top center;
+        background-size: contain;
+        height: calc(2.8 * var(--vh));
+        width: calc(30 * var(--vh) / var(--ratio));
+        top: calc(1 * var(--vh));
+        margin-left: calc(35 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .static-layer .nav-bar {
+        background: url(<%=domainURL%>/images/nav-bar.png?ver=<%=version%>)
+          no-repeat bottom center;
+        background-size: contain;
+        height: calc(12 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        bottom: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .static-layer .tab-1 {
+        background: transparent;
+        background-size: contain;
+        height: calc(7 * var(--vh));
+        width: calc(17 * var(--vh) / var(--ratio));
+        bottom: calc(2 * var(--vh));
+        margin-left: calc(11 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .static-layer .tab-2 {
+        background: transparent;
+        background-size: contain;
+        height: calc(7 * var(--vh));
+        width: calc(17 * var(--vh) / var(--ratio));
+        bottom: calc(2 * var(--vh));
+        margin-left: calc(42 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .static-layer .tab-3 {
+        background: transparent;
+        background-size: contain;
+        height: calc(7 * var(--vh));
+        width: calc(17 * var(--vh) / var(--ratio));
+        bottom: calc(2 * var(--vh));
+        margin-left: calc(73 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .static-layer .tab-1.active-nav {
+        background: url(<%=domainURL%>/images/tab-1.png?ver=<%=version%>)
+          no-repeat bottom center;
+        background-size: contain;
+      }
+      .static-layer .tab-2.active-nav {
+        background: url(<%=domainURL%>/images/tab-2.png?ver=<%=version%>)
+          no-repeat bottom center;
+        background-size: contain;
+      }
+      .static-layer .tab-3.active-nav {
+        background: url(<%=domainURL%>/images/tab-3.png?ver=<%=version%>)
+          no-repeat bottom center;
+        background-size: contain;
+      }
+
+      .layer1 {
+        background: transparent;
+        display: none;
+        height: calc(85 * var(--vh));
+        top: calc(5 * var(--vh));
+        overflow: hidden;
+      }
+      .layer1 .wrapper {
+        height: calc(85 * var(--vh));
+        top: calc(5 * var(--vh));
+        overflow: hidden;
+      }
+
+      .layer1.active-tab {
+        display: block !important;
+      }
+      .layer1 .heal-bg {
+        background: url(<%=domainURL%>/images/heal-wrapp.png?ver=<%=version%>)
+          no-repeat bottom center;
+        background-size: contain;
+        height: calc(8 * var(--vh));
+        width: calc(40 * var(--vh) / var(--ratio));
+        top: calc(1 * var(--vh));
+        margin-left: calc(3 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer1 .heal-text {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(3.2 * var(--vh));
+        z-index: 99;
+        width: calc(17 * var(--vh) / var(--ratio));
+        margin-left: calc(16 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(3 * var(--vh));
+        color: #ffffff;
+        direction: rtl;
+        font-weight: semibold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 .heal-plus {
+        background: url(<%=domainURL%>/images/plus-icon.png?ver=<%=version%>)
+          no-repeat bottom center;
+        background-size: contain;
+        height: calc(4 * var(--vh));
+        width: calc(10 * var(--vh) / var(--ratio));
+        top: calc(3.3 * var(--vh));
+        margin-left: calc(32 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+
+      .layer1 .score {
+        background: url(<%=domainURL%>/images/score-wrapp.png?ver=<%=version%>)
+          no-repeat bottom center;
+        background-size: contain;
+        height: calc(6 * var(--vh));
+        width: calc(40 * var(--vh) / var(--ratio));
+        top: calc(2.4 * var(--vh));
+        margin-left: calc(60 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer1 .score-text {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(3.2 * var(--vh));
+        z-index: 99;
+        width: calc(21 * var(--vh) / var(--ratio));
+        margin-left: calc(73 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(3 * var(--vh));
+        color: #ffffff;
+        direction: rtl;
+        font-weight: semibold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 .text1 {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(10 * var(--vh));
+        z-index: 99;
+        width: calc(100 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(3.5 * var(--vh));
+        color: #ffffff;
+        direction: rtl;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 .text2 {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(14.2 * var(--vh));
+        z-index: 99;
+        width: calc(100 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(4.5 * var(--vh));
+        color: #66adff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 .progress-wrapp {
+        background: url(<%=domainURL%>/images/progress-wrapp.png?ver=<%=version%>)
+          no-repeat top;
+        background-size: contain;
+        height: calc(39 * var(--vh));
+        width: calc(5 * var(--vh) / var(--ratio));
+        top: calc(27 * var(--vh));
+        margin-left: calc(84 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer1 .progress-bar {
+        background: url(<%=domainURL%>/images/progress-bar.png?ver=<%=version%>)
+          no-repeat bottom;
+        background-size: cover;
+        height: calc(5 * var(--vh));
+        width: calc(3 * var(--vh) / var(--ratio));
+        bottom: calc(0 * var(--vh));
+        margin-left: calc(1 * var(--vh) / var(--ratio));
+        position: absolute;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+      .layer1 .lvl1 {
+        background: url(<%=domainURL%>/images/lvl1.png?ver=<%=version%>)
+          no-repeat right center;
+        background-size: contain !important;
+        height: calc(13.7 * var(--vh));
+        width: calc(96 * var(--vh) / var(--ratio));
+        top: calc(57 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+      .layer1 .lvl2 {
+        background: url(<%=domainURL%>/images/lvl2.png?ver=<%=version%>)
+          no-repeat right center;
+        background-size: contain !important;
+        height: calc(13.7 * var(--vh));
+        width: calc(95 * var(--vh) / var(--ratio));
+        top: calc(46 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+      .layer1 .lvl3 {
+        background: url(<%=domainURL%>/images/lvl3.png?ver=<%=version%>)
+          no-repeat right center;
+        background-size: contain !important;
+        height: calc(13.7 * var(--vh));
+        width: calc(95 * var(--vh) / var(--ratio));
+        top: calc(35 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+      .layer1 .lvl4 {
+        background: url(<%=domainURL%>/images/lvl4.png?ver=<%=version%>)
+          no-repeat right center;
+        background-size: contain !important;
+        height: calc(13.7 * var(--vh));
+        width: calc(95 * var(--vh) / var(--ratio));
+        top: calc(24 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+      .layer1 .start-btn {
+        background: url(<%=domainURL%>/images/start-game-btn.png?ver=<%=version%>)
+          no-repeat top;
+        background-size: contain;
+        height: calc(8.5 * var(--vh));
+        width: calc(64 * var(--vh) / var(--ratio));
+        top: calc(73 * var(--vh));
+        margin-left: calc(18 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+
+      .layer2 {
+        background: transparent;
+        display: none;
+        height: calc(85 * var(--vh));
+        top: calc(5 * var(--vh));
+        overflow: hidden;
+      }
+      .layer2 .wrapper {
+        height: calc(85 * var(--vh));
+        top: calc(5 * var(--vh));
+        overflow: hidden;
+      }
+      .layer2.active-tab {
+        display: block !important;
+      }
+
+      .layer2 .missions-img {
+        background: url(<%=domainURL%>/images/missions-img.png?ver=<%=version%>)
+          no-repeat top;
+        background-size: contain;
+        height: calc(20 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer2 .title {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(17 * var(--vh));
+        z-index: 99;
+        width: calc(100 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(3.5 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer2 .text {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(23 * var(--vh));
+        z-index: 99;
+        width: calc(80 * var(--vh) / var(--ratio));
+        margin-left: calc(10 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer2 .line {
+        border-top: 1px solid #acacac;
+        background-size: contain;
+        height: 1px;
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(35 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer2 .mission-wrapper {
+        overflow-y: scroll;
+        height: calc(47.5 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(37 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+        padding-top: calc(2 * var(--vh));
+      }
+      .layer2 .mission-item {
+        background: url(<%=domainURL%>/images/mission-item.png?ver=<%=version%>)
+          no-repeat top;
+        background-size: contain;
+        height: calc(15 * var(--vh));
+        width: calc(90 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(5 * var(--vh) / var(--ratio));
+        position: relative;
+        margin-top: calc(-4.5 * var(--vh));
+        cursor: pointer;
+      }
+
+      .layer2 .mission-text {
+        position: absolute;
+        height: calc(3 * var(--vh));
+        top: calc(5.3 * var(--vh));
+        z-index: 99;
+        width: calc(80 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(2.1 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer2 .mission-heal {
+        position: relative;
+        height: calc(3 * var(--vh));
+        top: calc(4.5 * var(--vh));
+        z-index: 99;
+        width: calc(10 * var(--vh) / var(--ratio));
+        margin-left: calc(8 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2.4 * var(--vh));
+        color: #fff;
+        direction: ltr;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+
+      .layer2 .mission-completed-title {
+        height: calc(5 * var(--vh));
+        top: calc(17 * var(--vh));
+        z-index: 99;
+        width: calc(100 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2.5 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+        padding-bottom: calc(3 * var(--vh));
+      }
+      .layer2 .off-mission {
+        filter: grayscale(1);
+        cursor: auto;
+      }
+
+      .layer3 {
+        background: transparent;
+        display: none;
+        height: calc(85 * var(--vh));
+        top: calc(5 * var(--vh));
+        overflow: hidden;
+      }
+      .layer3 .wrapper {
+        height: calc(85 * var(--vh));
+        top: calc(5 * var(--vh));
+        overflow: hidden;
+      }
+      .layer3.active-tab {
+        display: block !important;
+      }
+      .layer3 .share-img {
+        background: url(<%=domainURL%>/images/missions-img.png?ver=<%=version%>)
+          no-repeat top;
+        background-size: contain;
+        height: calc(20 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer3 .title {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(17 * var(--vh));
+        z-index: 99;
+        width: calc(100 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(3.5 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer3 .text {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(23 * var(--vh));
+        z-index: 99;
+        width: calc(80 * var(--vh) / var(--ratio));
+        margin-left: calc(10 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer3 .text2 {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(23 * var(--vh));
+        z-index: 99;
+        width: calc(80 * var(--vh) / var(--ratio));
+        margin-left: calc(10 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer3 .line {
+        border-top: 1px solid #acacac;
+        background-size: contain;
+        height: 1px;
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(35 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer3 .mission-wrapper {
+        overflow-y: scroll;
+        height: calc(47.5 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(37 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+        padding-top: calc(2 * var(--vh));
+      }
+      .layer3 .mission-item {
+        background: url(<%=domainURL%>/images/mission-item.png?ver=<%=version%>)
+          no-repeat top;
+        background-size: contain;
+        height: calc(15 * var(--vh));
+        width: calc(90 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(5 * var(--vh) / var(--ratio));
+        position: relative;
+        margin-top: calc(-4.5 * var(--vh));
+        cursor: pointer;
+      }
+
+      .layer3 .mission-text {
+        position: absolute;
+        height: calc(3 * var(--vh));
+        top: calc(5.3 * var(--vh));
+        z-index: 99;
+        width: calc(80 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(2.1 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer3 .mission-heal {
+        position: relative;
+        height: calc(3 * var(--vh));
+        top: calc(4.5 * var(--vh));
+        z-index: 99;
+        width: calc(10 * var(--vh) / var(--ratio));
+        margin-left: calc(8 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2.4 * var(--vh));
+        color: #fff;
+        direction: ltr;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+
+      .blurEffect {
+        z-index: 100;
+      }
+      .blurEffect div {
+        background-color: #000;
+        opacity: 0.8;
+        width: calc(100 * var(--vh) / var(--ratio));
+        height: calc(100 * var(--vh));
+        margin: 0 auto;
+        filter: blur(50px);
+        -webkit-filter: blur(50px);
+      }
+
+      .modal {
+        width: 100%;
+        height: calc(100 * var(--vh));
+        margin: 0 auto;
+        z-index: 101;
+      }
+      .modal .wrapper {
+        position: relative;
+      }
+
+      .mission-modal .bg {
+        background: url(<%=domainURL%>/images/mission-modal.png?ver=<%=version%>)
+          no-repeat center;
+        background-size: contain;
+        height: calc(67 * var(--vh));
+        width: calc(96 * var(--vh) / var(--ratio));
+        top: calc(10 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .mission-modal .close {
+        height: calc(7 * var(--vh));
+        width: calc(15 * var(--vh) / var(--ratio));
+        top: calc(23 * var(--vh));
+        margin-left: calc(4 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .mission-modal .heal-count {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(23.5 * var(--vh));
+        z-index: 99;
+        width: calc(15 * var(--vh) / var(--ratio));
+        margin-left: calc(45 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(3.4 * var(--vh));
+        color: #fff;
+        direction: ltr;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .mission-modal .title {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(30 * var(--vh));
+        z-index: 99;
+        width: calc(100 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(3 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .mission-modal .text {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(36 * var(--vh));
+        z-index: 99;
+        width: calc(80 * var(--vh) / var(--ratio));
+        margin-left: calc(10 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .mission-modal .alert {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(51 * var(--vh));
+        z-index: 99;
+        width: calc(80 * var(--vh) / var(--ratio));
+        margin-left: calc(10 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(1.6 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .mission-modal .alert.success {
+        color: rgb(2, 190, 2) !important;
+      }
+      .mission-modal .alert.error {
+        color: red !important;
+      }
+      .mission-modal .check-btn {
+        background: url(<%=domainURL%>/images/mission-done.png?ver=<%=version%>)
+          no-repeat center;
+        background-size: contain;
+        height: calc(5.8 * var(--vh));
+        width: calc(25 * var(--vh) / var(--ratio));
+        top: calc(54 * var(--vh));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .install-modal .btn {
+        position: absolute;
+        height: calc(6 * var(--vh));
+        top: calc(54 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        margin-left: calc(43 * var(--vh) / var(--ratio));
+        width: calc(45 * var(--vh) / var(--ratio));
+        border: none;
+        background: transparent
+          url(<%=domainURL%>/images/install-btn.png?ver=<%=version%>) no-repeat
+          center;
+        background-size: contain;
+      }
+      .tarh-modal .btn {
+        position: absolute;
+        height: calc(6 * var(--vh));
+        top: calc(54 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        margin-left: calc(43 * var(--vh) / var(--ratio));
+        width: calc(45 * var(--vh) / var(--ratio));
+        border: none;
+        background: transparent
+          url(<%=domainURL%>/images/tarh-btn.png?ver=<%=version%>) no-repeat
+          center;
+        background-size: contain;
+      }
+      .sandoogh-modal .btn {
+        position: absolute;
+        height: calc(6 * var(--vh));
+        top: calc(54 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        margin-left: calc(43 * var(--vh) / var(--ratio));
+        width: calc(45 * var(--vh) / var(--ratio));
+        border: none;
+        background: transparent
+          url(<%=domainURL%>/images/sandoogh-btn.png?ver=<%=version%>) no-repeat
+          center;
+        background-size: contain;
+      }
+      .tabdil-modal .btn {
+        position: absolute;
+        height: calc(6 * var(--vh));
+        top: calc(54 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        margin-left: calc(43 * var(--vh) / var(--ratio));
+        width: calc(45 * var(--vh) / var(--ratio));
+        border: none;
+        background: transparent
+          url(<%=domainURL%>/images/tabdil-btn.png?ver=<%=version%>) no-repeat
+          center;
+        background-size: contain;
+      }
+      .vam-modal .btn {
+        position: absolute;
+        height: calc(6 * var(--vh));
+        top: calc(54 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        margin-left: calc(43 * var(--vh) / var(--ratio));
+        width: calc(45 * var(--vh) / var(--ratio));
+        border: none;
+        background: transparent
+          url(<%=domainURL%>/images/vam-btn.png?ver=<%=version%>) no-repeat
+          center;
+        background-size: contain;
+      }
+
+      .lose-modal .tooltiptext {
+        display: none;
+        position: absolute;
+        height: calc(4 * var(--vh));
+        top: calc(55 * var(--vh));
+        cursor: pointer;
+        z-index: 100;
+        left: calc(23 * var(--vh) / var(--ratio));
+        width: calc(50 * var(--vh) / var(--ratio));
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        transition: opacity 0.3s;
+        font-size: calc(4 * var(--vh) / var(--ratio));
+      }
+      .lose-modal .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+      }
+
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999999;
+        background: linear-gradient(45deg, #43627c 0%, #121e29 100%);
+      }
+      #loader {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        width: 80px;
+        height: 80px;
+        margin: -75px 0 0 -75px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #9fa19f;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+      }
+      #loader:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #d14923;
+        -webkit-animation: spin 3s linear infinite;
+        animation: spin 3s linear infinite;
+      }
+      #loader:after {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #ff0606;
+        -webkit-animation: spin 1.5s linear infinite;
+        animation: spin 1.5s linear infinite;
+      }
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @media only screen and (min-width: 320px) and (max-width: 768px) {
+        #loader {
+          left: 60%;
+        }
+      }
+
+      .scale3 {
+        transform: scale(1.2);
+        transform-origin: bottom center;
+        /* or 'top center', 'center center', etc. Depending on how you want the bottle to enlarge */
+      }
+      .spray-effect {
+        animation: sprayShake 2s ease-in-out forwards;
+      }
+
+      .clear-shadow {
+        animation: clearShadow 3s ease-in-out forwards;
+      }
+
+      .clear-shadow2 {
+        animation: clearShadow2 3s ease-in-out forwards;
+      }
+
+      /* Keyframes: The spray starts small (0% scale) and near the bottle tip,
+         then moves outward, grows a bit, and fades away (opacity = 0). */
+      @keyframes sprayShake {
+        0% {
+          transform: rotate(10deg) scale(0.8);
+        }
+        20% {
+          transform: rotate(15deg) scale(0.85);
+        }
+        40% {
+          transform: rotate(5deg) scale(0.8);
+        }
+        60% {
+          transform: rotate(15deg) scale(0.85);
+        }
+        80% {
+          transform: rotate(5deg) scale(0.8);
+        }
+        100% {
+          transform: rotate(10deg) scale(0.8);
+        }
+      }
+
+      @keyframes shineFrames {
+        0% {
+          transform: rotate(0deg) scale(0.5);
+        }
+        50% {
+          transform: rotate(80deg) scale(1);
+        }
+        100% {
+          transform: rotate(0deg) scale(0.5);
+        }
+      }
+
+      /*help*/
+      @keyframes help {
+        0% {
+          transform: translateX(0) translateY(0) scale(1);
+        }
+        100% {
+          transform: translateX(calc(-25 * var(--vh) / var(--ratio)))
+            translateY(calc(-25 * var(--vh))) scale(1.5);
+        }
+      }
+
+      /* Firefox < 16 */
+      @-moz-keyframes help {
+        0% {
+          transform: translateX(0) translateY(0) scale(1);
+        }
+        100% {
+          transform: translateX(calc(-25 * var(--vh) / var(--ratio)))
+            translateY(calc(-25 * var(--vh))) scale(1.5);
+        }
+      }
+
+      /* Safari, Chrome and Opera > 12.1 */
+      @-webkit-keyframes help {
+        0% {
+          transform: translateX(0) translateY(0) scale(1);
+        }
+        100% {
+          transform: translateX(calc(-25 * var(--vh) / var(--ratio)))
+            translateY(calc(-25 * var(--vh))) scale(1.5);
+        }
+      }
+
+      /* Internet Explorer */
+      @-ms-keyframes help {
+        0% {
+          transform: translateX(0) translateY(0) scale(1);
+        }
+        100% {
+          transform: translateX(calc(-25 * var(--vh) / var(--ratio)))
+            translateY(calc(-25 * var(--vh))) scale(1.5);
+        }
+      }
+
+      /* Opera < 12.1 */
+      @-o-keyframes help {
+        0% {
+          transform: translateX(0) translateY(0) scale(1);
+        }
+        100% {
+          transform: translateX(calc(-25 * var(--vh) / var(--ratio)))
+            translateY(calc(-25 * var(--vh))) scale(1.5);
+        }
+      }
+
+      @keyframes clearShadow {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes clearShadow2 {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.5;
+        }
+      }
+
+      /* Hide scrollbars */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      * {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body style="margin: 0; padding: 0; overflow: hidden">
+    <%- include('partials/ga2.ejs') %>
+    <div id="preloader">
+      <div id="loader"></div>
+    </div>
+    <div class="full-screen container">
+      <div class="layer static-layer">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="header"></div>
+          <div class="logo"></div>
+          <div class="nav-bar"></div>
+          <div class="tab-1 active-nav"></div>
+          <div class="tab-2"></div>
+          <div class="tab-3"></div>
+        </div>
+      </div>
+      <div class="layer layer1 active-tab">
+        <div class="wrapper">
+          <div class="heal-bg"></div>
+          <div class="heal-text to-persian"><%=profile.heal%></div>
+          <div class="heal-plus"></div>
+          <div class="score"></div>
+          <div class="score-text to-persian"><%=profile.score%></div>
+          <div class="text1">بازی کن، امتیاز بگیر،</div>
+          <div class="text2">جایـــــزه ببــــر !</div>
+          <div class="progress-wrapp">
+            <div class="progress-bar"></div>
+          </div>
+
+          <div class="lvl1"></div>
+          <div class="lvl2"></div>
+          <div class="lvl3"></div>
+          <div class="lvl4"></div>
+          <div class="start-btn"></div>
+        </div>
+      </div>
+      <div class="layer layer2">
+        <div class="wrapper">
+          <div class="missions-img"></div>
+          <div class="title">ماموریت‌ها</div>
+
+          <div class="text">
+            با انجام ماموریات ها جان اضافه بگیر، امتیاز جمع کن، جایزه شکار
+            کن!<br />
+            یادت نره بعد از انجام ماموریت‌ها به بازی برگردی!
+          </div>
+          <div class="line"></div>
+          <div class="mission-wrapper">
+            <div class="mission-item mission-friend">
+              <div class="mission-text">دعوت از دوستان</div>
+              <div class="mission-heal">+۳</div>
+            </div>
+            <div class="mission-item mission-install">
+              <div class="mission-text">ثبت نام در کاریزما</div>
+              <div class="mission-heal">+۳</div>
+            </div>
+            <div class="mission-item mission-tarh">
+              <div class="mission-text">خرید طرح سرمایه‌گذاری</div>
+              <div class="mission-heal">+۵</div>
+            </div>
+            <div class="mission-item mission-sandoogh">
+              <div class="mission-text">خرید صندوق سرمایه‌گذاری</div>
+              <div class="mission-heal">+۵</div>
+            </div>
+            <div class="mission-item mission-tabdil">
+              <div class="mission-text">استفاده از امکان "تبدیل"</div>
+              <div class="mission-heal">+۵</div>
+            </div>
+            <div class="mission-item mission-vam">
+              <div class="mission-text">دریافت کاریزما وام</div>
+              <div class="mission-heal">+۵</div>
+            </div>
+            <div class="mission-item mission-instagram">
+              <div class="mission-text">دنبال کردن اینستاگرام کاریزما</div>
+              <div class="mission-heal">+۲</div>
+            </div>
+            <div class="mission-item mission-telegram">
+              <div class="mission-text">دنبال کردن تلگرام کاریزما</div>
+              <div class="mission-heal">+۲</div>
+            </div>
+            <div class="mission-item mission-twitter">
+              <div class="mission-text">دنبال کردن توییتر کاریزما</div>
+              <div class="mission-heal">+۲</div>
+            </div>
+            <div class="mission-item mission-linkedin">
+              <div class="mission-text">دنبال کردن لینکدین کاریزما</div>
+              <div class="mission-heal">+۲</div>
+            </div>
+            <div class="mission-completed-title">ماموریت‌های انجام شده</div>
+            <div class="mission-item off-mission">
+              <div class="mission-text">ثبت نام در کاریزما</div>
+              <div class="mission-heal">+۳</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layer layer3">
+        <div class="wrapper">
+          <div class="share-img"></div>
+          <div class="share-title">دوستات رو دعوت کن</div>
+          <div class="share-text">
+            با دعوت از دوستات شانس برنده شدنت رو بیشتر کن !
+          </div>
+          <div class="share-text2">شماره دوستت رو وارد کن،</div>
+          <div class="share-input"></div>
+          <div class="share-btn"></div>
+          <div class="share-telegram"></div>
+          <div class="share-twitter"></div>
+          <div class="share-whatsapp"></div>
+          <div class="line"></div>
+          <div class="firend-wrapp">
+            <div class="friend-title"></div>
+            <div class="friend-1"></div>
+          </div>
+        </div>
+      </div>
+      <div class="layer blurEffect" style="display: none"><div></div></div>
+
+      <div class="layer modal mission-modal install-modal hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="heal-count">+۳</div>
+          <div class="title">ثبت نام در کاریزما</div>
+          <div class="text">
+            اگه توی اپ کاریزما ثبت نام کنی، ۳ جون تازه می‌گیری! قبلاً عضو
+            بودی؟<br />
+            فقط وارد شو تا دوباره عضویتت چک بشه و جون‌های جدید فعال بشه.
+          </div>
+          <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
+          <div class="check-btn"></div>
+          <div class="btn"></div>
+          <div class="close"></div>
+        </div>
+      </div>
+      <div class="layer modal mission-modal tarh-modal hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="heal-count">+۵</div>
+          <div class="title">خرید طرح سرمایه‌گذاری</div>
+          <div class="text">
+            با خرید حداقل ۱ میلیون تومان از طرح‌های کاریزما مثل طلا، نقره، درآمد
+            ثابت یا مگاسود، ۵ جون تازه می‌گیری و شانس خودت رو برای جمع کردن
+            امتیاز بیشتر می‌کنی. یادت نره بعد از خرید به بازی برگردی!
+          </div>
+          <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
+          <div class="check-btn"></div>
+          <div class="btn"></div>
+          <div class="close"></div>
+        </div>
+      </div>
+      <div class="layer modal mission-modal sandoogh-modal hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="heal-count">+۵</div>
+          <div class="title">خرید صندوق سرمایه‌گذاری</div>
+          <div class="text">
+            کاریزما چندتا صندوق معروف داره مثل صندوق اهرم، صندوق کارا و صندوق
+            کهربا. با خرید حداقل ۱ میلیون تومان از هر کدوم، ۵ جون تازه می‌گیری و
+            امتیازت بالا میره. یادت نره بعد از خرید به بازی برگردی!
+          </div>
+          <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
+          <div class="check-btn"></div>
+          <div class="btn"></div>
+          <div class="close"></div>
+        </div>
+      </div>
+      <div class="layer modal mission-modal tabdil-modal hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="heal-count">+۵</div>
+          <div class="title">استفاده از امکان "تبدیل"</div>
+          <div class="text">
+            اگه توی طرح‌های طلا، نقره یا درآمد ثابت پول داری، می‌تونی با قابلیت
+            "تبدیل" نوع سرمایه‌گذاری‌ت رو عوض کنی (مثلاً طلا به درآمد ثابت یا
+            برعکس) و ۵ جون تازه بگیری. اول ماموریت طرح رو انجام بده، بعد تبدیل
+            کن.
+          </div>
+          <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
+          <div class="check-btn"></div>
+          <div class="btn"></div>
+          <div class="close"></div>
+        </div>
+      </div>
+
+      <div class="layer modal mission-modal vam-modal hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="heal-count">+۵</div>
+          <div class="title">دریافت کاریزما وام</div>
+          <div class="text">
+            اگه توی طرح‌های طلا یا نقره پول داری، می‌تونی وام فوری تا ۱۰۰ میلیون
+            بدون ضامن بگیری و ۵ جون تازه برای بازی جمع کنی. یادت نره بعد از
+            گرفتن وام به بازی برگردی!
+          </div>
+          <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
+          <div class="check-btn"></div>
+          <div class="btn"></div>
+          <div class="close"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="<%=domainURL%>/js/jquery.min.js"></script>
+    <script src="<%=domainURL%>/js/jquery.animatecss.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      try {
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+          history.go(1);
+        };
+      } catch (e) {
+        console.error(e);
+      }
+    </script>
+    <script type="text/javascript">
+      let baseRatio = 2.168;
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+      document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+      window.addEventListener("resize", () => {
+        loadProgressBar(playerInfo.score);
+        if (window.innerHeight > window.innerWidth) {
+          baseRatio = 2.168;
+          vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty("--vh", `${vh}px`);
+          document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+          if (window.innerHeight / window.innerWidth > baseRatio) {
+            vh = window.innerWidth * 0.01 * baseRatio;
+            document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+            let diff = window.innerHeight - window.innerWidth * baseRatio;
+            document.documentElement.style.setProperty(
+              "--margin",
+              `${diff / 2}px`
+            );
+          }
+        } else {
+          baseRatio = 2.168;
+          vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty("--vh", `${vh}px`);
+          document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+        }
+      });
+
+      if (window.innerHeight > window.innerWidth) {
+        if (window.innerHeight / window.innerWidth > baseRatio) {
+          vh = window.innerWidth * 0.01 * baseRatio;
+          document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+          let diff = window.innerHeight - window.innerWidth * baseRatio;
+          document.documentElement.style.setProperty(
+            "--margin",
+            `${diff / 2}px`
+          );
+        }
+      } else {
+        baseRatio = 2.168;
+        vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+        document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+        // document.documentElement.style.setProperty('--vw', `${(vh / 1.78)}px`);
+      }
+    </script>
+    <script type="text/javascript">
+      function replaceAll(string, search, replace) {
+        return string.split(search).join(replace);
+      }
+      var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+          sParameterName;
+        sPageURL = sPageURL.split("&");
+        for (var i = 0; i < sPageURL.length; i++) {
+          if (sPageURL[i].indexOf(sParam) !== -1) {
+            sParameterName = sPageURL[i].split(sParam + "=");
+            return sParameterName[1];
+          }
+        }
+        return "";
+      };
+
+      var forceBlurEffect = false;
+      function blurEffect(flag) {
+        if (flag === "show") {
+          $(".blurEffect").show();
+        } else if (!forceBlurEffect) {
+          $(".blurEffect").hide();
+        }
+      }
+
+      var acceptAjax = true;
+      var playerInfo = "<%=JSON.stringify(profile)%>";
+
+      // playerInfo = JSON.parse(playerInfo.replaceAll('&#34;', "\""));
+      playerInfo = JSON.parse(replaceAll(playerInfo, "&#34;", '"'));
+
+      function showModal(className) {
+        forceBlurEffect = true;
+        setTimeout(function () {
+          blurEffect("show");
+          $(className).removeClass("hide");
+          $(className)
+            .find(".wrapper")
+            .addClass("animate__animated animate__bounceInUp");
+          setTimeout(function () {
+            $(className)
+              .find(".wrapper")
+              .removeClass(
+                "animate__animated animate__bounceInUp animate__bounceOutDown"
+              );
+          }, 1000);
+        }, 1000);
+      }
+
+      function hideModal(className) {
+        forceBlurEffect = false;
+        $(className)
+          .find(".wrapper")
+          .addClass("animate__animated animate__bounceOutDown");
+        setTimeout(function () {
+          blurEffect("hide");
+          $(className).addClass("hide");
+          $(className)
+            .find(".wrapper")
+            .removeClass(
+              "animate__animated animate__bounceInUp animate__bounceOutDown"
+            );
+        }, 1000);
+      }
+
+      var allowSkip = false;
+      let isDragging = false;
+
+      function loseScore() {
+        if (!acceptAjax) return;
+        acceptAjax = false;
+        $.ajax({
+          type: "POST",
+          url: "/loseScore",
+          processData: false,
+          contentType: false,
+          cache: false,
+          async: true,
+          headers: {
+            "cache-control": "no-cache",
+            token: "<%=csrfToken%>",
+          },
+          success: function (res) {
+            if (res.status === 200) {
+              window.location.href = "/game";
+            } else {
+              acceptAjax = true;
+            }
+          },
+          error: function () {
+            alert("عدم ارتباط با سرور!");
+            acceptAjax = true;
+            return false;
+          },
+        });
+      }
+
+      function submitScore(score = 1, type = "none") {
+        if (!acceptAjax) return;
+        acceptAjax = false;
+
+        if (type === "win1") {
+          $(".win-modal-1 .next-btn").html(
+            '<span class="fa fa-spinner fa-spin" style="font-size: calc(2.5* var(--vh)); margin: 0; color: #fff; left: calc(55* var(--vh) / var(--ratio)); top: calc(1.5* var(--vh)); width: calc(3* var(--vh)); height: calc(3* var(--vh));"></span>'
+          );
+        } else if (type === "win2") {
+          $(".win-modal-2 .next-btn").html(
+            '<span class="fa fa-spinner fa-spin" style="font-size: calc(2.5* var(--vh)); margin: 0; color: #fff; left: calc(55* var(--vh) / var(--ratio)); top: calc(1.5* var(--vh)); width: calc(3* var(--vh)); height: calc(3* var(--vh));"></span>'
+          );
+        }
+
+        let payload = CryptoJS.AES.encrypt(score.toString(), "<%=csrfToken%>");
+        payload = encodeURIComponent(payload);
+        $.ajax({
+          type: "POST",
+          url: "/submitScore/" + payload,
+          processData: false,
+          contentType: false,
+          cache: false,
+          async: true,
+          headers: {
+            "cache-control": "no-cache",
+            token: "<%=csrfToken%>",
+          },
+          success: function (res) {
+            if (res.status === 200) {
+              if (type !== "none") {
+                window.location.href = "/game";
+              }
+            } else {
+              $(".win-modal-1 .next-btn").html("");
+              $(".win-modal-2 .next-btn").html("");
+            }
+            acceptAjax = true;
+          },
+          error: function () {
+            alert("عدم ارتباط با سرور!");
+            acceptAjax = true;
+            return false;
+          },
+        });
+      }
+
+      let showHelp = true;
+      let moving = false;
+      let clearCount = 0;
+
+      let timerStarted = false;
+      let pause = false;
+      let timerCount = new Date().getTime() + 30000;
+
+      let instagramTry = 0;
+
+      function startTimer() {
+        if (timerStarted) return;
+        timerStarted = true;
+        document.getElementById("clock-sound").play();
+        var x = setInterval(function () {
+          if (pause) return;
+          // Get todays date and time
+          var now = new Date().getTime();
+
+          // Find the distance between now and the count down date
+          var distance = timerCount - now;
+
+          // Time calculations for days, hours, minutes and seconds
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Display the result in the element with id="demo"
+
+          var foo = "";
+          if (seconds < 10) seconds = "0" + seconds;
+          foo = minutes + ":" + seconds;
+          foo = toPersianNumber(foo);
+          $(".timer-wrap").html(foo);
+
+          if (distance < 0) {
+            $(".timer-wrap").html("۰۰:۰۰");
+            document.getElementById("clock-sound").pause();
+            clearInterval(x);
+            pause = true;
+            // showModal('.lose-modal');
+            loseScore();
+          }
+        }, 1000);
+      }
+
+      function addHeal(type = "instagram") {
+        if (!acceptAjax) return;
+        acceptAjax = false;
+        $(".video-modal .close").html(
+          '<span class="fa fa-spinner fa-spin" style="font-size: calc(2.5* var(--vh)); margin: 0; color: #fff; left: calc(55* var(--vh) / var(--ratio)); top: calc(1.5* var(--vh)); width: calc(3* var(--vh)); height: calc(3* var(--vh));"></span>'
+        );
+
+        $.ajax({
+          type: "POST",
+          url: "/addHeal/" + type,
+          processData: false,
+          contentType: false,
+          cache: false,
+          async: true,
+          headers: {
+            "cache-control": "no-cache",
+            token: "<%=csrfToken%>",
+          },
+          success: function (res) {
+            if (res.status === 200) {
+              if (type !== "instagram") {
+                window.location.href = "/game";
+              }
+            } else {
+              if (type === "video") {
+                $(".video-modal .close").html("");
+                hideModal(".video-modal");
+                video.pause();
+              }
+            }
+
+            acceptAjax = true;
+          },
+          error: function () {
+            alert("عدم ارتباط با سرور!");
+            acceptAjax = true;
+            return false;
+          },
+        });
+      }
+
+      function loadProgressBar(score) {
+        $(".progress-bar").css("height", 0 * vh);
+
+        setTimeout(function () {
+          let score_pool = [0, 200, 500, 1500];
+          let progressbar_pool = [0, 0, 13.7, 23.5, 36, 36];
+          if (score <= score_pool[0]) {
+            $(".progress-bar").css("height", progressbar_pool[0] * vh);
+            $(".lvl1").css("height", 14.7 * vh);
+          } else if (score <= score_pool[1]) {
+            let diff_score = score;
+            $(".progress-bar").css(
+              "height",
+              (progressbar_pool[1] +
+                ((progressbar_pool[2] - progressbar_pool[1]) * diff_score) /
+                  (score_pool[1] - score_pool[0])) *
+                vh
+            );
+            $(".lvl2").css("height", 14.7 * vh);
+            $(".lvl2").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl2-on.png?ver=<%=version%>)
+          no-repeat right center`
+            );
+            $(".lvl2").css("height", 14.7 * vh);
+          } else if (score <= score_pool[2]) {
+            let diff_score = score - score_pool[1];
+            $(".progress-bar").css(
+              "height",
+              (progressbar_pool[2] +
+                ((progressbar_pool[3] - progressbar_pool[2]) * diff_score) /
+                  (score_pool[2] - score_pool[1])) *
+                vh
+            );
+
+            $(".lvl3").css("height", 14.7 * vh);
+          } else if (score <= score_pool[3]) {
+            let diff_score = score - score_pool[2];
+            $(".progress-bar").css(
+              "height",
+              (progressbar_pool[3] +
+                ((progressbar_pool[4] - progressbar_pool[3]) * diff_score) /
+                  (score_pool[3] - score_pool[2])) *
+                vh
+            );
+
+            $(".lvl4").css("height", 14.7 * vh);
+          } else {
+            $(".progress-bar").css("height", progressbar_pool[5] * vh);
+            $(".lvl4").css("height", 14.7 * vh);
+          }
+        }, 100);
+      }
+
+      $(window).ready(function () {
+        $("#preloader").delay(200).fadeOut("fade");
+        loadProgressBar(playerInfo.score);
+
+        $(".tab-1").on("click", () => {
+          $(".tab-1").addClass("active-nav");
+          $(".tab-2").removeClass("active-nav");
+          $(".tab-3").removeClass("active-nav");
+          $(".layer1").addClass("active-tab");
+          $(".layer2").removeClass("active-tab");
+          $(".layer3").removeClass("active-tab");
+        });
+        $(".tab-2").on("click", () => {
+          $(".tab-2").addClass("active-nav");
+          $(".tab-1").removeClass("active-nav");
+          $(".tab-3").removeClass("active-nav");
+          $(".layer1").removeClass("active-tab");
+          $(".layer2").addClass("active-tab");
+          $(".layer3").removeClass("active-tab");
+        });
+        $(".tab-3").on("click", () => {
+          $(".tab-3").addClass("active-nav");
+          $(".tab-1").removeClass("active-nav");
+          $(".tab-2").removeClass("active-nav");
+          $(".layer1").removeClass("active-tab");
+          $(".layer2").removeClass("active-tab");
+          $(".layer3").addClass("active-tab");
+        });
+
+        $(".to-persian").each(function () {
+          $(this).html(toPersianNumber($(this).html()));
+        });
+
+        $(".heal-plus").on("click", () => {
+          $(".tab-2").addClass("active-nav");
+          $(".tab-1").removeClass("active-nav");
+          $(".tab-3").removeClass("active-nav");
+          $(".layer1").removeClass("active-tab");
+          $(".layer2").addClass("active-tab");
+          $(".layer3").removeClass("active-tab");
+        });
+
+        $(".mission-friend").on("click", () => {
+          $(".tab-3").addClass("active-nav");
+          $(".tab-1").removeClass("active-nav");
+          $(".tab-2").removeClass("active-nav");
+          $(".layer1").removeClass("active-tab");
+          $(".layer2").removeClass("active-tab");
+          $(".layer3").addClass("active-tab");
+        });
+        $(".mission-install").on("click", () => {
+          showModal(".install-modal");
+        });
+        $(".mission-tarh").on("click", () => {
+          showModal(".tarh-modal");
+        });
+        $(".mission-sandoogh").on("click", () => {
+          showModal(".sandoogh-modal");
+        });
+        $(".mission-tabdil").on("click", () => {
+          showModal(".tabdil-modal");
+        });
+        $(".mission-vam").on("click", () => {
+          showModal(".vam-modal");
+        });
+
+        $(".mission-modal .close").on("click", function () {
+          hideModal(".mission-modal");
+        });
+
+        $(".lose-modal")
+          .find(".copyToClipboard")
+          .on("click", function (e) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(".copyToClipboard").data("value")).select();
+            document.execCommand("copy");
+            $temp.remove();
+
+            var tooltip = $("#myTooltip");
+            tooltip.text("آدرس اختصاصی شما کپی شد");
+            tooltip.fadeIn();
+            setTimeout(function () {
+              tooltip.fadeOut();
+            }, 3000);
+          });
+
+        $(".win-modal-1 .next-btn").on("click", function () {
+          if (instagramTry === 0) {
+            $(".win-modal-1 .alert").removeClass("hide");
+            // instagramTry = 1;
+          } else {
+            submitScore(1, "win1");
+          }
+        });
+        $(".win-modal-2 .next-btn").on("click", function () {
+          submitScore(1, "win2");
+        });
+      });
+    </script>
+  </body>
+</html>
