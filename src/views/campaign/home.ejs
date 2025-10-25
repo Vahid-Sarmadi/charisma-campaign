@@ -492,7 +492,7 @@
       }
       .layer2 .mission-wrapper {
         overflow-y: scroll;
-        height: calc(47.5 * var(--vh));
+        height: calc(45.5 * var(--vh));
         width: calc(100 * var(--vh) / var(--ratio));
         top: calc(37 * var(--vh));
         margin-left: calc(0 * var(--vh) / var(--ratio));
@@ -582,16 +582,16 @@
         display: block !important;
       }
       .layer3 .share-img {
-        background: url(<%=domainURL%>/images/missions-img.png?ver=<%=version%>)
+        background: url(<%=domainURL%>/images/share-img.png?ver=<%=version%>)
           no-repeat top;
         background-size: contain;
-        height: calc(20 * var(--vh));
+        height: calc(11 * var(--vh));
         width: calc(100 * var(--vh) / var(--ratio));
-        top: calc(0 * var(--vh));
+        top: calc(4 * var(--vh));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         position: absolute;
       }
-      .layer3 .title {
+      .layer3 .share-title {
         position: absolute;
         height: calc(5 * var(--vh));
         top: calc(17 * var(--vh));
@@ -607,7 +607,7 @@
         margin-top: 0;
         font-family: "Yekan Bakh", sans-serif;
       }
-      .layer3 .text {
+      .layer3 .share-text {
         position: absolute;
         height: calc(5 * var(--vh));
         top: calc(23 * var(--vh));
@@ -615,7 +615,7 @@
         width: calc(80 * var(--vh) / var(--ratio));
         margin-left: calc(10 * var(--vh) / var(--ratio));
         text-align: center;
-        font-size: calc(2 * var(--vh));
+        font-size: calc(1.7 * var(--vh));
         color: #fff;
         direction: rtl;
         font-weight: normal;
@@ -623,42 +623,145 @@
         margin-top: 0;
         font-family: "Yekan Bakh", sans-serif;
       }
-      .layer3 .text2 {
+      .layer3 .share-text2 {
         position: absolute;
         height: calc(5 * var(--vh));
-        top: calc(23 * var(--vh));
+        top: calc(27.3 * var(--vh));
         z-index: 99;
-        width: calc(80 * var(--vh) / var(--ratio));
-        margin-left: calc(10 * var(--vh) / var(--ratio));
-        text-align: center;
-        font-size: calc(2 * var(--vh));
+        width: calc(55 * var(--vh) / var(--ratio));
+        margin-left: calc(32 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(1.6 * var(--vh));
         color: #fff;
         direction: rtl;
         font-weight: normal;
         padding: 0;
         margin-top: 0;
         font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer3 #share-form #phone {
+        background: #0c141c;
+        position: absolute;
+        height: calc(2 * var(--vh));
+        top: calc(30 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        width: calc(70 * var(--vh) / var(--ratio));
+        margin-left: calc(11.5 * var(--vh) / var(--ratio));
+        color: #fff !important;
+        text-align: right;
+        font-size: calc(1.8 * var(--vh));
+        padding: calc(3 * var(--vh) / var(--ratio));
+        font-weight: bold;
+        outline: none;
+        font-family: "Yekan Bakh", sans-serif;
+        border: 1px solid #9b9b9b;
+        border-radius: calc(4 * var(--vh) / var(--ratio));
+      }
+      .layer3 #share-form .alert {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(35.5 * var(--vh));
+        z-index: 99;
+        width: calc(75.8 * var(--vh) / var(--ratio));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2 * var(--vh));
+        color: #ffffff;
+        direction: rtl;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer3 #share-form .share-friend-btn {
+        background: #fff;
+        position: absolute;
+        height: calc(4 * var(--vh));
+        top: calc(30.5 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        width: calc(27 * var(--vh) / var(--ratio));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        color: #0c141c !important;
+        text-align: center;
+        font-size: calc(1.8 * var(--vh));
+        padding: calc(0 * var(--vh) / var(--ratio));
+        font-weight: bold;
+        outline: none;
+        font-family: "Yekan Bakh", sans-serif;
+        border: 1px solid #fff;
+        border-radius: calc(4 * var(--vh) / var(--ratio));
+      }
+      .layer3 .share-telegram {
+        background: url(<%=domainURL%>/images/telegram.png?ver=<%=version%>)
+          no-repeat top;
+        background-size: contain;
+        height: calc(6 * var(--vh));
+        width: calc(12 * var(--vh) / var(--ratio));
+        top: calc(39 * var(--vh));
+        margin-left: calc(28 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .layer3 .share-twitter {
+        background: url(<%=domainURL%>/images/twitter.png?ver=<%=version%>)
+          no-repeat top;
+        background-size: contain;
+        height: calc(6 * var(--vh));
+        width: calc(12 * var(--vh) / var(--ratio));
+        top: calc(39 * var(--vh));
+        margin-left: calc(44 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .layer3 .share-whatsapp {
+        background: url(<%=domainURL%>/images/whatsapp.png?ver=<%=version%>)
+          no-repeat top;
+        background-size: contain;
+        height: calc(6 * var(--vh));
+        width: calc(12 * var(--vh) / var(--ratio));
+        top: calc(39 * var(--vh));
+        margin-left: calc(60 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
       }
       .layer3 .line {
         border-top: 1px solid #acacac;
         background-size: contain;
         height: 1px;
         width: calc(100 * var(--vh) / var(--ratio));
-        top: calc(35 * var(--vh));
+        top: calc(49 * var(--vh));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         position: absolute;
       }
-      .layer3 .mission-wrapper {
-        overflow-y: scroll;
-        height: calc(47.5 * var(--vh));
+      .layer3 .friend-title {
+        position: absolute;
+        height: calc(3 * var(--vh));
+        top: calc(50 * var(--vh));
+        z-index: 99;
         width: calc(100 * var(--vh) / var(--ratio));
-        top: calc(37 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(3.1 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer3 .firend-wrapp {
+        overflow-y: scroll;
+        height: calc(26.5 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(56 * var(--vh));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         position: absolute;
         padding-top: calc(2 * var(--vh));
       }
-      .layer3 .mission-item {
-        background: url(<%=domainURL%>/images/mission-item.png?ver=<%=version%>)
+      .layer3 .friend-item {
+        background: url(<%=domainURL%>/images/friend-wrapp.png?ver=<%=version%>)
           no-repeat top;
         background-size: contain;
         height: calc(15 * var(--vh));
@@ -667,16 +770,15 @@
         margin-left: calc(5 * var(--vh) / var(--ratio));
         position: relative;
         margin-top: calc(-4.5 * var(--vh));
-        cursor: pointer;
       }
 
-      .layer3 .mission-text {
+      .layer3 .friend-text {
         position: absolute;
         height: calc(3 * var(--vh));
-        top: calc(5.3 * var(--vh));
+        top: calc(4.7 * var(--vh));
         z-index: 99;
-        width: calc(80 * var(--vh) / var(--ratio));
-        margin-left: calc(0 * var(--vh) / var(--ratio));
+        width: calc(48 * var(--vh) / var(--ratio));
+        margin-left: calc(24 * var(--vh) / var(--ratio));
         text-align: right;
         font-size: calc(2.1 * var(--vh));
         color: #fff;
@@ -685,6 +787,28 @@
         padding: 0;
         margin-top: 0;
         font-family: "Yekan Bakh", sans-serif;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .layer3 .friend-score {
+        position: absolute;
+        height: calc(3 * var(--vh));
+        top: calc(4.3 * var(--vh));
+        z-index: 99;
+        width: calc(13 * var(--vh) / var(--ratio));
+        margin-left: calc(10 * var(--vh) / var(--ratio));
+        text-align: left;
+        font-size: calc(2.1 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .layer3 .mission-heal {
         position: relative;
@@ -1243,16 +1367,67 @@
           <div class="share-text">
             با دعوت از دوستات شانس برنده شدنت رو بیشتر کن !
           </div>
-          <div class="share-text2">شماره دوستت رو وارد کن،</div>
-          <div class="share-input"></div>
-          <div class="share-btn"></div>
+          <div class="share-text2">شماره دوستت رو وارد کن</div>
+          <form
+            id="share-form"
+            data-form-output="form-output-global"
+            accept-charset="utf-8"
+            enctype="multipart/form-data"
+          >
+            <input
+              class="input _csrf"
+              id="_csrf"
+              type="hidden"
+              name="_csrf"
+              placeholder=""
+              value="<%=csrfToken%>"
+            />
+
+            <input
+              class="input phone"
+              id="phone"
+              min="0"
+              maxlength="11"
+              type="text"
+              pattern="^[0-9۰-۹]*$"
+              inputmode="numeric"
+              name="phone"
+              placeholder="شماره موبایل دوستت"
+            />
+            <p class="alert hide"></p>
+            <button type="submit" class="share-friend-btn" disabled>
+              ارسال دعوتنامه
+            </button>
+          </form>
           <div class="share-telegram"></div>
           <div class="share-twitter"></div>
           <div class="share-whatsapp"></div>
           <div class="line"></div>
+          <div class="friend-title">دوستان من</div>
+
           <div class="firend-wrapp">
-            <div class="friend-title"></div>
-            <div class="friend-1"></div>
+            <% if (friends && friends.length > 0) { %> <%
+            friends.forEach(function(friend) { %>
+            <div class="friend-item">
+              <div class="friend-text">
+                <%=friend.fullname || friend.phone%>
+              </div>
+              <div class="friend-score to-persian">
+                <%=friend.profile?.score || 0%>
+              </div>
+            </div>
+            <% }); %> <% } else { %>
+            <div
+              style="
+                text-align: center;
+                color: #fff;
+                padding: 20px;
+                font-size: calc(2 * var(--vh));
+              "
+            >
+              هنوز دوستی ندارید! دوستانتان را دعوت کنید.
+            </div>
+            <% } %>
           </div>
         </div>
       </div>
@@ -1792,6 +1967,113 @@
         });
         $(".win-modal-2 .next-btn").on("click", function () {
           submitScore(1, "win2");
+        });
+
+        // Handle phone input for share form
+        $("#share-form #phone").on("keypress", function (event) {
+          event.preventDefault();
+          var regex = new RegExp("^[0-9۰-۹]*$");
+          var key = String.fromCharCode(
+            !event.charCode ? event.which : event.charCode
+          );
+          if (!regex.test(key)) {
+            return false;
+          }
+          $("#share-form #phone").val(
+            $("#share-form #phone").val() + toPersianNumber(key)
+          );
+          var val = $("#share-form #phone").val();
+          if (val.length > 11) $("#share-form #phone").val(val.slice(0, 11));
+        });
+
+        // Enable/disable submit button based on phone input
+        $("#share-form #phone").on("keyup", function () {
+          if ($("#share-form #phone").val() === "") {
+            $(".share-friend-btn").attr("disabled", "disabled");
+          } else {
+            $(".share-friend-btn").removeAttr("disabled");
+          }
+        });
+
+        // Handle share form submission
+        $("#share-form").on("submit", function (e) {
+          e.preventDefault();
+
+          if (!acceptAjax) return;
+          acceptAjax = false;
+
+          const data = new FormData(this);
+          const alert = $("#share-form .alert");
+          const input = $("#share-form #phone");
+          const button = $(".share-friend-btn");
+
+          alert.removeClass("alert-error alert-success").addClass("hide");
+          input.removeClass("input-error input-success");
+
+          // Show loading state
+          button.html(
+            '<span class="fa fa-spinner fa-spin" style="font-size: calc(1.8* var(--vh));"></span>'
+          );
+
+          $.ajax({
+            type: "POST",
+            url: "/sendInvite",
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            async: true,
+            headers: {
+              "cache-control": "no-cache",
+            },
+            success: function (res) {
+              button.html("ارسال دعوتنامه");
+
+              if (res.status === 500) {
+                alert.text("خطا در سرور! لطفا دوباره تلاش کنید.");
+                alert.removeClass("hide").addClass("alert-error");
+                input.addClass("input-error");
+              } else if (res.status === 501) {
+                alert.text(
+                  "خطا! " + (res.error?.["phone"] || "شماره تلفن نامعتبر است")
+                );
+                alert.removeClass("hide").addClass("alert-error");
+                input.addClass("input-error");
+              } else if (res.status === 400) {
+                alert.text(res.message || "خطا در ارسال دعوتنامه!");
+                alert.removeClass("hide").addClass("alert-error");
+                input.addClass("input-error");
+              } else if (res.status === 200) {
+                alert.text(
+                  res.message +
+                    " (" +
+                    toPersianNumber(res.remainingInvites.toString()) +
+                    " دعوتنامه باقی مانده)"
+                );
+                alert.removeClass("hide").addClass("alert-success");
+                input.addClass("input-success").val("");
+                button.attr("disabled", "disabled");
+
+                // Reload page after 2 seconds to update friend list
+                setTimeout(function () {
+                  window.location.reload();
+                }, 2000);
+              } else {
+                alert.text("خطا در ارسال دعوتنامه!");
+                alert.removeClass("hide").addClass("alert-error");
+                input.addClass("input-error");
+              }
+
+              acceptAjax = true;
+            },
+            error: function () {
+              button.html("ارسال دعوتنامه");
+              alert.text("عدم ارتباط با سرور!");
+              alert.removeClass("hide").addClass("alert-error");
+              input.addClass("input-error");
+              acceptAjax = true;
+            },
+          });
         });
       });
     </script>

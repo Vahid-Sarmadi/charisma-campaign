@@ -6,9 +6,11 @@
 
 const CryptoJS = require("crypto-js");
 const User = require("../models/user");
-const { sendSms } = require("../utils/helper");
+const { sendSms, toNormalNumber, isEmptyObject } = require("../utils/helper");
+const validator = require("validator");
 const xlsx = require("node-xlsx");
 const path = require("path");
+const Campaign = require("../config/campaign");
 
 exports.init = async () => {
   try {
@@ -177,8 +179,18 @@ exports.getHome = async (req, res) => {
     const user = req.user; // Provided by Passport session
     if (!user) return res.redirect("/login");
 
+    // Load friend list with their profiles
+    const friends = await User.find({
+      _id: { $in: user.friendList },
+      deleted: false,
+    })
+      .select("fullname phone profile.score")
+      .limit(20)
+      .lean();
+
     res.locals.user = user;
     res.locals.profile = user.profile || {};
+    res.locals.friends = friends || [];
     res.locals.domainURL = process.env.CAMPAIGN_URL;
     res.locals.csrfToken = req.csrfToken();
 
@@ -374,6 +386,91 @@ exports.addHeal = async (req, res) => {
     console.error(e);
     res.locals.error = "Failed. server error!";
     return res.json({ status: 500, message: "server error" });
+  }
+};
+
+/**
+ * sendInvite:
+ * Send invitation to a friend via phone number
+ * Maximum 20 invitations per user
+ */
+exports.sendInvite = async (req, res) => {
+  try {
+    let phone = req.body?.phone || "";
+    phone = toNormalNumber(phone.trim());
+
+    let error = {};
+
+    // Validate phone number
+    if (!phone) {
+      error["phone"] = "شماره موبایل را وارد کنید.";
+    } else if (!validator.isMobilePhone(phone, "fa-IR")) {
+      error["phone"] = "شماره وارد شده نامعتبر است.";
+    }
+
+    if (!isEmptyObject(error)) {
+      return res.json({ status: 501, error: error });
+    }
+
+    // Check if user is trying to invite themselves
+    if (phone === req.user.phone) {
+      return res.json({
+        status: 400,
+        message: "شما نمی‌توانید خودتان را دعوت کنید!",
+      });
+    }
+
+    // Check if user has already sent 20 invitations
+    if (req.user.inviteList && req.user.inviteList.length >= 20) {
+      return res.json({
+        status: 400,
+        message: "شما حداکثر ۲۰ دعوتنامه می‌توانید ارسال کنید!",
+      });
+    }
+
+    // Check if this phone number has already been invited by this user
+    if (req.user.inviteList && req.user.inviteList.includes(phone)) {
+      return res.json({
+        status: 400,
+        message: "شما قبلاً به این شماره دعوتنامه ارسال کرده‌اید!",
+      });
+    }
+
+    // Check if the invited user already exists
+    const invitedUser = await User.findOne({ phone: phone, deleted: false });
+
+    if (invitedUser) {
+      // Check if they are already friends
+      if (req.user.friendList.includes(invitedUser._id)) {
+        return res.json({
+          status: 400,
+          message: "این کاربر قبلاً دوست شما است!",
+        });
+      }
+    }
+
+    // Add phone to invite list
+    req.user.inviteList.push(phone);
+    await req.user.save();
+
+    // Send SMS invitation
+    const inviteLink = `${process.env.CAMPAIGN_URL}?link=${req.user.shareLink}`;
+    const text = `سلام!\nدوستت تو رو به بازی کاریزما دعوت کرده.\nبا ثبت نام از لینک زیر، هر دوتون جون اضافه می‌گیرید:\n${inviteLink}`;
+
+    // Uncomment to actually send SMS
+    // const { done } = await sendSms(text, phone);
+    // if (!done) {
+    //   return res.json({ status: 502, message: "خطا در ارسال پیامک!" });
+    // }
+
+    return res.json({
+      status: 200,
+      message: "دعوتنامه با موفقیت ارسال شد!",
+      remainingInvites: 20 - req.user.inviteList.length,
+    });
+  } catch (error) {
+    console.error("Error in sendInvite:", error);
+    return res.json({ status: 500, message: "خطای سرور!" });
   }
 };
 

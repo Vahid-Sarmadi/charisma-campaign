@@ -9,7 +9,6 @@ const ensureAuth = require("../middlewares/ensureAuth");
 let upload = multer();
 let cpUpload = upload.fields([]);
 
-
 /**
  * GET /home
  * Shows the user's home page with current score, heal, etc.
@@ -40,6 +39,18 @@ router.post("/loseScore", ensureAuth, cpUpload, userController.loseScore);
  * add Heal and updates the user's profile.type
  */
 router.post("/addHeal/:type", ensureAuth, cpUpload, userController.addHeal);
+
+/**
+ * POST /sendInvite
+ * Send invitation to a friend via phone number
+ */
+router.post(
+  "/sendInvite",
+  ensureAuth,
+  cpUpload,
+  csrfProtection,
+  userController.sendInvite
+);
 
 /**
  * POST /sendSmsScore
