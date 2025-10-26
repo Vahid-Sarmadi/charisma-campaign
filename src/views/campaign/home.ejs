@@ -10,8 +10,9 @@
     toPersianNumber (str) { var index, result = ""; for( var i = 0; i <
     str.length; i++ ) { index = numerals.english.indexOf(str[i]); if( index ==
     -1 ) result += str[i]; else result += numerals.persian[index]; } return
-    result; } %>
-
+    result; } %> <%let shareLinkText = `من در بازی کاریزما ${profile.score | 0}
+    امتیاز گرفتم! 🎯 حالا نوبت توعه که این چالش رو قبول کنی و ببینی می‌تونی بهتر
+    عمل کنی!`%>
     <script type="text/javascript">
       var numerals = {
         persian: ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
@@ -703,6 +704,8 @@
         margin-left: calc(28 * var(--vh) / var(--ratio));
         position: absolute;
         cursor: pointer;
+        display: block;
+        text-decoration: none;
       }
       .layer3 .share-twitter {
         background: url(<%=domainURL%>/images/twitter.png?ver=<%=version%>)
@@ -714,6 +717,8 @@
         margin-left: calc(44 * var(--vh) / var(--ratio));
         position: absolute;
         cursor: pointer;
+        display: block;
+        text-decoration: none;
       }
       .layer3 .share-whatsapp {
         background: url(<%=domainURL%>/images/whatsapp.png?ver=<%=version%>)
@@ -725,6 +730,8 @@
         margin-left: calc(60 * var(--vh) / var(--ratio));
         position: absolute;
         cursor: pointer;
+        display: block;
+        text-decoration: none;
       }
       .layer3 .line {
         border-top: 1px solid #acacac;
@@ -1297,7 +1304,7 @@
           <div class="lvl2"></div>
           <div class="lvl3"></div>
           <div class="lvl4"></div>
-          <div class="start-btn"></div>
+          <a href="/game" class="start-btn"></a>
         </div>
       </div>
       <div class="layer layer2">
@@ -1316,47 +1323,100 @@
               <div class="mission-text">دعوت از دوستان</div>
               <div class="mission-heal">+۳</div>
             </div>
+            <%if(!profile.registerHeal){%>
             <div class="mission-item mission-install">
               <div class="mission-text">ثبت نام در کاریزما</div>
               <div class="mission-heal">+۳</div>
             </div>
+            <%}%> <%if(!profile.tarhHeal){%>
             <div class="mission-item mission-tarh">
               <div class="mission-text">خرید طرح سرمایه‌گذاری</div>
               <div class="mission-heal">+۵</div>
             </div>
+            <%}%> <%if(!profile.sandooghHeal){%>
             <div class="mission-item mission-sandoogh">
               <div class="mission-text">خرید صندوق سرمایه‌گذاری</div>
               <div class="mission-heal">+۵</div>
             </div>
+            <%}%> <%if(!profile.tabdilHeal){%>
             <div class="mission-item mission-tabdil">
               <div class="mission-text">استفاده از امکان "تبدیل"</div>
               <div class="mission-heal">+۵</div>
             </div>
+            <%}%> <%if(!profile.vamHeal){%>
             <div class="mission-item mission-vam">
               <div class="mission-text">دریافت کاریزما وام</div>
               <div class="mission-heal">+۵</div>
             </div>
+            <%}%> <%if(!profile.instagramHeal){%>
             <div class="mission-item mission-instagram">
               <div class="mission-text">دنبال کردن اینستاگرام کاریزما</div>
               <div class="mission-heal">+۲</div>
             </div>
+            <%}%> <%if(!profile.telegramHeal){%>
             <div class="mission-item mission-telegram">
               <div class="mission-text">دنبال کردن تلگرام کاریزما</div>
               <div class="mission-heal">+۲</div>
             </div>
+            <%}%> <%if(!profile.twitterHeal){%>
             <div class="mission-item mission-twitter">
               <div class="mission-text">دنبال کردن توییتر کاریزما</div>
               <div class="mission-heal">+۲</div>
             </div>
+            <%}%> <%if(!profile.linkedinHeal){%>
             <div class="mission-item mission-linkedin">
               <div class="mission-text">دنبال کردن لینکدین کاریزما</div>
               <div class="mission-heal">+۲</div>
             </div>
+            <%}%>
             <div class="mission-completed-title">ماموریت‌های انجام شده</div>
+
+            <%if(profile.registerHeal){%>
             <div class="mission-item off-mission">
               <div class="mission-text">ثبت نام در کاریزما</div>
               <div class="mission-heal">+۳</div>
             </div>
+            <%}%> <%if(profile.tarhHeal){%>
+            <div class="mission-item off-mission">
+              <div class="mission-text">خرید طرح سرمایه‌گذاری</div>
+              <div class="mission-heal">+۵</div>
+            </div>
+            <%}%> <%if(profile.sandooghHeal){%>
+            <div class="mission-item off-mission">
+              <div class="mission-text">خرید صندوق سرمایه‌گذاری</div>
+              <div class="mission-heal">+۵</div>
+            </div>
+            <%}%> <%if(profile.tabdilHeal){%>
+            <div class="mission-item off-mission">
+              <div class="mission-text">استفاده از امکان "تبدیل"</div>
+              <div class="mission-heal">+۵</div>
+            </div>
+            <%}%> <%if(profile.vamHeal){%>
+            <div class="mission-item off-mission">
+              <div class="mission-text">دریافت کاریزما وام</div>
+              <div class="mission-heal">+۵</div>
+            </div>
+            <%}%> <%if(profile.instagramHeal){%>
+            <div class="mission-item off-mission">
+              <div class="mission-text">دنبال کردن اینستاگرام کاریزما</div>
+              <div class="mission-heal">+۲</div>
+            </div>
+            <%}%> <%if(profile.telegramHeal){%>
+            <div class="mission-item off-mission">
+              <div class="mission-text">دنبال کردن تلگرام کاریزما</div>
+              <div class="mission-heal">+۲</div>
+            </div>
+            <%}%> <%if(profile.twitterHeal){%>
+            <div class="mission-item off-mission">
+              <div class="mission-text">دنبال کردن توییتر کاریزما</div>
+              <div class="mission-heal">+۲</div>
+            </div>
+            <%}%> <%if(profile.linkedinHeal){%>
+            <div class="mission-item off-mission">
+              <div class="mission-text">دنبال کردن لینکدین کاریزما</div>
+              <div class="mission-heal">+۲</div>
+            </div>
+            <%}%>
           </div>
         </div>
       </div>
@@ -1399,9 +1459,21 @@
               ارسال دعوتنامه
             </button>
           </form>
-          <div class="share-telegram"></div>
-          <div class="share-twitter"></div>
-          <div class="share-whatsapp"></div>
+          <a
+            href="https://t.me/share/url?url=<%=domainURL%>?link=<%=profile.shareLink%>&text=<%=encodeURIComponent(shareLinkText)%>"
+            target="_blank"
+            class="share-telegram"
+          ></a>
+          <a
+            href="https://twitter.com/intent/tweet?url=<%=domainURL%>?link=<%=profile.shareLink%>&text=<%=encodeURIComponent(shareLinkText)%>"
+            target="_blank"
+            class="share-twitter"
+          ></a>
+          <a
+            href="https://wa.me/?text=<%=encodeURIComponent(shareLinkText + ' ' + domainURL + '?link=' + profile.shareLink)%>"
+            target="_blank"
+            class="share-whatsapp"
+          ></a>
           <div class="line"></div>
           <div class="friend-title">دوستان من</div>
 
@@ -1423,6 +1495,7 @@
                 color: #fff;
                 padding: 20px;
                 font-size: calc(2 * var(--vh));
+                direction: rtl;
               "
             >
               هنوز دوستی ندارید! دوستانتان را دعوت کنید.
@@ -1655,81 +1728,6 @@
       var allowSkip = false;
       let isDragging = false;
 
-      function loseScore() {
-        if (!acceptAjax) return;
-        acceptAjax = false;
-        $.ajax({
-          type: "POST",
-          url: "/loseScore",
-          processData: false,
-          contentType: false,
-          cache: false,
-          async: true,
-          headers: {
-            "cache-control": "no-cache",
-            token: "<%=csrfToken%>",
-          },
-          success: function (res) {
-            if (res.status === 200) {
-              window.location.href = "/game";
-            } else {
-              acceptAjax = true;
-            }
-          },
-          error: function () {
-            alert("عدم ارتباط با سرور!");
-            acceptAjax = true;
-            return false;
-          },
-        });
-      }
-
-      function submitScore(score = 1, type = "none") {
-        if (!acceptAjax) return;
-        acceptAjax = false;
-
-        if (type === "win1") {
-          $(".win-modal-1 .next-btn").html(
-            '<span class="fa fa-spinner fa-spin" style="font-size: calc(2.5* var(--vh)); margin: 0; color: #fff; left: calc(55* var(--vh) / var(--ratio)); top: calc(1.5* var(--vh)); width: calc(3* var(--vh)); height: calc(3* var(--vh));"></span>'
-          );
-        } else if (type === "win2") {
-          $(".win-modal-2 .next-btn").html(
-            '<span class="fa fa-spinner fa-spin" style="font-size: calc(2.5* var(--vh)); margin: 0; color: #fff; left: calc(55* var(--vh) / var(--ratio)); top: calc(1.5* var(--vh)); width: calc(3* var(--vh)); height: calc(3* var(--vh));"></span>'
-          );
-        }
-
-        let payload = CryptoJS.AES.encrypt(score.toString(), "<%=csrfToken%>");
-        payload = encodeURIComponent(payload);
-        $.ajax({
-          type: "POST",
-          url: "/submitScore/" + payload,
-          processData: false,
-          contentType: false,
-          cache: false,
-          async: true,
-          headers: {
-            "cache-control": "no-cache",
-            token: "<%=csrfToken%>",
-          },
-          success: function (res) {
-            if (res.status === 200) {
-              if (type !== "none") {
-                window.location.href = "/game";
-              }
-            } else {
-              $(".win-modal-1 .next-btn").html("");
-              $(".win-modal-2 .next-btn").html("");
-            }
-            acceptAjax = true;
-          },
-          error: function () {
-            alert("عدم ارتباط با سرور!");
-            acceptAjax = true;
-            return false;
-          },
-        });
-      }
-
       let showHelp = true;
       let moving = false;
       let clearCount = 0;
@@ -1778,9 +1776,6 @@
       function addHeal(type = "instagram") {
         if (!acceptAjax) return;
         acceptAjax = false;
-        $(".video-modal .close").html(
-          '<span class="fa fa-spinner fa-spin" style="font-size: calc(2.5* var(--vh)); margin: 0; color: #fff; left: calc(55* var(--vh) / var(--ratio)); top: calc(1.5* var(--vh)); width: calc(3* var(--vh)); height: calc(3* var(--vh));"></span>'
-        );
 
         $.ajax({
           type: "POST",
@@ -1794,17 +1789,7 @@
             token: "<%=csrfToken%>",
           },
           success: function (res) {
-            if (res.status === 200) {
-              if (type !== "instagram") {
-                window.location.href = "/game";
-              }
-            } else {
-              if (type === "video") {
-                $(".video-modal .close").html("");
-                hideModal(".video-modal");
-                video.pause();
-              }
-            }
+            window.location.href = "/home";
 
             acceptAjax = true;
           },
@@ -1820,7 +1805,7 @@
         $(".progress-bar").css("height", 0 * vh);
 
         setTimeout(function () {
-          let score_pool = [0, 200, 500, 1500];
+          let score_pool = [50, 250, 750, 2000];
           let progressbar_pool = [0, 0, 13.7, 23.5, 36, 36];
           if (score <= score_pool[0]) {
             $(".progress-bar").css("height", progressbar_pool[0] * vh);
@@ -1834,13 +1819,6 @@
                   (score_pool[1] - score_pool[0])) *
                 vh
             );
-            $(".lvl2").css("height", 14.7 * vh);
-            $(".lvl2").css(
-              "background",
-              `url(<%=domainURL%>/images/lvl2-on.png?ver=<%=version%>)
-          no-repeat right center`
-            );
-            $(".lvl2").css("height", 14.7 * vh);
           } else if (score <= score_pool[2]) {
             let diff_score = score - score_pool[1];
             $(".progress-bar").css(
@@ -1850,8 +1828,12 @@
                   (score_pool[2] - score_pool[1])) *
                 vh
             );
-
-            $(".lvl3").css("height", 14.7 * vh);
+            $(".lvl2").css("height", 14.7 * vh);
+            $(".lvl2").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl2-on.png?ver=<%=version%>)
+          no-repeat right center`
+            );
           } else if (score <= score_pool[3]) {
             let diff_score = score - score_pool[2];
             $(".progress-bar").css(
@@ -1862,10 +1844,20 @@
                 vh
             );
 
-            $(".lvl4").css("height", 14.7 * vh);
+            $(".lvl3").css("height", 14.7 * vh);
+            $(".lvl3").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl3-on.png?ver=<%=version%>)
+          no-repeat right center`
+            );
           } else {
             $(".progress-bar").css("height", progressbar_pool[5] * vh);
             $(".lvl4").css("height", 14.7 * vh);
+            $(".lvl4").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl4-on.png?ver=<%=version%>)
+          no-repeat right center`
+            );
           }
         }, 100);
       }
@@ -1936,37 +1928,32 @@
           showModal(".vam-modal");
         });
 
+        // Social media mission handlers
+        $(".mission-instagram").on("click", () => {
+          window.open("https://www.instagram.com/charismaholding", "_blank");
+          addHeal("instagram");
+        });
+
+        $(".mission-telegram").on("click", () => {
+          window.open("https://t.me/charismaholding", "_blank");
+          addHeal("telegram");
+        });
+
+        $(".mission-twitter").on("click", () => {
+          window.open("https://x.com/CharismaHolding", "_blank");
+          addHeal("twitter");
+        });
+
+        $(".mission-linkedin").on("click", () => {
+          window.open(
+            "https://www.linkedin.com/company/charisma-financial-services-group/",
+            "_blank"
+          );
+          addHeal("linkedin");
+        });
+
         $(".mission-modal .close").on("click", function () {
           hideModal(".mission-modal");
-        });
-
-        $(".lose-modal")
-          .find(".copyToClipboard")
-          .on("click", function (e) {
-            var $temp = $("<input>");
-            $("body").append($temp);
-            $temp.val($(".copyToClipboard").data("value")).select();
-            document.execCommand("copy");
-            $temp.remove();
-
-            var tooltip = $("#myTooltip");
-            tooltip.text("آدرس اختصاصی شما کپی شد");
-            tooltip.fadeIn();
-            setTimeout(function () {
-              tooltip.fadeOut();
-            }, 3000);
-          });
-
-        $(".win-modal-1 .next-btn").on("click", function () {
-          if (instagramTry === 0) {
-            $(".win-modal-1 .alert").removeClass("hide");
-            // instagramTry = 1;
-          } else {
-            submitScore(1, "win1");
-          }
-        });
-        $(".win-modal-2 .next-btn").on("click", function () {
-          submitScore(1, "win2");
         });
 
         // Handle phone input for share form
@@ -2044,12 +2031,7 @@
                 alert.removeClass("hide").addClass("alert-error");
                 input.addClass("input-error");
               } else if (res.status === 200) {
-                alert.text(
-                  res.message +
-                    " (" +
-                    toPersianNumber(res.remainingInvites.toString()) +
-                    " دعوتنامه باقی مانده)"
-                );
+                alert.text(res.message);
                 alert.removeClass("hide").addClass("alert-success");
                 input.addClass("input-success").val("");
                 button.attr("disabled", "disabled");

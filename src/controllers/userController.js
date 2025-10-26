@@ -255,54 +255,20 @@ exports.getGamePage = async (req, res) => {
     const user = req.user; // Provided by Passport session
     if (!user) return res.redirect("/login");
 
+    // Load friend list with their profiles
+    const friends = await User.find({
+      _id: { $in: user.friendList },
+      deleted: false,
+    })
+      .select("fullname phone profile.score")
+      .limit(20)
+      .lean();
+
     res.locals.user = user;
     res.locals.profile = user.profile || {};
+    res.locals.friends = friends || [];
     res.locals.domainURL = process.env.CAMPAIGN_URL;
     res.locals.csrfToken = req.csrfToken();
-
-    if (res.locals.profile.giftLevel >= 6 && !res.locals.profile.sms3Sent) {
-      // const text = 'آفرین!\n' +
-      //   'قاب فلزی رو تمیز کردی و یک شانس قرعه‌کشی آیفون ۱۶ بدست آوردی✌️\n' +
-      //   '\n' +
-      //   '«نتیجه از طریق پیج اینستاگرام کاریزما اعلام خواهد شد»\n' +
-      //   'zaya.io/sybdw';
-      // sendSms(text, user.phone).then((r) => {
-      //   if (r.done) {
-      //     res.locals.user.profile.sms3Sent = true;
-      //     res.locals.user.save();
-      //   }
-      // });
-    } else if (
-      res.locals.profile.giftLevel >= 3 &&
-      !res.locals.profile.sms2Sent
-    ) {
-      // const text = 'آفرین!\n' +
-      //   'قاب چوبی رو تمیز کردی و یک شانس قرعه‌کشی پلی‌استیشن‌ بدست آوردی✌️\n' +
-      //   '\n' +
-      //   '«نتیجه از طریق پیج سیف اعلام خواهد شد»\n' +
-      //   'zaya.io/sybdw';
-      // sendSms(text, user.phone).then((r) => {
-      //   if (r.done) {
-      //     res.locals.user.profile.sms2Sent = true;
-      //     res.locals.user.save();
-      //   }
-      // });
-    } else if (
-      res.locals.profile.giftLevel >= 1 &&
-      !res.locals.profile.sms1Sent
-    ) {
-      // const text = 'آفرین!\n' +
-      //   'قاب شیشه‌ای رو تمیز کردی و یک شانس قرعه‌کشی جاروی هوشمند بدست آوردی✌️\n' +
-      //   '\n' +
-      //   '«نتیجه از طریق پیج سیف اعلام خواهد شد»\n' +
-      //   'zaya.io/sybdw';
-      // sendSms(text, user.phone).then((r) => {
-      //   if (r.done) {
-      //     res.locals.user.profile.sms1Sent = true;
-      //     res.locals.user.save();
-      //   }
-      // });
-    }
 
     // Simply render the game template
     return res.render("campaign/game");
@@ -327,8 +293,9 @@ exports.submitScore = async (req, res) => {
       CryptoJS.enc.Utf8
     );
 
+    if (score >= 90) score = 0;
     req.user.profile.score += Number(score);
-    req.user.profile.giftLevel += 1;
+    req.user.profile.heal--;
     await req.user.save();
 
     return res.json({ status: 200 });
@@ -370,13 +337,23 @@ exports.addHeal = async (req, res) => {
     if (type === "instagram") {
       if (req.user.profile.instagramHeal)
         return res.json({ status: 400, message: "شما قبلا دریافت کرده‌اید!" });
-      // req.user.profile.heal++;
+      req.user.profile.heal += 2;
       req.user.profile.instagramHeal = true;
-    } else if (type === "video") {
-      if (req.user.profile.videoHeal)
+    } else if (type === "telegram") {
+      if (req.user.profile.telegramHeal)
         return res.json({ status: 400, message: "شما قبلا دریافت کرده‌اید!" });
-      req.user.profile.heal++;
-      req.user.profile.videoHeal = true;
+      req.user.profile.heal += 2;
+      req.user.profile.telegramHeal = true;
+    } else if (type === "twitter") {
+      if (req.user.profile.twitterHeal)
+        return res.json({ status: 400, message: "شما قبلا دریافت کرده‌اید!" });
+      req.user.profile.heal += 2;
+      req.user.profile.twitterHeal = true;
+    } else if (type === "linkedin") {
+      if (req.user.profile.linkedinHeal)
+        return res.json({ status: 400, message: "شما قبلا دریافت کرده‌اید!" });
+      req.user.profile.heal += 2;
+      req.user.profile.linkedinHeal = true;
     }
 
     await req.user.save();
