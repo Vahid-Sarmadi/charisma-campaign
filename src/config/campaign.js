@@ -1,6 +1,6 @@
 module.exports = {
   profiles: {
-    startHeal: 5,
+    startHeal: 3,
     startScore: 0,
     maxHeal: 46,
     shareHeal: 3,
