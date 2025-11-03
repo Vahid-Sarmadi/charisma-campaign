@@ -12,7 +12,7 @@
  */
 
 class GameLogic {
-  constructor(chartData) {
+  constructor(chartData, soundManager = null) {
     this.chartData = chartData;
     this.score = 0;
     this.currentIndex = 0;
@@ -21,6 +21,7 @@ class GameLogic {
     this.checkInterval = 500; // 0.5 seconds in milliseconds
     this.currentMode = "sabet"; // 'sabet' or 'gold'
     this.animatingCoins = [];
+    this.soundManager = soundManager;
   }
 
   /**
@@ -65,22 +66,43 @@ class GameLogic {
 
   /**
    * Check if user is on correct mode and update score
-   * Rules:
-   * - Chart UP + Gold mode = +1 (correct)
-   * - Chart DOWN + Fixed Income mode = +1 (correct)
-   * - Chart LINEAR + any mode = +1 (correct)
-   * - Otherwise = -1 (incorrect)
+   * New Rules:
+   * - Fixed Income (sabet) mode: always +0.5 points
+   * - Gold mode + UP trend: +3 points
+   * - Gold mode + DOWN trend: -3 points
+   * - Gold mode + LINEAR trend: no change (0 points)
    */
   checkAndUpdateScore() {
-    const correctMode = this.getCorrectMode();
-    const isCorrect = correctMode === "any" || this.currentMode === correctMode;
+    const trend = this.getChartTrend();
 
-    if (isCorrect) {
-      this.addScore(1);
-      this.showCoinAnimation(true); // Green animation
-    } else {
-      this.subtractScore(1);
-      this.showCoinAnimation(false); // Red animation
+    if (this.currentMode === "sabet") {
+      // درآمد ثابت: همیشه +0.5 امتیاز
+      this.addScore(0.5);
+      this.showCoinAnimation(true, 0.5); // Green animation with +0.5
+      // Play coin sound for positive score
+      if (this.soundManager) {
+        this.soundManager.playCoinSound();
+      }
+    } else if (this.currentMode === "gold") {
+      // طلا: بسته به روند بازار
+      if (trend === "up") {
+        // بازار صعودی: +3 امتیاز
+        this.addScore(3);
+        this.showCoinAnimation(true, 3); // Green animation with +3
+        // Play coin sound for positive score
+        if (this.soundManager) {
+          this.soundManager.playCoinSound();
+        }
+      } else if (trend === "down") {
+        // بازار نزولی: -3 امتیاز
+        this.subtractScore(3);
+        this.showCoinAnimation(false, 3); // Red animation with -3
+        // Play wrong sound for negative score
+        if (this.soundManager) {
+          this.soundManager.playWrongSound();
+        }
+      }
+      // اگر LINEAR باشد، هیچ امتیازی اضافه یا کم نمی‌شود
     }
   }
 
@@ -100,14 +122,31 @@ class GameLogic {
 
   /**
    * Show coin animation
-   * @param {boolean} isPositive - true for +1 (green), false for -1 (red)
+   * @param {boolean} isPositive - true for positive score (green), false for negative (red)
+   * @param {number} amount - the amount of score change (e.g., 0.5, 3)
    */
-  showCoinAnimation(isPositive) {
+  showCoinAnimation(isPositive, amount) {
     const coinElement = document.createElement("div");
     coinElement.className = isPositive
       ? "coin-animation positive"
       : "coin-animation negative";
-    coinElement.innerHTML = isPositive ? "+۱" : "-۱";
+
+    // Convert number to Persian
+    const persianNumbers = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+    const amountStr = amount.toString();
+    let persianAmount = "";
+    for (let i = 0; i < amountStr.length; i++) {
+      const char = amountStr[i];
+      if (char >= "0" && char <= "9") {
+        persianAmount += persianNumbers[parseInt(char)];
+      } else {
+        persianAmount += char; // Keep decimal point or other characters
+      }
+    }
+
+    coinElement.innerHTML = isPositive
+      ? `+${persianAmount}`
+      : `-${persianAmount}`;
 
     // Position it at the chart area
     const chartContainer = document.querySelector(".chart-container");
@@ -126,6 +165,10 @@ class GameLogic {
    */
   setMode(mode) {
     this.currentMode = mode;
+    // Play change sound when mode is switched
+    if (this.soundManager) {
+      this.soundManager.playChangeSound();
+    }
   }
 
   /**

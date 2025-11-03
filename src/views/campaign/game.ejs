@@ -314,6 +314,22 @@
         margin-top: 0;
         font-family: "Yekan Bakh", sans-serif;
       }
+      .layer1 .title {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(17 * var(--vh));
+        z-index: 99;
+        width: calc(60 * var(--vh) / var(--ratio));
+        margin-left: calc(20 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2.8 * var(--vh));
+        color: #ffffff;
+        direction: rtl;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
       .layer1 .sun {
         background: url(<%=domainURL%>/images/sun.png?ver=<%=version%>)
           no-repeat center;
@@ -419,6 +435,20 @@
         opacity: 1;
         transform: scale(1.1);
       }
+      .layer1 .swap-icon {
+        background: url(<%=domainURL%>/images/swap-icon.png?ver=<%=version%>)
+          no-repeat top;
+        background-size: contain;
+        height: calc(4.5 * var(--vh));
+        width: calc(20 * var(--vh) / var(--ratio));
+        top: calc(65 * var(--vh));
+        margin-left: calc(40 * var(--vh) / var(--ratio));
+        position: absolute;
+        transition: all 0.3s ease;
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transform: scale(0.9);
+      }
       .layer1 .sabet-btn {
         background: url(<%=domainURL%>/images/sabet-btn.png?ver=<%=version%>)
           no-repeat top;
@@ -520,10 +550,10 @@
         height: calc(5 * var(--vh));
         top: calc(27 * var(--vh));
         z-index: 99;
-        width: calc(80 * var(--vh) / var(--ratio));
-        margin-left: calc(10 * var(--vh) / var(--ratio));
-        text-align: center;
-        font-size: calc(2 * var(--vh));
+        width: calc(78 * var(--vh) / var(--ratio));
+        margin-left: calc(11 * var(--vh) / var(--ratio));
+        text-align: justify;
+        font-size: calc(2.3 * var(--vh));
         color: #fff;
         direction: rtl;
         font-weight: normal;
@@ -828,6 +858,8 @@
           rgba(30, 50, 70, 0.6) 100%
         );
         overflow: hidden;
+        will-change: transform;
+        transform: translateZ(0);
       }
 
       .chart-grid-lines {
@@ -861,27 +893,33 @@
         height: 100%;
         top: 0;
         left: 0;
+        will-change: transform;
+        transform: translateZ(0);
       }
 
       svg.animated-chart {
         width: 100%;
         height: 100%;
+        will-change: transform;
+        transform: translateZ(0);
       }
 
       .chart-line {
         fill: none;
         stroke: #ffd700;
-        stroke-width: calc(0.3 * var(--vh));
+        stroke-width: calc(0.8 * var(--vh));
         stroke-linecap: round;
         stroke-linejoin: round;
         filter: drop-shadow(0 0 calc(0.5 * var(--vh)) #ffd700);
         stroke-dasharray: none;
         stroke-dashoffset: 0;
+        will-change: points;
       }
 
       .chart-fill {
         fill: url(#chartGradient);
         opacity: 0;
+        will-change: d, opacity;
       }
 
       /* Coin Animation Styles */
@@ -946,7 +984,8 @@
           <div class="heal-bg"></div>
           <div class="heal-text to-persian"><%=profile.heal%></div>
           <div class="score"></div>
-          <div class="score-text to-persian"><%=profile.score%></div>
+          <div class="title">قیمت لحظه‌ای طلا</div>
+          <div class="score-text to-persian">۰</div>
           <div class="chart-bg"></div>
           <div class="chart">
             <div class="chart-container">
@@ -984,9 +1023,10 @@
             </div>
           </div>
           <div class="chart-blur"></div>
-          <div class="chart-btn hide"></div>
+          <!-- <div class="chart-btn hide"></div> -->
           <div class="chart-timer">06:00:00</div>
           <div class="sabet-btn"></div>
+          <div class="swap-icon"></div>
           <div class="gold-btn"></div>
 
           <div class="start-btn"></div>
@@ -1000,12 +1040,11 @@
           <div class="bg"></div>
           <div class="title">آموزش بازی</div>
           <div class="text">
-            تو این بازی باید سعی کنی در زمانی که نمودار صعودی هست روی طلا سرمایه
-            گذاری کنی و وقتی نمودار نزولی هست سرمایه‌ات رو به درآمد ثابت تددیل
-            کن.<br />
-            از دکمه <strong>تبدیل</strong> برای تغییر بین طلا و درآمد ثابت
-            استفاده کن. <br />
-            دقت کن تا بیشترین سود رو ببری و امتیازت رو بالا ببری.
+            توی این بازی، وقتی نمودار بالا رفت روی طلا سرمایه‌گذاری کن وقتی اومد
+            پایین، سرمایه‌ت رو به درآمد ثابت تبدیل کن. برای تغییر بین طلا و
+            درآمد ثابت، باید از دکمه <strong>تبدیل</strong> استفاده کنی. <br />هرچی
+            تعداد سکه بیشتری جمع کنی، امتیاز بیشتری می‌گیری و به جایزه نزدیک‌تر
+            می‌شی!
           </div>
           <div class="btn"></div>
           <div class="close"></div>
@@ -1050,6 +1089,7 @@
       integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
       crossorigin="anonymous"
     ></script>
+    <script src="<%=domainURL%>/js/sound-manager.js"></script>
     <script src="<%=domainURL%>/js/game-logic.js"></script>
     <script type="text/javascript">
       try {
@@ -1062,14 +1102,21 @@
       }
     </script>
     <script type="text/javascript">
-      let baseRatio = 2.168;
+      // محاسبه ratio بر اساس ابعاد واقعی صفحه نمایش کاربر
+      const defaultRatio = 2.168; // ratio پیش‌فرض برای حالت landscape
+      let baseRatio =
+        window.innerHeight > window.innerWidth
+          ? window.innerHeight / window.innerWidth
+          : defaultRatio;
+
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty("--vh", `${vh}px`);
       document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
 
       window.addEventListener("resize", () => {
         if (window.innerHeight > window.innerWidth) {
-          baseRatio = 2.168;
+          // حالت portrait: ratio رو از ابعاد واقعی صفحه محاسبه می‌کنیم
+          baseRatio = window.innerHeight / window.innerWidth;
           vh = window.innerHeight * 0.01;
           document.documentElement.style.setProperty("--vh", `${vh}px`);
           document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
@@ -1085,7 +1132,8 @@
             );
           }
         } else {
-          baseRatio = 2.168;
+          // حالت landscape: از ratio پیش‌فرض استفاده می‌کنیم
+          baseRatio = defaultRatio;
           vh = window.innerHeight * 0.01;
           document.documentElement.style.setProperty("--vh", `${vh}px`);
           document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
@@ -1104,7 +1152,7 @@
           );
         }
       } else {
-        baseRatio = 2.168;
+        baseRatio = defaultRatio;
         vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty("--vh", `${vh}px`);
         document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
@@ -1185,6 +1233,7 @@
         if (!acceptAjax) return;
         acceptAjax = false;
 
+        score = Math.round(score);
         let payload = CryptoJS.AES.encrypt(score.toString(), "<%=csrfToken%>");
         payload = encodeURIComponent(payload);
         $.ajax({
@@ -1230,6 +1279,7 @@
       let chartDataPoints = [];
       let gameStartTime = null;
       let scoreCheckInterval = null;
+      let soundManager = null;
 
       function startTimer() {
         if (timerStarted) return;
@@ -1249,7 +1299,7 @@
 
         // Initialize game logic with chart data
         if (!gameLogic && chartDataPoints.length > 0) {
-          gameLogic = new GameLogic(chartDataPoints);
+          gameLogic = new GameLogic(chartDataPoints, soundManager);
           startScoreChecking();
         }
 
@@ -1268,17 +1318,23 @@
             if (!winModalShown) {
               winModalShown = true;
 
+              // Stop main music and play win sound
+              if (soundManager) {
+                soundManager.stopMainMusic();
+                soundManager.playWinSound();
+              }
+
               // دریافت امتیاز نهایی و نمایش در مودال
               if (gameLogic) {
                 const finalScore = gameLogic.getScore();
                 $(".score-modal").html(
-                  "+" + toPersianNumber(finalScore.toString())
+                  "+" + toPersianNumber(Math.round(finalScore).toString())
                 );
                 // ثبت امتیاز کاربر
                 submitScore(finalScore);
               }
 
-              hideModal(".night-vision-modal");
+              // hideModal(".night-vision-modal");
               showModal(".win-modal");
             }
             return;
@@ -1311,16 +1367,16 @@
             // شب است - ماه فعال، خورشید غیرفعال
 
             // چک کن اگه hasNightVision برابر false است
-            if (!playerInfo.hasNightVision && !nightVisionShown) {
-              nightVisionShown = true;
-              showModal(".night-vision-modal");
-              // blur کردن چارت وقتی کاربر night vision ندارد
-              $(".layer1 .chart").addClass("blurred");
-            } else if (playerInfo.hasNightVision) {
-              // اگر کاربر night vision دارد، blur را حذف کن
-              $(".layer1 .chart").removeClass("blurred");
-            }
-            $(".layer1 .chart-btn").removeClass("hide");
+            // if (!playerInfo.hasNightVision && !nightVisionShown) {
+            //   nightVisionShown = true;
+            //   showModal(".night-vision-modal");
+            //   // blur کردن چارت وقتی کاربر night vision ندارد
+            //   $(".layer1 .chart").addClass("blurred");
+            // } else if (playerInfo.hasNightVision) {
+            //   // اگر کاربر night vision دارد، blur را حذف کن
+            //   $(".layer1 .chart").removeClass("blurred");
+            // }
+            // $(".layer1 .chart-btn").removeClass("hide");
             $(".layer1 .sun").removeClass("active");
             $(".layer1 .moon").addClass("active");
             $(".layer1 .bg").removeClass("day-bg").addClass("night-bg");
@@ -1357,36 +1413,47 @@
        * So interval = 60000 / 48 = 1250 milliseconds
        */
       let shadowUpdateInterval = null;
+      let animationFrameId = null;
+      let lastScoreCheckTime = 0;
+      const scoreCheckInterval_ms = 500; // Check score every 500ms
 
       function startScoreChecking() {
         if (scoreCheckInterval) {
           clearInterval(scoreCheckInterval);
         }
 
-        // Check score every 1 second to sync with chart trend
-        const checkInterval = 500; // 1 second
-
-        scoreCheckInterval = setInterval(() => {
-          if (!gameLogic || pause) return;
-
-          // Check and update score
-          gameLogic.checkAndUpdateScore();
-
-          // Update score display
-          updateScoreDisplay();
-
-          // Move to next data point
-          gameLogic.nextDataPoint();
-        }, checkInterval);
-
-        // Update shadow every 500ms (half second)
         if (shadowUpdateInterval) {
           clearInterval(shadowUpdateInterval);
         }
-        shadowUpdateInterval = setInterval(() => {
-          if (!gameLogic || pause) return;
+
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+
+        lastScoreCheckTime = 0;
+
+        // Use requestAnimationFrame for smooth 60fps animation
+        function animationLoop(currentTime) {
+          if (!gameLogic || pause) {
+            animationFrameId = requestAnimationFrame(animationLoop);
+            return;
+          }
+
+          // Check score every 500ms
+          if (currentTime - lastScoreCheckTime >= scoreCheckInterval_ms) {
+            gameLogic.checkAndUpdateScore();
+            updateScoreDisplay();
+            gameLogic.nextDataPoint();
+            lastScoreCheckTime = currentTime;
+          }
+
+          // Update chart visualization every frame for smooth animation
           updatePartialChartFill();
-        }, 500);
+
+          animationFrameId = requestAnimationFrame(animationLoop);
+        }
+
+        animationFrameId = requestAnimationFrame(animationLoop);
       }
 
       /**
@@ -1395,7 +1462,7 @@
       function updateScoreDisplay() {
         if (!gameLogic) return;
         const score = gameLogic.getScore();
-        $(".score-text").html(toPersianNumber(score.toString()));
+        $(".score-text").html(toPersianNumber(Math.round(score).toString()));
       }
 
       /**
@@ -1715,6 +1782,15 @@
       }
 
       $(window).ready(function () {
+        // چک کردن جون کاربر - اگر صفر یا کمتر بود، به صفحه home برگردون
+        if (playerInfo.heal <= 0) {
+          window.location.href = "/home";
+          return;
+        }
+
+        // Initialize sound manager
+        soundManager = new SoundManager();
+
         $("#preloader").delay(200).fadeOut("fade");
 
         // Load chart data (async)
@@ -1730,12 +1806,20 @@
         $(".help-modal .close").on("click", function () {
           hideModal(".help-modal");
           $(".chart-svg-container").removeClass("hide");
+          // Play background music when game starts
+          if (soundManager) {
+            soundManager.playMainMusic();
+          }
           startTimer();
         });
 
         $(".help-modal .btn").on("click", function () {
           hideModal(".help-modal");
           $(".chart-svg-container").removeClass("hide");
+          // Play background music when game starts
+          if (soundManager) {
+            soundManager.playMainMusic();
+          }
           startTimer();
         });
 
@@ -1743,9 +1827,9 @@
           hideModal(".night-vision-modal");
         });
 
-        $(".chart-btn").on("click", function () {
-          showModal(".night-vision-modal");
-        });
+        // $(".chart-btn").on("click", function () {
+        //   showModal(".night-vision-modal");
+        // });
 
         $(".to-persian").each(function () {
           $(this).html(toPersianNumber($(this).html()));
@@ -1767,7 +1851,7 @@
             $(".sabet-btn").addClass("active");
           }
 
-          // Update game logic mode
+          // Update game logic mode (this will also play change sound)
           if (gameLogic) {
             gameLogic.setMode(activeMode);
           }

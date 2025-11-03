@@ -57,13 +57,18 @@
       select:-webkit-autofill,
       select:-webkit-autofill:hover,
       select:-webkit-autofill:focus {
-        -webkit-text-fill-color: #fff;
+        -webkit-text-fill-color: #000;
         /*-webkit-box-shadow: none;*/
         transition: background-color 5000s ease-in-out 0s;
       }
 
       body {
-        background: linear-gradient(0deg, #2f4251 0%, #121e29 100%);
+        background: linear-gradient(
+          29.71deg,
+          #eef5fa -65.16%,
+          #386487 -5.15%,
+          #badfff 62.53%
+        );
         display: block;
         position: absolute;
         top: 0;
@@ -117,8 +122,136 @@
         overflow: hidden;
       }
 
+      .layer0 {
+        z-index: 1;
+        background: linear-gradient(0deg, #304353 0%, #121e29 100%);
+      }
+
+      .layer0 .bg {
+        background: linear-gradient(
+          29.71deg,
+          #eef5fa -65.16%,
+          #7a92a5 -19.96%,
+          #d4ebff 62.53%
+        );
+        background-size: contain;
+
+        height: calc(100 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer0 .header {
+        background: url(<%=domainURL%>/images/header.png?ver=<%=version%>)
+          no-repeat top center;
+        background-size: contain;
+        height: calc(6 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer0 .logo {
+        background: url(<%=domainURL%>/images/logo.png?ver=<%=version%>)
+          no-repeat top center;
+        background-size: contain;
+        height: calc(2.8 * var(--vh));
+        width: calc(30 * var(--vh) / var(--ratio));
+        top: calc(1 * var(--vh));
+        margin-left: calc(35 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .layer0 .splash-bg {
+        background: url(<%=domainURL%>/images/splash-bg.png?ver=<%=version%>)
+          no-repeat top left;
+        background-size: contain;
+        height: calc(47 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(0 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer0 .splash-img {
+        background: url(<%=domainURL%>/images/splash-img.png?ver=<%=version%>)
+          no-repeat center;
+        background-size: contain;
+        height: calc(40 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(5 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer0 .title1 {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(43 * var(--vh));
+        z-index: 99;
+        width: calc(75.8 * var(--vh) / var(--ratio));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(6.5 * var(--vh));
+        color: #28304c;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer0 .title2 {
+        position: absolute;
+        height: calc(3 * var(--vh));
+        top: calc(52 * var(--vh));
+        z-index: 99;
+        width: calc(39 * var(--vh) / var(--ratio));
+        margin-left: calc(30 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2 * var(--vh));
+        color: #fff;
+        background: #28304c;
+        border-radius: calc(3.5 * var(--vh) / var(--ratio));
+        direction: rtl;
+        font-weight: normal;
+        padding: calc(0.5 * var(--vh)) 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer0 .text1 {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(59 * var(--vh));
+        z-index: 99;
+        width: calc(75.8 * var(--vh) / var(--ratio));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2.5 * var(--vh));
+        color: #28304c;
+        direction: rtl;
+        font-weight: 500;
+        text-align: justify;
+        line-height: calc(3.3 * var(--vh));
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer0 .page1_btn {
+        background: url(<%=domainURL%>/images/start-game-btn.png?ver=<%=version%>)
+          no-repeat center;
+        background-size: contain;
+        height: calc(8 * var(--vh));
+        top: calc(87 * var(--vh));
+        margin-left: calc(20 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+        width: calc(60 * var(--vh) / var(--ratio));
+        border: none;
+        outline: none;
+      }
+
       .layer1 {
         z-index: 2;
+        left: 100%;
         background: linear-gradient(0deg, #304353 0%, #121e29 100%);
       }
 
@@ -165,12 +298,8 @@
       }
 
       .layer1 .form-box {
-        background: linear-gradient(
-          21.44deg,
-          #6e9fc5 -48.69%,
-          #43637c 8.45%,
-          #121e29 73.97%
-        );
+        background: linear-gradient(21.44deg, #6e9fc5 -48.69%, #ffffff 73.97%);
+
         height: calc(60 * var(--vh));
         width: calc(100 * var(--vh) / var(--ratio));
         top: calc(45 * var(--vh));
@@ -188,15 +317,15 @@
         margin-left: calc(12 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(2.5 * var(--vh));
-        color: #ffffff;
+        color: #000;
         direction: rtl;
-        font-weight: semibold;
+        font-weight: bold;
         padding: 0;
         margin-top: 0;
         font-family: "Yekan Bakh", sans-serif;
       }
       .layer1 #login-form #fullname {
-        background: #0c141c;
+        background: #fff;
         position: absolute;
         height: calc(3.5 * var(--vh));
         top: calc(63 * var(--vh));
@@ -204,7 +333,7 @@
         z-index: 99;
         width: calc(73 * var(--vh) / var(--ratio));
         margin-left: calc(10 * var(--vh) / var(--ratio));
-        color: #fff !important;
+        color: #000 !important;
         text-align: right;
         font-size: calc(1.8 * var(--vh));
         padding: calc(3 * var(--vh) / var(--ratio));
@@ -215,7 +344,7 @@
         border-radius: calc(4 * var(--vh) / var(--ratio));
       }
       .layer1 #login-form #phone {
-        background: #0c141c;
+        background: #fff;
         position: absolute;
         height: calc(3.5 * var(--vh));
         top: calc(71 * var(--vh));
@@ -223,7 +352,7 @@
         z-index: 99;
         width: calc(73 * var(--vh) / var(--ratio));
         margin-left: calc(10 * var(--vh) / var(--ratio));
-        color: #fff !important;
+        color: #000 !important;
         text-align: right;
         font-size: calc(1.8 * var(--vh));
         padding: calc(3 * var(--vh) / var(--ratio));
@@ -311,12 +440,8 @@
       }
 
       .layer2 .form-box {
-        background: linear-gradient(
-          21.44deg,
-          #6e9fc5 -48.69%,
-          #43637c 8.45%,
-          #121e29 73.97%
-        );
+        background: linear-gradient(21.44deg, #6e9fc5 -48.69%, #ffffff 73.97%);
+
         height: calc(60 * var(--vh));
         width: calc(100 * var(--vh) / var(--ratio));
         top: calc(45 * var(--vh));
@@ -334,15 +459,15 @@
         margin-left: calc(12 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(2.5 * var(--vh));
-        color: #ffffff;
+        color: #000;
         direction: rtl;
-        font-weight: semibold;
+        font-weight: bold;
         padding: 0;
         margin-top: 0;
         font-family: "Yekan Bakh", sans-serif;
       }
       .layer2 #sms-form #sms {
-        background: #0c141c;
+        background: #fff;
         position: absolute;
         height: calc(3.5 * var(--vh));
         top: calc(63 * var(--vh));
@@ -350,7 +475,7 @@
         z-index: 99;
         width: calc(73 * var(--vh) / var(--ratio));
         margin-left: calc(10 * var(--vh) / var(--ratio));
-        color: #fff !important;
+        color: #000 !important;
         text-align: center;
         font-size: calc(2.5 * var(--vh));
         padding: calc(3 * var(--vh) / var(--ratio));
@@ -369,7 +494,7 @@
         margin-left: calc(12 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(2.5 * var(--vh));
-        color: #ffffff;
+        color: #000;
         direction: rtl;
         font-weight: bold;
         padding: 0;
@@ -519,6 +644,24 @@
       <div id="loader"></div>
     </div>
     <div class="full-screen container">
+      <div class="layer layer0">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="splash-bg"></div>
+          <div class="header"></div>
+          <div class="logo"></div>
+          <div class="splash-img"></div>
+          <div class="title1">طلا بــاز</div>
+          <div class="title2">شبانه روز سود کن!</div>
+          <div class="text1">
+            توی این بازی، وقتی نمودار بالا رفت روی طلا سرمایه‌گذاری کن وقتی اومد
+            پایین، سرمایه‌ت رو به درآمد ثابت تبدیل کن. برای تغییر بین طلا و
+            درآمد ثابت، باید از دکمه تبدیل استفاده کنی. هرچی سکه بیشتری جمع کنی،
+            امتیاز بیشتری می‌گیری و به جایزه نزدیک‌تر می‌شی!
+          </div>
+          <div class="page1_btn"></div>
+        </div>
+      </div>
       <div class="layer layer1">
         <div class="wrapper">
           <div class="bg"></div>
@@ -630,14 +773,21 @@
     <script src="<%=domainURL%>/js/jquery.min.js"></script>
 
     <script type="text/javascript">
-      let baseRatio = 2.168;
+      // محاسبه ratio بر اساس ابعاد واقعی صفحه نمایش کاربر
+      const defaultRatio = 2.168; // ratio پیش‌فرض برای حالت landscape
+      let baseRatio =
+        window.innerHeight > window.innerWidth
+          ? window.innerHeight / window.innerWidth
+          : defaultRatio;
+
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty("--vh", `${vh}px`);
       document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
 
       window.addEventListener("resize", () => {
         if (window.innerHeight > window.innerWidth) {
-          baseRatio = 2.168;
+          // حالت portrait: ratio رو از ابعاد واقعی صفحه محاسبه می‌کنیم
+          baseRatio = window.innerHeight / window.innerWidth;
           vh = window.innerHeight * 0.01;
           document.documentElement.style.setProperty("--vh", `${vh}px`);
           document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
@@ -653,7 +803,8 @@
             );
           }
         } else {
-          baseRatio = 2.168;
+          // حالت landscape: از ratio پیش‌فرض استفاده می‌کنیم
+          baseRatio = defaultRatio;
           vh = window.innerHeight * 0.01;
           document.documentElement.style.setProperty("--vh", `${vh}px`);
           document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
@@ -672,7 +823,7 @@
           );
         }
       } else {
-        baseRatio = 2.168;
+        baseRatio = defaultRatio;
         vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty("--vh", `${vh}px`);
         document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
@@ -740,6 +891,22 @@
 
         var currentPage = 1;
         var moving = false;
+
+        $(".page1_btn").on("click", function (e) {
+          e.preventDefault();
+          <%if(!!user.profile) {%>
+          return window.location.href = '/game';
+          <%}%>
+          $('.layer1').css('display', 'block');
+          $('.layer1').animate({left: "0"}, 1000 );
+          $('.layer0').animate({left: "-100%"}, 1000);
+          setTimeout(()=>{
+            $('.layer0').css('display', 'none');
+            moving = false;
+          }, 1000);
+        });
+
+
 
         $("#phone").on("keypress", function (event) {
           event.preventDefault();

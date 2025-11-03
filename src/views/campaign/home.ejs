@@ -12,7 +12,7 @@
     -1 ) result += str[i]; else result += numerals.persian[index]; } return
     result; } %> <%let shareLinkText = `من در بازی کاریزما ${profile.score | 0}
     امتیاز گرفتم! 🎯 حالا نوبت توعه که این چالش رو قبول کنی و ببینی می‌تونی بهتر
-    عمل کنی!`%>
+    عمل کنی. با کلی جایزه از آیفون ۱۷ تا اسمارت واچ!`%>
     <script type="text/javascript">
       var numerals = {
         persian: ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
@@ -71,7 +71,12 @@
       }
 
       body {
-        background: linear-gradient(0deg, #2f4251 0%, #121e29 100%);
+        background: linear-gradient(
+          29.71deg,
+          #eef5fa -65.16%,
+          #386487 -5.15%,
+          #badfff 62.53%
+        );
         display: block;
         position: absolute;
         top: 0;
@@ -126,11 +131,21 @@
       }
 
       .static-layer {
-        background: linear-gradient(0deg, #304353 0%, #121e29 100%);
+        background: linear-gradient(
+          29.71deg,
+          #eef5fa -65.16%,
+          #386487 -5.15%,
+          #badfff 62.53%
+        );
       }
 
       .static-layer .bg {
-        background: linear-gradient(29.71deg, #6e9fc5 -65.16%, #121e29 62.53%);
+        background: linear-gradient(
+          29.71deg,
+          #eef5fa -65.16%,
+          #386487 -5.15%,
+          #badfff 62.53%
+        );
         background-size: contain;
         height: calc(100 * var(--vh));
         width: calc(100 * var(--vh) / var(--ratio));
@@ -237,14 +252,14 @@
         background-size: contain;
         height: calc(8 * var(--vh));
         width: calc(40 * var(--vh) / var(--ratio));
-        top: calc(1 * var(--vh));
+        top: calc(0 * var(--vh));
         margin-left: calc(3 * var(--vh) / var(--ratio));
         position: absolute;
       }
       .layer1 .heal-text {
         position: absolute;
         height: calc(5 * var(--vh));
-        top: calc(3.2 * var(--vh));
+        top: calc(2.2 * var(--vh));
         z-index: 99;
         width: calc(17 * var(--vh) / var(--ratio));
         margin-left: calc(16 * var(--vh) / var(--ratio));
@@ -252,7 +267,7 @@
         font-size: calc(3 * var(--vh));
         color: #ffffff;
         direction: rtl;
-        font-weight: semibold;
+        font-weight: bold;
         padding: 0;
         margin-top: 0;
         font-family: "Yekan Bakh", sans-serif;
@@ -263,7 +278,7 @@
         background-size: contain;
         height: calc(4 * var(--vh));
         width: calc(10 * var(--vh) / var(--ratio));
-        top: calc(3.3 * var(--vh));
+        top: calc(2.3 * var(--vh));
         margin-left: calc(32 * var(--vh) / var(--ratio));
         position: absolute;
         cursor: pointer;
@@ -275,14 +290,14 @@
         background-size: contain;
         height: calc(6 * var(--vh));
         width: calc(40 * var(--vh) / var(--ratio));
-        top: calc(2.4 * var(--vh));
+        top: calc(1.4 * var(--vh));
         margin-left: calc(60 * var(--vh) / var(--ratio));
         position: absolute;
       }
       .layer1 .score-text {
         position: absolute;
         height: calc(5 * var(--vh));
-        top: calc(3.2 * var(--vh));
+        top: calc(2.2 * var(--vh));
         z-index: 99;
         width: calc(21 * var(--vh) / var(--ratio));
         margin-left: calc(73 * var(--vh) / var(--ratio));
@@ -298,13 +313,13 @@
       .layer1 .text1 {
         position: absolute;
         height: calc(5 * var(--vh));
-        top: calc(10 * var(--vh));
+        top: calc(9 * var(--vh));
         z-index: 99;
         width: calc(100 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(3.5 * var(--vh));
-        color: #ffffff;
+        color: #000;
         direction: rtl;
         font-weight: bold;
         padding: 0;
@@ -314,18 +329,53 @@
       .layer1 .text2 {
         position: absolute;
         height: calc(5 * var(--vh));
-        top: calc(14.2 * var(--vh));
+        top: calc(12.6 * var(--vh));
         z-index: 99;
         width: calc(100 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(4.5 * var(--vh));
-        color: #66adff;
+        color: #282e6c;
         direction: rtl;
         font-weight: bolder;
         padding: 0;
         margin-top: 0;
         font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 .text3 {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(19.8 * var(--vh));
+        z-index: 99;
+        width: calc(100 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2 * var(--vh));
+        color: #39395b;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 .text4 {
+        position: absolute;
+        height: calc(3.2 * var(--vh));
+        top: calc(22.6 * var(--vh));
+        z-index: 99;
+        width: calc(50 * var(--vh) / var(--ratio));
+        margin-left: calc(25 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        border-radius: calc(3 * var(--vh) / var(--ratio));
+        font-weight: bolder;
+        padding: 0;
+        padding-top: calc(1 * var(--vh) / var(--ratio));
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+        background-color: #d12126;
       }
       .layer1 .progress-wrapp {
         background: url(<%=domainURL%>/images/progress-wrapp.png?ver=<%=version%>)
@@ -333,7 +383,7 @@
         background-size: contain;
         height: calc(39 * var(--vh));
         width: calc(5 * var(--vh) / var(--ratio));
-        top: calc(27 * var(--vh));
+        top: calc(30 * var(--vh));
         margin-left: calc(84 * var(--vh) / var(--ratio));
         position: absolute;
       }
@@ -356,9 +406,9 @@
         background: url(<%=domainURL%>/images/lvl1.png?ver=<%=version%>)
           no-repeat right center;
         background-size: contain !important;
-        height: calc(13.7 * var(--vh));
+        height: calc(9.8 * var(--vh));
         width: calc(96 * var(--vh) / var(--ratio));
-        top: calc(57 * var(--vh));
+        top: calc(61 * var(--vh));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         position: absolute;
         -webkit-transition: all 0.5s;
@@ -366,14 +416,46 @@
         -ms-transition: all 0.5s;
         -o-transition: all 0.5s;
         transition: all 0.5s;
+      }
+      .layer1 .lvl1-title {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(2.6 * var(--vh));
+        z-index: 99;
+        width: calc(71 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(1.9 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 .lvl1-text {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(5.5 * var(--vh));
+        z-index: 99;
+        width: calc(71 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(1.4 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
       }
       .layer1 .lvl2 {
         background: url(<%=domainURL%>/images/lvl2.png?ver=<%=version%>)
           no-repeat right center;
         background-size: contain !important;
-        height: calc(13.7 * var(--vh));
+        height: calc(9.8 * var(--vh));
         width: calc(95 * var(--vh) / var(--ratio));
-        top: calc(46 * var(--vh));
+        top: calc(50 * var(--vh));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         position: absolute;
         -webkit-transition: all 0.5s;
@@ -381,14 +463,46 @@
         -ms-transition: all 0.5s;
         -o-transition: all 0.5s;
         transition: all 0.5s;
+      }
+      .layer1 .lvl2-title {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(2.6 * var(--vh));
+        z-index: 99;
+        width: calc(71 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(1.9 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 .lvl2-text {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(5.5 * var(--vh));
+        z-index: 99;
+        width: calc(71 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(1.5 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
       }
       .layer1 .lvl3 {
         background: url(<%=domainURL%>/images/lvl3.png?ver=<%=version%>)
           no-repeat right center;
         background-size: contain !important;
-        height: calc(13.7 * var(--vh));
+        height: calc(9.8 * var(--vh));
         width: calc(95 * var(--vh) / var(--ratio));
-        top: calc(35 * var(--vh));
+        top: calc(39 * var(--vh));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         position: absolute;
         -webkit-transition: all 0.5s;
@@ -397,13 +511,45 @@
         -o-transition: all 0.5s;
         transition: all 0.5s;
       }
+      .layer1 .lvl3-title {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(2.6 * var(--vh));
+        z-index: 99;
+        width: calc(71 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(1.9 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 .lvl3-text {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(5.6 * var(--vh));
+        z-index: 99;
+        width: calc(71 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(1.3 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
       .layer1 .lvl4 {
         background: url(<%=domainURL%>/images/lvl4.png?ver=<%=version%>)
           no-repeat right center;
         background-size: contain !important;
-        height: calc(13.7 * var(--vh));
+        height: calc(9.8 * var(--vh));
         width: calc(95 * var(--vh) / var(--ratio));
-        top: calc(24 * var(--vh));
+        top: calc(28 * var(--vh));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         position: absolute;
         -webkit-transition: all 0.5s;
@@ -411,6 +557,38 @@
         -ms-transition: all 0.5s;
         -o-transition: all 0.5s;
         transition: all 0.5s;
+      }
+      .layer1 .lvl4-title {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(2.6 * var(--vh));
+        z-index: 99;
+        width: calc(71 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(1.9 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer1 .lvl4-text {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(5.5 * var(--vh));
+        z-index: 99;
+        width: calc(71 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(1.5 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
       }
       .layer1 .start-btn {
         background: url(<%=domainURL%>/images/start-game-btn.png?ver=<%=version%>)
@@ -418,10 +596,16 @@
         background-size: contain;
         height: calc(8.5 * var(--vh));
         width: calc(64 * var(--vh) / var(--ratio));
-        top: calc(73 * var(--vh));
+        top: calc(75 * var(--vh));
         margin-left: calc(18 * var(--vh) / var(--ratio));
         position: absolute;
         cursor: pointer;
+      }
+
+      .layer1 .start-btn.disabled {
+        filter: grayscale(100%);
+        cursor: not-allowed;
+        pointer-events: none;
       }
 
       .layer2 {
@@ -459,7 +643,7 @@
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(3.5 * var(--vh));
-        color: #fff;
+        color: #282e6c;
         direction: rtl;
         font-weight: bolder;
         padding: 0;
@@ -475,7 +659,7 @@
         margin-left: calc(10 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(2 * var(--vh));
-        color: #fff;
+        color: #282e6c;
         direction: rtl;
         font-weight: normal;
         padding: 0;
@@ -483,7 +667,7 @@
         font-family: "Yekan Bakh", sans-serif;
       }
       .layer2 .line {
-        border-top: 1px solid #acacac;
+        border-top: 1px solid #282e6c;
         background-size: contain;
         height: 1px;
         width: calc(100 * var(--vh) / var(--ratio));
@@ -554,7 +738,7 @@
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(2.5 * var(--vh));
-        color: #fff;
+        color: #282e6c;
         direction: rtl;
         font-weight: bolder;
         padding: 0;
@@ -601,7 +785,7 @@
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(3.5 * var(--vh));
-        color: #fff;
+        color: #282e6c;
         direction: rtl;
         font-weight: bolder;
         padding: 0;
@@ -617,7 +801,7 @@
         margin-left: calc(10 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(1.7 * var(--vh));
-        color: #fff;
+        color: #282e6c;
         direction: rtl;
         font-weight: normal;
         padding: 0;
@@ -633,7 +817,7 @@
         margin-left: calc(32 * var(--vh) / var(--ratio));
         text-align: right;
         font-size: calc(1.6 * var(--vh));
-        color: #fff;
+        color: #282e6c;
         direction: rtl;
         font-weight: normal;
         padding: 0;
@@ -668,7 +852,7 @@
         margin-left: calc(12 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(2 * var(--vh));
-        color: #ffffff;
+        color: #282e6c;
         direction: rtl;
         font-weight: bold;
         padding: 0;
@@ -734,7 +918,7 @@
         text-decoration: none;
       }
       .layer3 .line {
-        border-top: 1px solid #acacac;
+        border-top: 1px solid #282e6c;
         background-size: contain;
         height: 1px;
         width: calc(100 * var(--vh) / var(--ratio));
@@ -751,7 +935,7 @@
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(3.1 * var(--vh));
-        color: #fff;
+        color: #282e6c;
         direction: rtl;
         font-weight: bolder;
         padding: 0;
@@ -788,7 +972,7 @@
         margin-left: calc(24 * var(--vh) / var(--ratio));
         text-align: right;
         font-size: calc(2.1 * var(--vh));
-        color: #fff;
+        color: #282e6c;
         direction: rtl;
         font-weight: bold;
         padding: 0;
@@ -1062,7 +1246,12 @@
         width: 100%;
         height: 100%;
         z-index: 99999999;
-        background: linear-gradient(45deg, #43627c 0%, #121e29 100%);
+        background: linear-gradient(
+          29.71deg,
+          #eef5fa -65.16%,
+          #386487 -5.15%,
+          #badfff 62.53%
+        );
       }
       #loader {
         display: block;
@@ -1296,15 +1485,29 @@
           <div class="score-text to-persian"><%=profile.score%></div>
           <div class="text1">بازی کن، امتیاز بگیر،</div>
           <div class="text2">جایـــــزه ببــــر !</div>
+          <div class="text3">جایزه نفر اول با بیشترین امتیاز</div>
+          <div class="text4">یه آیفون ۱۷ بدون قرعه‌کشی</div>
           <div class="progress-wrapp">
             <div class="progress-bar"></div>
           </div>
 
-          <div class="lvl1"></div>
-          <div class="lvl2"></div>
-          <div class="lvl3"></div>
-          <div class="lvl4"></div>
-          <a href="/game" class="start-btn"></a>
+          <div class="lvl1">
+            <p class="lvl1-title">لاکپشت سرمایه‌گذار</p>
+            <p class="lvl1-text">قرعه‌کشی هدیه ۵۰ میلیون تومانی!</p>
+          </div>
+          <div class="lvl2">
+            <p class="lvl2-title">مار معامله‌گر</p>
+            <p class="lvl2-text">قرعه‌کشی ۴ عدد اسمارت واچ!</p>
+          </div>
+          <div class="lvl3">
+            <p class="lvl3-title">جادوگر بازار</p>
+            <p class="lvl3-text">قرعه‌کشی یک دستگاه پلی‌استیشن ۵ !</p>
+          </div>
+          <div class="lvl4">
+            <p class="lvl4-title">گرگ وال‌استریت</p>
+            <p class="lvl4-text">قرعه‌کشی بک دستگاه آیفون ۱۷!</p>
+          </div>
+          <a href="/game" class="start-btn" id="start-btn-link"></a>
         </div>
       </div>
       <div class="layer layer2">
@@ -1313,8 +1516,7 @@
           <div class="title">ماموریت‌ها</div>
 
           <div class="text">
-            با انجام ماموریات ها جان اضافه بگیر، امتیاز جمع کن، جایزه شکار
-            کن!<br />
+            با انجام ماموریت ها جون اضافه بگیر، امتیاز جمع کن، جایزه شکار کن!<br />
             یادت نره بعد از انجام ماموریت‌ها به بازی برگردی!
           </div>
           <div class="line"></div>
@@ -1492,7 +1694,7 @@
             <div
               style="
                 text-align: center;
-                color: #fff;
+                color: #282e6c;
                 padding: 20px;
                 font-size: calc(2 * var(--vh));
                 direction: rtl;
@@ -1608,7 +1810,13 @@
       }
     </script>
     <script type="text/javascript">
-      let baseRatio = 2.168;
+      // محاسبه ratio بر اساس ابعاد واقعی صفحه نمایش کاربر
+      const defaultRatio = 2.168; // ratio پیش‌فرض برای حالت landscape
+      let baseRatio =
+        window.innerHeight > window.innerWidth
+          ? window.innerHeight / window.innerWidth
+          : defaultRatio;
+
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty("--vh", `${vh}px`);
       document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
@@ -1616,7 +1824,8 @@
       window.addEventListener("resize", () => {
         loadProgressBar(playerInfo.score);
         if (window.innerHeight > window.innerWidth) {
-          baseRatio = 2.168;
+          // حالت portrait: ratio رو از ابعاد واقعی صفحه محاسبه می‌کنیم
+          baseRatio = window.innerHeight / window.innerWidth;
           vh = window.innerHeight * 0.01;
           document.documentElement.style.setProperty("--vh", `${vh}px`);
           document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
@@ -1632,7 +1841,8 @@
             );
           }
         } else {
-          baseRatio = 2.168;
+          // حالت landscape: از ratio پیش‌فرض استفاده می‌کنیم
+          baseRatio = defaultRatio;
           vh = window.innerHeight * 0.01;
           document.documentElement.style.setProperty("--vh", `${vh}px`);
           document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
@@ -1651,7 +1861,7 @@
           );
         }
       } else {
-        baseRatio = 2.168;
+        baseRatio = defaultRatio;
         vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty("--vh", `${vh}px`);
         document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
@@ -1805,11 +2015,11 @@
         $(".progress-bar").css("height", 0 * vh);
 
         setTimeout(function () {
-          let score_pool = [50, 250, 750, 2000];
+          let score_pool = [199, 499, 999, 1499];
           let progressbar_pool = [0, 0, 13.7, 23.5, 36, 36];
           if (score <= score_pool[0]) {
             $(".progress-bar").css("height", progressbar_pool[0] * vh);
-            $(".lvl1").css("height", 14.7 * vh);
+            // $(".lvl1").css("height", 14.7 * vh);
           } else if (score <= score_pool[1]) {
             let diff_score = score;
             $(".progress-bar").css(
@@ -1819,6 +2029,7 @@
                   (score_pool[1] - score_pool[0])) *
                 vh
             );
+            $(".lvl1").css("height", 10.8 * vh);
           } else if (score <= score_pool[2]) {
             let diff_score = score - score_pool[1];
             $(".progress-bar").css(
@@ -1828,12 +2039,12 @@
                   (score_pool[2] - score_pool[1])) *
                 vh
             );
-            $(".lvl2").css("height", 14.7 * vh);
-            $(".lvl2").css(
-              "background",
-              `url(<%=domainURL%>/images/lvl2-on.png?ver=<%=version%>)
-          no-repeat right center`
-            );
+            $(".lvl2").css("height", 10.8 * vh);
+            //   $(".lvl2").css(
+            //     "background",
+            //     `url(<%=domainURL%>/images/lvl2-on.png?ver=<%=version%>)
+            // no-repeat right center`
+            //   );
           } else if (score <= score_pool[3]) {
             let diff_score = score - score_pool[2];
             $(".progress-bar").css(
@@ -1844,20 +2055,20 @@
                 vh
             );
 
-            $(".lvl3").css("height", 14.7 * vh);
-            $(".lvl3").css(
-              "background",
-              `url(<%=domainURL%>/images/lvl3-on.png?ver=<%=version%>)
-          no-repeat right center`
-            );
+            $(".lvl3").css("height", 10.8 * vh);
+            //   $(".lvl3").css(
+            //     "background",
+            //     `url(<%=domainURL%>/images/lvl3-on.png?ver=<%=version%>)
+            // no-repeat right center`
+            //   );
           } else {
             $(".progress-bar").css("height", progressbar_pool[5] * vh);
-            $(".lvl4").css("height", 14.7 * vh);
-            $(".lvl4").css(
-              "background",
-              `url(<%=domainURL%>/images/lvl4-on.png?ver=<%=version%>)
-          no-repeat right center`
-            );
+            $(".lvl4").css("height", 10.8 * vh);
+            //   $(".lvl4").css(
+            //     "background",
+            //     `url(<%=domainURL%>/images/lvl4-on.png?ver=<%=version%>)
+            // no-repeat right center`
+            //   );
           }
         }, 100);
       }
@@ -1865,6 +2076,20 @@
       $(window).ready(function () {
         $("#preloader").delay(200).fadeOut("fade");
         loadProgressBar(playerInfo.score);
+
+        // اگر جون منفی بود، صفر نشون بده
+        if (playerInfo.heal < 0) {
+          $(".heal-text").html(toPersianNumber("0"));
+        }
+
+        // غیرفعال کردن دکمه شروع بازی اگر جون صفر یا کمتر بود
+        if (playerInfo.heal <= 0) {
+          $("#start-btn-link").addClass("disabled");
+          $("#start-btn-link").on("click", function (e) {
+            e.preventDefault();
+            return false;
+          });
+        }
 
         $(".tab-1").on("click", () => {
           $(".tab-1").addClass("active-nav");
