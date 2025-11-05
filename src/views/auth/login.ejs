@@ -120,19 +120,25 @@
         height: calc(100 * var(--vh));
         margin: 0 auto;
         overflow: hidden;
+        box-shadow: 0 0 20px #333;
       }
 
       .layer0 {
         z-index: 1;
-        background: linear-gradient(0deg, #304353 0%, #121e29 100%);
+        background: linear-gradient(
+          29.71deg,
+          #eef5fa -65.16%,
+          #386487 -5.15%,
+          #badfff 62.53%
+        );
       }
 
       .layer0 .bg {
         background: linear-gradient(
           29.71deg,
           #eef5fa -65.16%,
-          #7a92a5 -19.96%,
-          #d4ebff 62.53%
+          #386487 -5.15%,
+          #badfff 62.53%
         );
         background-size: contain;
 
@@ -177,9 +183,9 @@
         background: url(<%=domainURL%>/images/splash-img.png?ver=<%=version%>)
           no-repeat center;
         background-size: contain;
-        height: calc(40 * var(--vh));
+        height: calc(33 * var(--vh));
         width: calc(100 * var(--vh) / var(--ratio));
-        top: calc(5 * var(--vh));
+        top: calc(8 * var(--vh));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         position: absolute;
       }
@@ -204,8 +210,8 @@
         height: calc(3 * var(--vh));
         top: calc(52 * var(--vh));
         z-index: 99;
-        width: calc(39 * var(--vh) / var(--ratio));
-        margin-left: calc(30 * var(--vh) / var(--ratio));
+        width: calc(66 * var(--vh) / var(--ratio));
+        margin-left: calc(17 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(2 * var(--vh));
         color: #fff;
@@ -252,7 +258,12 @@
       .layer1 {
         z-index: 2;
         left: 100%;
-        background: linear-gradient(0deg, #304353 0%, #121e29 100%);
+        background: linear-gradient(
+          29.71deg,
+          #eef5fa -65.16%,
+          #386487 -5.15%,
+          #badfff 62.53%
+        );
       }
 
       .layer1 .bg {
@@ -395,7 +406,12 @@
       .layer2 {
         left: 100%;
         z-index: 4;
-        background: linear-gradient(0deg, #304353 0%, #121e29 100%);
+        background: linear-gradient(
+          29.71deg,
+          #eef5fa -65.16%,
+          #386487 -5.15%,
+          #badfff 62.53%
+        );
       }
       .layer2 .bg {
         background: url(<%=domainURL%>/images/bg.png?ver=<%=version%>) no-repeat
@@ -565,7 +581,12 @@
         width: 100%;
         height: 100%;
         z-index: 99999999;
-        background: linear-gradient(45deg, #43627c 0%, #121e29 100%);
+        background: linear-gradient(
+          29.71deg,
+          #eef5fa -65.16%,
+          #386487 -5.15%,
+          #badfff 62.53%
+        );
       }
       #loader {
         display: block;
@@ -652,7 +673,7 @@
           <div class="logo"></div>
           <div class="splash-img"></div>
           <div class="title1">طلا بــاز</div>
-          <div class="title2">شبانه روز سود کن!</div>
+          <div class="title2">با کاریزما سرمایه‌گذاری روز و شب شد!</div>
           <div class="text1">
             توی این بازی، وقتی نمودار بالا رفت روی طلا سرمایه‌گذاری کن وقتی اومد
             پایین، سرمایه‌ت رو به درآمد ثابت تبدیل کن. برای تغییر بین طلا و
@@ -775,10 +796,7 @@
     <script type="text/javascript">
       // محاسبه ratio بر اساس ابعاد واقعی صفحه نمایش کاربر
       const defaultRatio = 2.168; // ratio پیش‌فرض برای حالت landscape
-      let baseRatio =
-        window.innerHeight > window.innerWidth
-          ? window.innerHeight / window.innerWidth
-          : defaultRatio;
+      let baseRatio = defaultRatio;
 
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty("--vh", `${vh}px`);

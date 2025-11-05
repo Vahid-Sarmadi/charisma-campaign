@@ -1,4 +1,6 @@
 const axios = require("axios");
+const charismaAuthService = require("../services/charismaAuthService");
+
 const numerals = {
   persian: ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
   arabic: ["۰", "۱", "۲", "۳", "٤", "٥", "٦", "۷", "۸", "۹"],
@@ -29,7 +31,11 @@ exports.sendSms = async (text, phone) => {
     if (!phone || !text)
       return { done: false, error: "شماره موبایل یا متن پیامک وارد نشده است" };
 
-    let url = `https://hypersmsc.ir/api/json/sendgroupget?username=adrogame&password=${encodeURIComponent("adrogame@123#")}&api=39&from=200032217400&to=${phone}&text=${encodeURIComponent(text)}`;
+    let url = `https://hypersmsc.ir/api/json/sendgroupget?username=${
+      process.env.SMS_USERNAME
+    }&password=${encodeURIComponent(
+      process.env.SMS_PASSWORD
+    )}&api=39&from=200032217400&to=${phone}&text=${encodeURIComponent(text)}`;
 
     const response = await axios({
       method: "GET",
@@ -45,6 +51,39 @@ exports.sendSms = async (text, phone) => {
     return { done: true };
   } catch (e) {
     console.error("SendSmsError:", e.message);
+    return { done: false, error: e };
+  }
+};
+
+exports.sendSmsCharisma = async (text, phone) => {
+  try {
+    if (!phone || !text)
+      return { done: false, error: "شماره موبایل یا متن پیامک وارد نشده است" };
+
+    const params = {
+      notification: {
+        priority: 1,
+        channelType: 1,
+        subject: "",
+        body: text,
+        receivers: [phone],
+      },
+    };
+
+    const endpoint =
+      "https://apig-gw.charisma.tech/ntf/v1.0/notifications/instant";
+
+    // Get authenticated client from charismaAuthService
+    const client = await charismaAuthService.createCharismaClient();
+
+    const response = await client.post(endpoint, params);
+
+    if (response.status !== 200) {
+      return { done: false, error: `خطا در ارسال پیامک: ${response.status}` };
+    }
+    return { done: true };
+  } catch (e) {
+    console.error("SendSmsCharismaError:", e.message);
     return { done: false, error: e };
   }
 };

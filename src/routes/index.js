@@ -4,6 +4,7 @@ const router = express.Router();
 const authRoutes = require("./authRoutes");
 const smsRoutes = require("./smsRoutes");
 const userRoutes = require("./userRoutes");
+const missionRoutes = require("./missionRoutes");
 
 /**
  * GET /
@@ -23,5 +24,6 @@ router.get("/", (req, res) => {
  */
 router.use("/", authRoutes);
 router.use("/", userRoutes);
+router.use("/", missionRoutes);
 
 module.exports = router;
