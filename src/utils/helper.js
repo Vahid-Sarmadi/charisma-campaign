@@ -1,5 +1,5 @@
-import axios from "axios";
-import { BearerAuth } from "../services/charismaAuthService.js";
+const axios = require("axios");
+const { BearerAuth } = require("../services/charismaAuthService");
 
 const numerals = {
   persian: ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
