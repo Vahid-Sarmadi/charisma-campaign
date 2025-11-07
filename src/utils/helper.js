@@ -76,8 +76,7 @@ exports.sendSmsCharisma = async (text, phone) => {
     const auth = new BearerAuth();
 
     const response = await auth.post(endpoint, params);
-    console.log(response.status);
-    if (response.status != 200 || response.status != 201) {
+    if (response.status !== 200 && response.status !== 201) {
       return { done: false, error: `خطا در ارسال پیامک: ${response.status}` };
     }
     return { done: true };
