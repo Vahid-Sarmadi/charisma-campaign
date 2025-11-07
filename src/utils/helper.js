@@ -73,16 +73,15 @@ exports.sendSmsCharisma = async (text, phone) => {
     const endpoint =
       "https://apig-gw.charisma.tech/ntf/v1.0/notifications/instant";
 
-    // Get authenticated client from charismaAuthService
-    const client = await charismaAuthService.createCharismaClient();
+    const auth = new BearerAuth();
 
-    const response = await client.post(endpoint, params);
-
+    const response = await auth.post(endpoint, params);
     if (response.status !== 200) {
       return { done: false, error: `خطا در ارسال پیامک: ${response.status}` };
     }
     return { done: true };
   } catch (e) {
+    console.log(e);
     console.error("SendSmsCharismaError:", e.message);
     return { done: false, error: e };
   }
