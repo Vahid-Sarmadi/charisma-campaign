@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema(
       telegramHeal: { type: Boolean, default: false },
       twitterHeal: { type: Boolean, default: false },
       linkedinHeal: { type: Boolean, default: false },
+      appHeal: { type: Boolean, default: false },
       tarhHeal: { type: Boolean, default: false },
       sandooghHeal: { type: Boolean, default: false },
       vamHeal: { type: Boolean, default: false },

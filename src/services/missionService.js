@@ -64,13 +64,12 @@ exports.checkMissionCompletion = async (missionKey, mobileNumber) => {
       },
     });
 
-    console.log(response);
     // The API returns a boolean or object with completion status
     // Adjust based on actual API response format
     if (response.status === 200) {
       const data = response.data;
       // Assuming the API returns { completed: true/false } or similar
-      return data.completed === true || data.result === true || data === true;
+      return data.value_exists == "1" || data.result === true || data === true;
     }
 
     return false;
