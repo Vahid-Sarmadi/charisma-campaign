@@ -62,9 +62,16 @@ export class BearerAuth {
 
     const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
-    const response = await axios.get(url, {
+    const _url = new URL(url);
+    console.log(_url);
+    if (params) {
+      Object.entries(params).forEach(([key, value]) => {
+        _url.searchParams.append(key, value);
+      });
+    }
+    const response = await axios.get(_url, {
       headers: { Authorization: `Bearer ${this.token}` },
-      params,
+      // params,
       httpsAgent,
     });
 
