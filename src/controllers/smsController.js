@@ -58,15 +58,15 @@ exports.sendSmsCode = async (req, res) => {
 
     let sms = new Sms({
       phone: phone,
-      // code: code,
-      code: "12345",
+      code: code,
+      // code: "12345",
     });
 
     const text = "کد ورود شما: " + code + "\n\n کاریزما";
-    // const { done } = await sendSmsCharisma(text, phone);
-    // if (!done) {
-    // return res.json({ status: 502, message: "خطا در ارسال کد تایید!" });
-    // }
+    const { done } = await sendSmsCharisma(text, phone);
+    if (!done) {
+      return res.json({ status: 502, message: "خطا در ارسال کد تایید!" });
+    }
 
     await sms.save();
 
