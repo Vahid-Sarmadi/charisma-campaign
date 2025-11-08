@@ -1799,7 +1799,7 @@
       <div class="layer modal mission-modal app-modal hide">
         <div class="wrapper">
           <div class="bg"></div>
-          <div class="heal-count">+۳</div>
+          <div class="heal-count">+۲</div>
           <div class="title">نصب اپلیکیشن کاریزما</div>
           <div class="text">
             اگه نرم‌افزار کاریزما رو نصب کنی، ۲ جون تازه می‌گیری! قبلاً نصب
@@ -1820,7 +1820,7 @@
       <div class="layer modal mission-modal install-modal hide">
         <div class="wrapper">
           <div class="bg"></div>
-          <div class="heal-count">+۲</div>
+          <div class="heal-count">+۳</div>
           <div class="title">ثبت نام در کاریزما</div>
           <div class="text">
             اگه توی اپ کاریزما ثبت نام کنی، ۳ جون تازه می‌گیری! قبلاً عضو
@@ -2387,11 +2387,11 @@
           hideModal(".lose-modal");
         });
         $(".app-modal .btn").on("click", function () {
-          hideModal(".lose-modal");
-          window.location.reload();
+          addHeal("app");
         });
         $(".app-modal .check-btn").on("click", function () {
-          checkMissionCompletion("registerHeal", ".app-modal");
+          hideModal(".lose-modal");
+          window.location.reload();
         });
 
         $(".install-modal .check-btn").on("click", function () {
