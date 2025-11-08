@@ -1736,28 +1736,26 @@
           <div class="share-text">
             با دعوت از دوستات شانس برنده شدنت رو بیشتر کن !
           </div>
-          <div class="share-box">
-            
-          </div>
-          <div class="share-text2"><%=domainURL%>?link=<%=profile.shareLink%></div>
+          <div class="share-box"></div>
+          <div class="share-text2"><%=domainURL%>?link=<%=user.shareLink%></div>
           <div
             class="share-btn copyToClipboard"
-            data-value="<%=domainURL%>?link=<%=profile.shareLink%>"
+            data-value="<%=domainURL%>?link=<%=user.shareLink%>"
           ></div>
           <span class="tooltiptext" id="myTooltip">آدرس بازی کپی شد</span>
 
           <a
-            href="https://t.me/share/url?url=<%=domainURL%>?link=<%=profile.shareLink%>&text=<%=encodeURIComponent(shareLinkText)%>"
+            href="https://t.me/share/url?url=<%=domainURL%>?link=<%=user.shareLink%>&text=<%=encodeURIComponent(shareLinkText)%>"
             target="_blank"
             class="share-telegram"
           ></a>
           <a
-            href="https://twitter.com/intent/tweet?url=<%=domainURL%>?link=<%=profile.shareLink%>&text=<%=encodeURIComponent(shareLinkText)%>"
+            href="https://twitter.com/intent/tweet?url=<%=domainURL%>?link=<%=user.shareLink%>&text=<%=encodeURIComponent(shareLinkText)%>"
             target="_blank"
             class="share-twitter"
           ></a>
           <a
-            href="https://wa.me/?text=<%=encodeURIComponent(shareLinkText + ' ' + domainURL + '?link=' + profile.shareLink)%>"
+            href="https://wa.me/?text=<%=encodeURIComponent(shareLinkText + ' ' + domainURL + '?link=' + user.shareLink)%>"
             target="_blank"
             class="share-whatsapp"
           ></a>
