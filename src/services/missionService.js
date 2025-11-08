@@ -4,7 +4,8 @@
  * Uses OAuth2 Bearer token authentication
  */
 
-const charismaAuthService = require("./charismaAuthService");
+// const charismaAuthService = require("./charismaAuthService");
+const { BearerAuth } = require("../services/charismaAuthService");
 
 /**
  * Mission definitions with their corresponding API endpoints and heal rewards
@@ -55,9 +56,9 @@ exports.checkMissionCompletion = async (missionKey, mobileNumber) => {
     }
 
     const mission = MISSIONS[missionKey];
-    const client = await charismaAuthService.createCharismaClient();
-
-    const response = await client.get(mission.endpoint, {
+    const auth = new BearerAuth();
+    const serverUrl = "https://apig-gw.charisma.tech/gam/v1.0";
+    const response = await auth.get(serverUrl + mission.endpoint, {
       params: {
         mobileNumber: mobileNumber,
       },

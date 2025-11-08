@@ -314,7 +314,7 @@
       .layer1 .text1 {
         position: absolute;
         height: calc(5 * var(--vh));
-        top: calc(9 * var(--vh));
+        top: calc(11 * var(--vh));
         z-index: 99;
         width: calc(100 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
@@ -330,7 +330,7 @@
       .layer1 .text2 {
         position: absolute;
         height: calc(5 * var(--vh));
-        top: calc(12.6 * var(--vh));
+        top: calc(14.6 * var(--vh));
         z-index: 99;
         width: calc(100 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
@@ -442,7 +442,7 @@
         width: calc(71 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: right;
-        font-size: calc(1.4 * var(--vh));
+        font-size: calc(1.3 * var(--vh));
         color: #fff;
         direction: rtl;
         font-weight: normal;
@@ -451,7 +451,7 @@
         font-family: "Yekan Bakh", sans-serif;
       }
       .layer1 .lvl2 {
-        background: url(<%=domainURL%>/images/lvl2.png?ver=<%=version%>)
+        background: url(<%=domainURL%>/images/lvl2-off.png?ver=<%=version%>)
           no-repeat right center;
         background-size: contain !important;
         height: calc(9.8 * var(--vh));
@@ -470,7 +470,7 @@
         height: calc(5 * var(--vh));
         top: calc(2.6 * var(--vh));
         z-index: 99;
-        width: calc(71 * var(--vh) / var(--ratio));
+        width: calc(70 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: right;
         font-size: calc(1.9 * var(--vh));
@@ -486,7 +486,7 @@
         height: calc(5 * var(--vh));
         top: calc(5.5 * var(--vh));
         z-index: 99;
-        width: calc(71 * var(--vh) / var(--ratio));
+        width: calc(70 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: right;
         font-size: calc(1.5 * var(--vh));
@@ -498,7 +498,7 @@
         font-family: "Yekan Bakh", sans-serif;
       }
       .layer1 .lvl3 {
-        background: url(<%=domainURL%>/images/lvl3.png?ver=<%=version%>)
+        background: url(<%=domainURL%>/images/lvl3-off.png?ver=<%=version%>)
           no-repeat right center;
         background-size: contain !important;
         height: calc(9.8 * var(--vh));
@@ -517,7 +517,7 @@
         height: calc(5 * var(--vh));
         top: calc(2.6 * var(--vh));
         z-index: 99;
-        width: calc(71 * var(--vh) / var(--ratio));
+        width: calc(70 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: right;
         font-size: calc(1.9 * var(--vh));
@@ -533,7 +533,7 @@
         height: calc(5 * var(--vh));
         top: calc(5.6 * var(--vh));
         z-index: 99;
-        width: calc(71 * var(--vh) / var(--ratio));
+        width: calc(70 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: right;
         font-size: calc(1.3 * var(--vh));
@@ -545,7 +545,7 @@
         font-family: "Yekan Bakh", sans-serif;
       }
       .layer1 .lvl4 {
-        background: url(<%=domainURL%>/images/lvl4.png?ver=<%=version%>)
+        background: url(<%=domainURL%>/images/lvl4-off.png?ver=<%=version%>)
           no-repeat right center;
         background-size: contain !important;
         height: calc(9.8 * var(--vh));
@@ -564,7 +564,7 @@
         height: calc(5 * var(--vh));
         top: calc(2.6 * var(--vh));
         z-index: 99;
-        width: calc(71 * var(--vh) / var(--ratio));
+        width: calc(70 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: right;
         font-size: calc(1.9 * var(--vh));
@@ -580,7 +580,7 @@
         height: calc(5 * var(--vh));
         top: calc(5.5 * var(--vh));
         z-index: 99;
-        width: calc(71 * var(--vh) / var(--ratio));
+        width: calc(70 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: right;
         font-size: calc(1.5 * var(--vh));
@@ -597,7 +597,7 @@
         background-size: contain;
         height: calc(8.5 * var(--vh));
         width: calc(64 * var(--vh) / var(--ratio));
-        top: calc(75 * var(--vh));
+        top: calc(74 * var(--vh));
         margin-left: calc(18 * var(--vh) / var(--ratio));
         position: absolute;
         cursor: pointer;
@@ -1141,6 +1141,21 @@
         position: absolute;
         cursor: pointer;
       }
+      .app-modal .btn {
+        position: absolute;
+        height: calc(6 * var(--vh));
+        top: calc(54 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        margin-left: calc(43 * var(--vh) / var(--ratio));
+        width: calc(45 * var(--vh) / var(--ratio));
+        border: none;
+        background: transparent
+          url(<%=domainURL%>/images/install-app.png?ver=<%=version%>) no-repeat
+          center;
+        background-size: contain;
+      }
+
       .install-modal .btn {
         position: absolute;
         height: calc(6 * var(--vh));
@@ -1212,6 +1227,70 @@
         background-size: contain;
       }
 
+      .lose-modal .bg {
+        background: url(<%=domainURL%>/images/lose-modal.png?ver=<%=version%>)
+          no-repeat center;
+        background-size: contain;
+        height: calc(67 * var(--vh));
+        width: calc(96 * var(--vh) / var(--ratio));
+        top: calc(10 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .lose-modal .close {
+        height: calc(7 * var(--vh));
+        width: calc(15 * var(--vh) / var(--ratio));
+        top: calc(17 * var(--vh));
+        margin-left: calc(4 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .lose-modal .title {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(39 * var(--vh));
+        z-index: 99;
+        width: calc(100 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(3 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .lose-modal .text {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(45 * var(--vh));
+        z-index: 99;
+        width: calc(80 * var(--vh) / var(--ratio));
+        margin-left: calc(10 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .lose-modal .btn {
+        position: absolute;
+        height: calc(7 * var(--vh));
+        top: calc(57 * var(--vh));
+        cursor: pointer;
+        z-index: 99;
+        margin-left: calc(15 * var(--vh) / var(--ratio));
+        width: calc(70 * var(--vh) / var(--ratio));
+        border: none;
+        background: transparent
+          url(<%=domainURL%>/images/lose-btn.png?ver=<%=version%>) no-repeat
+          center;
+        background-size: contain;
+      }
       .lose-modal .tooltiptext {
         display: none;
         position: absolute;
@@ -1492,7 +1571,7 @@
 
           <div class="lvl1">
             <p class="lvl1-title">لاکپشت سرمایه‌گذار</p>
-            <p class="lvl1-text">قرعه‌کشی هدیه ۵۰ میلیون تومانی!</p>
+            <p class="lvl1-text">قرعه‌کشی جایزه ۵ میلیونی برای ۶۰ نفر !</p>
           </div>
           <div class="lvl2">
             <p class="lvl2-title">مار معامله‌گر</p>
@@ -1504,7 +1583,7 @@
           </div>
           <div class="lvl4">
             <p class="lvl4-title">گرگ وال‌استریت</p>
-            <p class="lvl4-text">قرعه‌کشی بک دستگاه آیفون ۱۷!</p>
+            <p class="lvl4-text">قرعه‌کشی یک دستگاه آیفون ۱۷!</p>
           </div>
           <a href="/game" class="start-btn" id="start-btn-link"></a>
         </div>
@@ -1524,7 +1603,12 @@
               <div class="mission-text">دعوت از دوستان</div>
               <div class="mission-heal">+۳</div>
             </div>
-            <%if(!profile.registerHeal){%>
+            <%if(!profile.appHeal){%>
+            <div class="mission-item mission-app">
+              <div class="mission-text">نصب اپلیکیشن کاریزما</div>
+              <div class="mission-heal">+۲</div>
+            </div>
+            <%}%> <%if(!profile.registerHeal){%>
             <div class="mission-item mission-install">
               <div class="mission-text">ثبت نام در کاریزما</div>
               <div class="mission-heal">+۳</div>
@@ -1572,7 +1656,12 @@
             <%}%>
             <div class="mission-completed-title">ماموریت‌های انجام شده</div>
 
-            <%if(profile.registerHeal){%>
+            <%if(profile.appHeal){%>
+            <div class="mission-item off-mission">
+              <div class="mission-text">نصب اپلیکیشن کاریزما</div>
+              <div class="mission-heal">+۲</div>
+            </div>
+            <%}%> <%if(profile.registerHeal){%>
             <div class="mission-item off-mission">
               <div class="mission-text">ثبت نام در کاریزما</div>
               <div class="mission-heal">+۳</div>
@@ -1707,10 +1796,31 @@
       </div>
       <div class="layer blurEffect" style="display: none"><div></div></div>
 
-      <div class="layer modal mission-modal install-modal hide">
+      <div class="layer modal mission-modal app-modal hide">
         <div class="wrapper">
           <div class="bg"></div>
           <div class="heal-count">+۳</div>
+          <div class="title">نصب اپلیکیشن کاریزما</div>
+          <div class="text">
+            اگه نرم‌افزار کاریزما رو نصب کنی، ۲ جون تازه می‌گیری! قبلاً نصب
+            کردی؟<br />
+            فقط وارد شو تا دوباره عضویتت چک بشه و جون‌های جدید فعال بشه.
+          </div>
+          <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
+          <div class="check-btn"></div>
+          <a
+            href="https://click.adtrace.io/40j535p"
+            class="btn"
+            target="_blank"
+          ></a>
+          <div class="close"></div>
+        </div>
+      </div>
+
+      <div class="layer modal mission-modal install-modal hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="heal-count">+۲</div>
           <div class="title">ثبت نام در کاریزما</div>
           <div class="text">
             اگه توی اپ کاریزما ثبت نام کنی، ۳ جون تازه می‌گیری! قبلاً عضو
@@ -1785,6 +1895,18 @@
           </div>
           <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
           <div class="check-btn"></div>
+          <div class="btn"></div>
+          <div class="close"></div>
+        </div>
+      </div>
+      <div class="layer modal lose-modal hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="title">جون‌هات تموم شد!</div>
+          <div class="text">
+            برای دریافت جون بیشتر باید یکی از ماموریت‌هایی که برات تعریف شده رو
+            انجام بدی تا جون بیشتر بدست بیاری.
+          </div>
           <div class="btn"></div>
           <div class="close"></div>
         </div>
@@ -2025,7 +2147,7 @@
                   (score_pool[1] - score_pool[0])) *
                 vh
             );
-            $(".lvl1").css("height", 10.8 * vh);
+            $(".lvl1").css("height", 10 * vh);
           } else if (score <= score_pool[2]) {
             let diff_score = score - score_pool[1];
             $(".progress-bar").css(
@@ -2035,12 +2157,12 @@
                   (score_pool[2] - score_pool[1])) *
                 vh
             );
-            $(".lvl2").css("height", 10.8 * vh);
-            //   $(".lvl2").css(
-            //     "background",
-            //     `url(<%=domainURL%>/images/lvl2-on.png?ver=<%=version%>)
-            // no-repeat right center`
-            //   );
+            $(".lvl2").css("height", 10 * vh);
+            $(".lvl2").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl2.png?ver=<%=version%>)
+            no-repeat right center`
+            );
           } else if (score <= score_pool[3]) {
             let diff_score = score - score_pool[2];
             $(".progress-bar").css(
@@ -2051,22 +2173,92 @@
                 vh
             );
 
-            $(".lvl3").css("height", 10.8 * vh);
-            //   $(".lvl3").css(
-            //     "background",
-            //     `url(<%=domainURL%>/images/lvl3-on.png?ver=<%=version%>)
-            // no-repeat right center`
-            //   );
+            $(".lvl3").css("height", 10 * vh);
+            $(".lvl3").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl3.png?ver=<%=version%>)
+            no-repeat right center`
+            );
           } else {
             $(".progress-bar").css("height", progressbar_pool[5] * vh);
-            $(".lvl4").css("height", 10.8 * vh);
-            //   $(".lvl4").css(
-            //     "background",
-            //     `url(<%=domainURL%>/images/lvl4-on.png?ver=<%=version%>)
-            // no-repeat right center`
-            //   );
+            $(".lvl4").css("height", 10 * vh);
+            $(".lvl4").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl4.png?ver=<%=version%>)
+            no-repeat right center`
+            );
           }
         }, 100);
+      }
+
+      /**
+       * Check mission completion by calling the API
+       * @param {string} missionKey - The mission key (e.g., 'registerHeal', 'tarhHeal')
+       * @param {string} modalSelector - The modal selector (e.g., '.app-modal')
+       */
+      function checkMissionCompletion(missionKey, modalSelector) {
+        if (!acceptAjax) return;
+        acceptAjax = false;
+
+        const modal = $(modalSelector);
+        const checkBtn = modal.find(".check-btn");
+        const alert = modal.find(".alert");
+        const originalBtnContent = checkBtn.html();
+
+        // Show loading state
+        checkBtn.css("opacity", "0.5").css("pointer-events", "none");
+
+        $.ajax({
+          type: "POST",
+          url: "/missions/check/" + missionKey,
+          processData: false,
+          contentType: false,
+          cache: false,
+          async: true,
+          headers: {
+            "cache-control": "no-cache",
+            token: "<%=csrfToken%>",
+          },
+          success: function (res) {
+            checkBtn.css("opacity", "1").css("pointer-events", "auto");
+
+            if (res.status === 200) {
+              if (res.completed) {
+                // Mission completed successfully
+                alert.removeClass("hide alert-error").addClass("alert-success");
+                alert.text(
+                  `تبریک! ماموریت انجام شد! +${res.healAdded} جون اضافه شد`
+                );
+
+                // Update heal display
+                $(".heal-text").html(toPersianNumber(res.totalHeal.toString()));
+
+                // Close modal after 2 seconds
+                setTimeout(() => {
+                  hideModal(modalSelector);
+                  acceptAjax = true;
+                }, 2000);
+              } else {
+                // Mission not yet completed
+                alert.removeClass("hide alert-success").addClass("alert-error");
+                alert.text(
+                  "ماموریت هنوز انجام نشده است. لطفا ابتدا ماموریت را انجام دهید."
+                );
+                acceptAjax = true;
+              }
+            } else {
+              alert.removeClass("hide alert-success").addClass("alert-error");
+              alert.text(res.message || "خطا در بررسی ماموریت");
+              acceptAjax = true;
+            }
+          },
+          error: function () {
+            checkBtn.css("opacity", "1").css("pointer-events", "auto");
+            alert.removeClass("hide alert-success").addClass("alert-error");
+            alert.text("خطا در ارتباط با سرور!");
+            acceptAjax = true;
+          },
+        });
       }
 
       $(window).ready(function () {
@@ -2080,6 +2272,7 @@
 
         // غیرفعال کردن دکمه شروع بازی اگر جون صفر یا کمتر بود
         if (playerInfo.heal <= 0) {
+          showModal(".lose-modal");
           $("#start-btn-link").addClass("disabled");
           $("#start-btn-link").on("click", function (e) {
             e.preventDefault();
@@ -2111,7 +2304,17 @@
           $(".layer2").removeClass("active-tab");
           $(".layer3").addClass("active-tab");
         });
-
+        $(".lose-modal .btn").on("click", () => {
+          hideModal(".lose-modal");
+          setTimeout(() => {
+            $(".tab-2").addClass("active-nav");
+            $(".tab-1").removeClass("active-nav");
+            $(".tab-3").removeClass("active-nav");
+            $(".layer1").removeClass("active-tab");
+            $(".layer2").addClass("active-tab");
+            $(".layer3").removeClass("active-tab");
+          }, 1000);
+        });
         $(".to-persian").each(function () {
           $(this).html(toPersianNumber($(this).html()));
         });
@@ -2132,6 +2335,10 @@
           $(".layer1").removeClass("active-tab");
           $(".layer2").removeClass("active-tab");
           $(".layer3").addClass("active-tab");
+        });
+
+        $(".mission-app").on("click", () => {
+          showModal(".app-modal");
         });
         $(".mission-install").on("click", () => {
           showModal(".install-modal");
@@ -2175,6 +2382,36 @@
 
         $(".mission-modal .close").on("click", function () {
           hideModal(".mission-modal");
+        });
+        $(".lose-modal .close").on("click", function () {
+          hideModal(".lose-modal");
+        });
+        $(".app-modal .btn").on("click", function () {
+          hideModal(".lose-modal");
+          window.location.reload();
+        });
+        $(".app-modal .check-btn").on("click", function () {
+          checkMissionCompletion("registerHeal", ".app-modal");
+        });
+
+        $(".install-modal .check-btn").on("click", function () {
+          checkMissionCompletion("registerHeal", ".install-modal");
+        });
+
+        $(".tarh-modal .check-btn").on("click", function () {
+          checkMissionCompletion("tarhHeal", ".tarh-modal");
+        });
+
+        $(".sandoogh-modal .check-btn").on("click", function () {
+          checkMissionCompletion("sandooghHeal", ".sandoogh-modal");
+        });
+
+        $(".tabdil-modal .check-btn").on("click", function () {
+          checkMissionCompletion("tabdilHeal", ".tabdil-modal");
+        });
+
+        $(".vam-modal .check-btn").on("click", function () {
+          checkMissionCompletion("vamHeal", ".vam-modal");
         });
 
         // Handle phone input for share form

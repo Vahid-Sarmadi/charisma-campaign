@@ -354,6 +354,11 @@ exports.addHeal = async (req, res) => {
         return res.json({ status: 400, message: "شما قبلا دریافت کرده‌اید!" });
       req.user.profile.heal += 2;
       req.user.profile.linkedinHeal = true;
+    } else if (type === "app") {
+      if (req.user.profile.appHeal)
+        return res.json({ status: 400, message: "شما قبلا دریافت کرده‌اید!" });
+      req.user.profile.heal += 2;
+      req.user.profile.appHeal = true;
     }
 
     await req.user.save();

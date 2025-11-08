@@ -19,7 +19,9 @@ export class BearerAuth {
     const clientId = "IpcnOtc6VbA_uXFJXFjlbhOu2fsa";
     const clientSecret = "iHfFoimuQab6Nym9BR5c5AEcYkoa";
 
-    const credentials = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
+    const credentials = Buffer.from(`${clientId}:${clientSecret}`).toString(
+      "base64"
+    );
 
     const headers = {
       Authorization: `Basic ${credentials}`,
@@ -49,6 +51,20 @@ export class BearerAuth {
 
     const response = await axios.post(url, payload, {
       headers: { Authorization: `Bearer ${this.token}` },
+      httpsAgent,
+    });
+
+    return response;
+  }
+
+  async get(url, params) {
+    if (!this.token) await this.init();
+
+    const httpsAgent = new https.Agent({ rejectUnauthorized: false });
+
+    const response = await axios.get(url, {
+      headers: { Authorization: `Bearer ${this.token}` },
+      params,
       httpsAgent,
     });
 
