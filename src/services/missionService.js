@@ -62,11 +62,8 @@ exports.checkMissionCompletion = async (missionKey, mobileNumber) => {
     const cleanMobileNumber = mobileNumber.startsWith("0")
       ? mobileNumber.slice(1)
       : mobileNumber;
-    const response = await auth.get(serverUrl + mission.endpoint, {
-      params: {
-        mobileNumber: cleanMobileNumber,
-      },
-    });
+    const url = `${serverUrl}${mission.endpoint}?mobileNumber=${cleanMobileNumber}`;
+    const response = await auth.get(url);
 
     console.log(response.data);
     // The API returns a boolean or object with completion status
@@ -110,11 +107,8 @@ exports.checkAllMissions = async (mobileNumber) => {
       : mobileNumber;
     const promises = endpoints.map(async (item) => {
       try {
-        const response = await client.get(item.endpoint, {
-          params: {
-            mobileNumber: cleanMobileNumber,
-          },
-        });
+        const url = `${item.endpoint}?mobileNumber=${cleanMobileNumber}`;
+        const response = await client.get(url);
 
         results[item.key] = {
           completed:
