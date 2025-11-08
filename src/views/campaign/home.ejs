@@ -777,6 +777,24 @@
         margin-left: calc(0 * var(--vh) / var(--ratio));
         position: absolute;
       }
+      .layer3 .share-box {
+        background: url(<%=domainURL%>/images/invite.png?ver=<%=version%>)
+          no-repeat top;
+        background-size: contain;
+        height: calc(6.5 * var(--vh));
+        width: calc(100 * var(--vh) / var(--ratio));
+        top: calc(28 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .layer3 .share-btn {
+        height: calc(3.5 * var(--vh));
+        width: calc(13 * var(--vh) / var(--ratio));
+        top: calc(30.5 * var(--vh));
+        margin-left: calc(12 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
       .layer3 .share-title {
         position: absolute;
         height: calc(5 * var(--vh));
@@ -811,18 +829,19 @@
       }
       .layer3 .share-text2 {
         position: absolute;
-        height: calc(5 * var(--vh));
-        top: calc(27.3 * var(--vh));
+        height: calc(2 * var(--vh));
+        top: calc(31.5 * var(--vh));
         z-index: 99;
         width: calc(55 * var(--vh) / var(--ratio));
         margin-left: calc(32 * var(--vh) / var(--ratio));
         text-align: right;
         font-size: calc(1.6 * var(--vh));
-        color: #282e6c;
+        color: #8d8d8d;
         direction: rtl;
         font-weight: normal;
         padding: 0;
         margin-top: 0;
+        overflow: hidden;
         font-family: "Yekan Bakh", sans-serif;
       }
       .layer3 #share-form #phone {
@@ -1291,11 +1310,11 @@
           center;
         background-size: contain;
       }
-      .lose-modal .tooltiptext {
+      .layer3 .tooltiptext {
         display: none;
         position: absolute;
-        height: calc(4 * var(--vh));
-        top: calc(55 * var(--vh));
+        height: calc(3 * var(--vh));
+        top: calc(24 * var(--vh));
         cursor: pointer;
         z-index: 100;
         left: calc(23 * var(--vh) / var(--ratio));
@@ -1308,7 +1327,7 @@
         transition: opacity 0.3s;
         font-size: calc(4 * var(--vh) / var(--ratio));
       }
-      .lose-modal .tooltiptext::after {
+      .layer3 .tooltiptext::after {
         content: "";
         position: absolute;
         top: 100%;
@@ -1717,38 +1736,16 @@
           <div class="share-text">
             با دعوت از دوستات شانس برنده شدنت رو بیشتر کن !
           </div>
-          <div class="share-text2">شماره دوستت رو وارد کن</div>
-          <form
-            id="share-form"
-            data-form-output="form-output-global"
-            accept-charset="utf-8"
-            enctype="multipart/form-data"
-          >
-            <input
-              class="input _csrf"
-              id="_csrf"
-              type="hidden"
-              name="_csrf"
-              placeholder=""
-              value="<%=csrfToken%>"
-            />
+          <div class="share-box">
+            
+          </div>
+          <div class="share-text2"><%=domainURL%>?link=<%=profile.shareLink%></div>
+          <div
+            class="share-btn copyToClipboard"
+            data-value="<%=domainURL%>?link=<%=profile.shareLink%>"
+          ></div>
+          <span class="tooltiptext" id="myTooltip">آدرس بازی کپی شد</span>
 
-            <input
-              class="input phone"
-              id="phone"
-              min="0"
-              maxlength="11"
-              type="text"
-              pattern="^[0-9۰-۹]*$"
-              inputmode="numeric"
-              name="phone"
-              placeholder="شماره موبایل دوستت"
-            />
-            <p class="alert hide"></p>
-            <button type="submit" class="share-friend-btn" disabled>
-              ارسال دعوتنامه
-            </button>
-          </form>
           <a
             href="https://t.me/share/url?url=<%=domainURL%>?link=<%=profile.shareLink%>&text=<%=encodeURIComponent(shareLinkText)%>"
             target="_blank"
@@ -2416,105 +2413,19 @@
         });
 
         // Handle phone input for share form
-        $("#share-form #phone").on("keypress", function (event) {
-          event.preventDefault();
-          var regex = new RegExp("^[0-9۰-۹]*$");
-          var key = String.fromCharCode(
-            !event.charCode ? event.which : event.charCode
-          );
-          if (!regex.test(key)) {
-            return false;
-          }
-          $("#share-form #phone").val(
-            $("#share-form #phone").val() + toPersianNumber(key)
-          );
-          var val = $("#share-form #phone").val();
-          if (val.length > 11) $("#share-form #phone").val(val.slice(0, 11));
-        });
+        $(".copyToClipboard").on("click", function (e) {
+          var $temp = $("<input>");
+          $("body").append($temp);
+          $temp.val($(".copyToClipboard").data("value")).select();
+          document.execCommand("copy");
+          $temp.remove();
 
-        // Enable/disable submit button based on phone input
-        $("#share-form #phone").on("keyup", function () {
-          if ($("#share-form #phone").val() === "") {
-            $(".share-friend-btn").attr("disabled", "disabled");
-          } else {
-            $(".share-friend-btn").removeAttr("disabled");
-          }
-        });
-
-        // Handle share form submission
-        $("#share-form").on("submit", function (e) {
-          e.preventDefault();
-
-          if (!acceptAjax) return;
-          acceptAjax = false;
-
-          const data = new FormData(this);
-          const alert = $("#share-form .alert");
-          const input = $("#share-form #phone");
-          const button = $(".share-friend-btn");
-
-          alert.removeClass("alert-error alert-success").addClass("hide");
-          input.removeClass("input-error input-success");
-
-          // Show loading state
-          button.html(
-            '<span class="fa fa-spinner fa-spin" style="font-size: calc(1.8* var(--vh));"></span>'
-          );
-
-          $.ajax({
-            type: "POST",
-            url: "/sendInvite",
-            data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
-            async: true,
-            headers: {
-              "cache-control": "no-cache",
-            },
-            success: function (res) {
-              button.html("ارسال دعوتنامه");
-
-              if (res.status === 500) {
-                alert.text("خطا در سرور! لطفا دوباره تلاش کنید.");
-                alert.removeClass("hide").addClass("alert-error");
-                input.addClass("input-error");
-              } else if (res.status === 501) {
-                alert.text(
-                  "خطا! " + (res.error?.["phone"] || "شماره تلفن نامعتبر است")
-                );
-                alert.removeClass("hide").addClass("alert-error");
-                input.addClass("input-error");
-              } else if (res.status === 400) {
-                alert.text(res.message || "خطا در ارسال دعوتنامه!");
-                alert.removeClass("hide").addClass("alert-error");
-                input.addClass("input-error");
-              } else if (res.status === 200) {
-                alert.text(res.message);
-                alert.removeClass("hide").addClass("alert-success");
-                input.addClass("input-success").val("");
-                button.attr("disabled", "disabled");
-
-                // Reload page after 2 seconds to update friend list
-                setTimeout(function () {
-                  window.location.reload();
-                }, 2000);
-              } else {
-                alert.text("خطا در ارسال دعوتنامه!");
-                alert.removeClass("hide").addClass("alert-error");
-                input.addClass("input-error");
-              }
-
-              acceptAjax = true;
-            },
-            error: function () {
-              button.html("ارسال دعوتنامه");
-              alert.text("عدم ارتباط با سرور!");
-              alert.removeClass("hide").addClass("alert-error");
-              input.addClass("input-error");
-              acceptAjax = true;
-            },
-          });
+          var tooltip = $("#myTooltip");
+          tooltip.text("آدرس بازی کپی شد");
+          tooltip.fadeIn();
+          setTimeout(function () {
+            tooltip.fadeOut();
+          }, 3000);
         });
       });
     </script>
