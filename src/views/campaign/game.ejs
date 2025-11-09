@@ -405,17 +405,7 @@
         margin-top: 0;
         font-family: "Digital-7 Mono", sans-serif;
       }
-      .layer1 .chart-btn {
-        background: url(<%=domainURL%>/images/chart-btn.png?ver=<%=version%>)
-          no-repeat top;
-        background-size: contain;
-        height: calc(9.5 * var(--vh));
-        width: calc(50 * var(--vh) / var(--ratio));
-        top: calc(55 * var(--vh));
-        margin-left: calc(25 * var(--vh) / var(--ratio));
-        position: absolute;
-        cursor: pointer;
-      }
+      
       .layer1 .gold-btn {
         background: url(<%=domainURL%>/images/gold-btn.png?ver=<%=version%>)
           no-repeat top;
@@ -664,80 +654,7 @@
         cursor: pointer;
       }
 
-      .night-vision-modal .bg {
-        background: url(<%=domainURL%>/images/chart-modal.png?ver=<%=version%>)
-          no-repeat center;
-        background-size: contain;
-        height: calc(67 * var(--vh));
-        width: calc(96 * var(--vh) / var(--ratio));
-        top: calc(10 * var(--vh));
-        margin-left: calc(0 * var(--vh) / var(--ratio));
-        position: absolute;
-      }
-      .night-vision-modal .close {
-        height: calc(7 * var(--vh));
-        width: calc(15 * var(--vh) / var(--ratio));
-        top: calc(20 * var(--vh));
-        margin-left: calc(4 * var(--vh) / var(--ratio));
-        position: absolute;
-        cursor: pointer;
-      }
-
-      .night-vision-modal .title {
-        position: absolute;
-        height: calc(5 * var(--vh));
-        top: calc(21 * var(--vh));
-        z-index: 99;
-        width: calc(100 * var(--vh) / var(--ratio));
-        margin-left: calc(0 * var(--vh) / var(--ratio));
-        text-align: center;
-        font-size: calc(3 * var(--vh));
-        color: #fff;
-        direction: rtl;
-        font-weight: bolder;
-        padding: 0;
-        margin-top: 0;
-        font-family: "Yekan Bakh", sans-serif;
-      }
-      .night-vision-modal .text {
-        position: absolute;
-        height: calc(5 * var(--vh));
-        top: calc(44 * var(--vh));
-        z-index: 99;
-        width: calc(80 * var(--vh) / var(--ratio));
-        margin-left: calc(10 * var(--vh) / var(--ratio));
-        text-align: center;
-        font-size: calc(2 * var(--vh));
-        color: #fff;
-        direction: rtl;
-        font-weight: normal;
-        padding: 0;
-        margin-top: 0;
-        font-family: "Yekan Bakh", sans-serif;
-      }
-
-      .night-vision-modal .check-btn {
-        background: url(<%=domainURL%>/images/mission-done.png?ver=<%=version%>)
-          no-repeat center;
-        background-size: contain;
-        height: calc(6.8 * var(--vh));
-        width: calc(25 * var(--vh) / var(--ratio));
-        top: calc(59.5 * var(--vh));
-        margin-left: calc(10 * var(--vh) / var(--ratio));
-        position: absolute;
-        cursor: pointer;
-      }
-      .night-vision-modal .btn {
-        background: url(<%=domainURL%>/images/install-app.png?ver=<%=version%>)
-          no-repeat center;
-        background-size: contain;
-        height: calc(6.8 * var(--vh));
-        width: calc(50 * var(--vh) / var(--ratio));
-        top: calc(60 * var(--vh));
-        margin-left: calc(39 * var(--vh) / var(--ratio));
-        position: absolute;
-        cursor: pointer;
-      }
+      
 
       #preloader {
         position: fixed;
@@ -1050,22 +967,7 @@
           <div class="close"></div>
         </div>
       </div>
-      <div class="layer modal night-vision-modal hide">
-        <div class="wrapper">
-          <div class="bg"></div>
-          <div class="text">
-            اپلیکیشن کاریزما رو نصب کن و ثبت نامت رو کامل کن تا در ازاش قابلیت
-            دید در شب برات فعال بشه
-          </div>
-          <div class="check-btn"></div>
-          <a
-            href="https://click.adtrace.io/40j535p"
-            class="btn"
-            target="_blank"
-          ></a>
-          <div class="close"></div>
-        </div>
-      </div>
+      
       <div class="layer modal win-modal hide">
         <div class="wrapper">
           <div class="bg"></div>
@@ -1823,9 +1725,9 @@
           startTimer();
         });
 
-        $(".night-vision-modal .close").on("click", function () {
-          hideModal(".night-vision-modal");
-        });
+        // $(".night-vision-modal .close").on("click", function () {
+        //   hideModal(".night-vision-modal");
+        // });
 
         // $(".chart-btn").on("click", function () {
         //   showModal(".night-vision-modal");
