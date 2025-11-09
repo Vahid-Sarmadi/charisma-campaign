@@ -94,7 +94,6 @@ exports.verifyCode = async (req, res, next) => {
     code = toNormalNumber(code.trim());
     fullname = fullname.trim();
 
-    console.log(req.body);
     let error = {};
 
     if (!fullname) {

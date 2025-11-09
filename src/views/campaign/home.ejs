@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fa">
   <head>
-    <title>راهکارهای سرمایه گذاری آنلاین | گروه مالی کاریزما</title>
+    <title>طلاباز، از اسمارت واچ تا آیفون ۱۷ پرو با کاریزما</title>
 
     <%- include('partials/meta.ejs') %> <%- include('partials/link.ejs') %> <%-
     include('partials/style.ejs') %> <%- include('partials/ga.ejs') %> <% var
@@ -12,7 +12,7 @@
     -1 ) result += str[i]; else result += numerals.persian[index]; } return
     result; } %> <%let shareLinkText = `من در بازی کاریزما ${profile.score | 0}
     امتیاز گرفتم! 🎯 حالا نوبت توعه که این چالش رو قبول کنی و ببینی می‌تونی بهتر
-    عمل کنی. با کلی جایزه از آیفون ۱۷ تا اسمارت واچ!`%>
+    عمل کنی. با کلی جایزه از آیفون ۱۷ پرو تا اسمارت واچ!`%>
     <script type="text/javascript">
       var numerals = {
         persian: ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
@@ -314,7 +314,7 @@
       .layer1 .text1 {
         position: absolute;
         height: calc(5 * var(--vh));
-        top: calc(11 * var(--vh));
+        top: calc(9.4 * var(--vh));
         z-index: 99;
         width: calc(100 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
@@ -330,7 +330,7 @@
       .layer1 .text2 {
         position: absolute;
         height: calc(5 * var(--vh));
-        top: calc(14.6 * var(--vh));
+        top: calc(13 * var(--vh));
         z-index: 99;
         width: calc(100 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
@@ -346,7 +346,7 @@
       .layer1 .text3 {
         position: absolute;
         height: calc(5 * var(--vh));
-        top: calc(19.8 * var(--vh));
+        top: calc(20.3 * var(--vh));
         z-index: 99;
         width: calc(100 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
@@ -583,7 +583,7 @@
         width: calc(70 * var(--vh) / var(--ratio));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         text-align: right;
-        font-size: calc(1.5 * var(--vh));
+        font-size: calc(1.4 * var(--vh));
         color: #fff;
         direction: rtl;
         font-weight: normal;
@@ -781,16 +781,16 @@
         background: url(<%=domainURL%>/images/invite.png?ver=<%=version%>)
           no-repeat top;
         background-size: contain;
-        height: calc(6.5 * var(--vh));
+        height: calc(4.5 * var(--vh));
         width: calc(100 * var(--vh) / var(--ratio));
-        top: calc(28 * var(--vh));
+        top: calc(32.02 * var(--vh));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         position: absolute;
       }
       .layer3 .share-btn {
         height: calc(3.5 * var(--vh));
         width: calc(13 * var(--vh) / var(--ratio));
-        top: calc(30.5 * var(--vh));
+        top: calc(32.5 * var(--vh));
         margin-left: calc(12 * var(--vh) / var(--ratio));
         position: absolute;
         cursor: pointer;
@@ -822,21 +822,40 @@
         font-size: calc(1.7 * var(--vh));
         color: #282e6c;
         direction: rtl;
-        font-weight: normal;
+        font-weight: bold;
         padding: 0;
         margin-top: 0;
         font-family: "Yekan Bakh", sans-serif;
       }
       .layer3 .share-text2 {
+        word-break: break-all;
+        text-overflow: ellipsis;
         position: absolute;
         height: calc(2 * var(--vh));
-        top: calc(31.5 * var(--vh));
+        top: calc(33.5 * var(--vh));
         z-index: 99;
         width: calc(55 * var(--vh) / var(--ratio));
         margin-left: calc(32 * var(--vh) / var(--ratio));
         text-align: right;
         font-size: calc(1.6 * var(--vh));
         color: #8d8d8d;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        overflow: hidden;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .layer3 .share-text3 {
+        position: absolute;
+        height: calc(2 * var(--vh));
+        top: calc(29.5 * var(--vh));
+        z-index: 99;
+        width: calc(58 * var(--vh) / var(--ratio));
+        margin-left: calc(32 * var(--vh) / var(--ratio));
+        text-align: right;
+        font-size: calc(1.8 * var(--vh));
+        color: #000;
         direction: rtl;
         font-weight: normal;
         padding: 0;
@@ -937,12 +956,30 @@
         display: block;
         text-decoration: none;
       }
+      .layer3 .logout {
+        position: absolute;
+        height: calc(3 * var(--vh));
+        top: calc(46 * var(--vh));
+        z-index: 99;
+        width: calc(100 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(1.8 * var(--vh));
+        color: red;
+        text-decoration: none;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+        cursor: pointer;
+      }
       .layer3 .line {
         border-top: 1px solid #282e6c;
         background-size: contain;
         height: 1px;
         width: calc(100 * var(--vh) / var(--ratio));
-        top: calc(49 * var(--vh));
+        top: calc(49.6 * var(--vh));
         margin-left: calc(0 * var(--vh) / var(--ratio));
         position: absolute;
       }
@@ -1132,8 +1169,8 @@
         height: calc(5 * var(--vh));
         top: calc(51 * var(--vh));
         z-index: 99;
-        width: calc(80 * var(--vh) / var(--ratio));
-        margin-left: calc(10 * var(--vh) / var(--ratio));
+        width: calc(90 * var(--vh) / var(--ratio));
+        margin-left: calc(5 * var(--vh) / var(--ratio));
         text-align: center;
         font-size: calc(1.6 * var(--vh));
         color: #fff;
@@ -1314,10 +1351,10 @@
         display: none;
         position: absolute;
         height: calc(3 * var(--vh));
-        top: calc(24 * var(--vh));
+        top: calc(26 * var(--vh));
         cursor: pointer;
         z-index: 100;
-        left: calc(23 * var(--vh) / var(--ratio));
+        margin-left: calc(23 * var(--vh) / var(--ratio));
         width: calc(50 * var(--vh) / var(--ratio));
         background-color: #555;
         color: #fff;
@@ -1584,6 +1621,10 @@
           <div class="score-text to-persian"><%=profile.score%></div>
           <div class="text1">بازی کن، امتیاز بگیر،</div>
           <div class="text2">جایـــــزه ببــــر !</div>
+          <div class="text3">
+            برای دنبال کردن اخبار قرعه کشی<br />
+            پیج اینستاگرام کاریزما را دنبال کنید.
+          </div>
           <div class="progress-wrapp">
             <div class="progress-bar"></div>
           </div>
@@ -1602,7 +1643,7 @@
           </div>
           <div class="lvl4">
             <p class="lvl4-title">گرگ وال‌استریت</p>
-            <p class="lvl4-text">قرعه‌کشی یک دستگاه آیفون ۱۷!</p>
+            <p class="lvl4-text">قرعه‌کشی یک دستگاه آیفون ۱۷ پرو!</p>
           </div>
           <a href="/game" class="start-btn" id="start-btn-link"></a>
         </div>
@@ -1734,15 +1775,17 @@
           <div class="share-img"></div>
           <div class="share-title">دوستات رو دعوت کن</div>
           <div class="share-text">
-            با دعوت از دوستات شانس برنده شدنت رو بیشتر کن !
+            با ارسال لینک دعوت به دوستانت و<br />
+            ثبت نام آن‌ها ۳ جان تازه میگیری.
           </div>
           <div class="share-box"></div>
+          <div class="share-text3">لینک دعوت</div>
           <div class="share-text2"><%=domainURL%>?link=<%=user.shareLink%></div>
           <div
             class="share-btn copyToClipboard"
             data-value="<%=domainURL%>?link=<%=user.shareLink%>"
           ></div>
-          <span class="tooltiptext" id="myTooltip">آدرس بازی کپی شد</span>
+          <span class="tooltiptext" id="myTooltip">لینک دعوت کپی شد</span>
 
           <a
             href="https://t.me/share/url?url=<%=domainURL%>?link=<%=user.shareLink%>&text=<%=encodeURIComponent(shareLinkText)%>"
@@ -1759,6 +1802,7 @@
             target="_blank"
             class="share-whatsapp"
           ></a>
+          <a class="logout" href="/logout">خروج از بازی</a>
           <div class="line"></div>
           <div class="friend-title">دوستان من</div>
 
@@ -1797,9 +1841,9 @@
           <div class="heal-count">+۲</div>
           <div class="title">نصب اپلیکیشن کاریزما</div>
           <div class="text">
-            اگه نرم‌افزار کاریزما رو نصب کنی، ۲ جون تازه می‌گیری! قبلاً نصب
-            کردی؟<br />
-            فقط وارد شو تا دوباره عضویتت چک بشه و جون‌های جدید فعال بشه.
+            با نصب اپلیکیشن کاریزما، 2 جون تازه میگیری و بقیه ماموریت هاتو هم
+            راحت تر جلو میبری.<br /><br />
+            یادت نره بعد از نصب به بازی برگردی!
           </div>
           <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
           <div class="check-btn"></div>
@@ -1824,7 +1868,11 @@
           </div>
           <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
           <div class="check-btn"></div>
-          <a class="btn" href="https://charisma.ir/" target="_blank"></a>
+          <a
+            class="btn"
+            href="https://auth.charisma.ir/account/login"
+            target="_blank"
+          ></a>
           <div class="btn"></div>
           <div class="close"></div>
         </div>
@@ -1841,7 +1889,11 @@
           </div>
           <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
           <div class="check-btn"></div>
-          <a class="btn" href="https://charisma.ir/" target="_blank"></a>
+          <a
+            class="btn"
+            href="https://inv.charisma.ir/investment/plan"
+            target="_blank"
+          ></a>
           <div class="close"></div>
         </div>
       </div>
@@ -1857,7 +1909,11 @@
           </div>
           <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
           <div class="check-btn"></div>
-          <a class="btn" href="https://charisma.ir/" target="_blank"></a>
+          <a
+            class="btn"
+            href="https://inv.charisma.ir/investment/fund"
+            target="_blank"
+          ></a>
           <div class="close"></div>
         </div>
       </div>
@@ -1874,7 +1930,11 @@
           </div>
           <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
           <div class="check-btn"></div>
-          <a class="btn" href="https://charisma.ir/" target="_blank"></a>
+          <a
+            class="btn"
+            href="https://inv.charisma.ir/investment"
+            target="_blank"
+          ></a>
           <div class="close"></div>
         </div>
       </div>
@@ -1891,7 +1951,7 @@
           </div>
           <div class="alert hide">شما هنوز این ماموریت را انجام نداده اید.</div>
           <div class="check-btn"></div>
-          <a class="btn" href="https://charisma.ir/" target="_blank"></a>
+          <a class="btn" href="https://loan.charisma.ir/" target="_blank"></a>
           <div class="close"></div>
         </div>
       </div>
@@ -1903,7 +1963,7 @@
             برای دریافت جون بیشتر باید یکی از ماموریت‌هایی که برات تعریف شده رو
             انجام بدی تا جون بیشتر بدست بیاری.
           </div>
-          <a class="btn" href="https://charisma.ir/" target="_blank"></a>
+          <div class="btn"></div>
           <div class="close"></div>
         </div>
       </div>
@@ -2062,41 +2122,6 @@
 
       let instagramTry = 0;
 
-      function startTimer() {
-        if (timerStarted) return;
-        timerStarted = true;
-        document.getElementById("clock-sound").play();
-        var x = setInterval(function () {
-          if (pause) return;
-          // Get todays date and time
-          var now = new Date().getTime();
-
-          // Find the distance between now and the count down date
-          var distance = timerCount - now;
-
-          // Time calculations for days, hours, minutes and seconds
-          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-          // Display the result in the element with id="demo"
-
-          var foo = "";
-          if (seconds < 10) seconds = "0" + seconds;
-          foo = minutes + ":" + seconds;
-          foo = toPersianNumber(foo);
-          $(".timer-wrap").html(foo);
-
-          if (distance < 0) {
-            $(".timer-wrap").html("۰۰:۰۰");
-            document.getElementById("clock-sound").pause();
-            clearInterval(x);
-            pause = true;
-            // showModal('.lose-modal');
-            loseScore();
-          }
-        }, 1000);
-      }
-
       function addHeal(type = "instagram") {
         if (!acceptAjax) return;
         acceptAjax = false;
@@ -2129,30 +2154,16 @@
         $(".progress-bar").css("height", 0 * vh);
 
         setTimeout(function () {
-          let score_pool = [199, 499, 999, 1499];
-          let progressbar_pool = [0, 0, 13.7, 23.5, 36, 36];
+          let score_pool = [0, 200, 500, 1000, 1499];
+          let progressbar_pool = [0, 13.7, 23.5, 36, 36];
           if (score <= score_pool[0]) {
             $(".progress-bar").css("height", progressbar_pool[0] * vh);
-            // $(".lvl1").css("height", 14.7 * vh);
+            $(".lvl1").css("height", 10 * vh);
           } else if (score <= score_pool[1]) {
-            let diff_score = score;
-            $(".progress-bar").css(
-              "height",
-              (progressbar_pool[1] +
-                ((progressbar_pool[2] - progressbar_pool[1]) * diff_score) /
-                  (score_pool[1] - score_pool[0])) *
-                vh
-            );
+            $(".progress-bar").css("height", progressbar_pool[0] * vh);
             $(".lvl1").css("height", 10 * vh);
           } else if (score <= score_pool[2]) {
-            let diff_score = score - score_pool[1];
-            $(".progress-bar").css(
-              "height",
-              (progressbar_pool[2] +
-                ((progressbar_pool[3] - progressbar_pool[2]) * diff_score) /
-                  (score_pool[2] - score_pool[1])) *
-                vh
-            );
+            $(".progress-bar").css("height", progressbar_pool[1] * vh);
             $(".lvl2").css("height", 10 * vh);
             $(".lvl2").css(
               "background",
@@ -2160,24 +2171,46 @@
             no-repeat right center`
             );
           } else if (score <= score_pool[3]) {
-            let diff_score = score - score_pool[2];
-            $(".progress-bar").css(
-              "height",
-              (progressbar_pool[3] +
-                ((progressbar_pool[4] - progressbar_pool[3]) * diff_score) /
-                  (score_pool[3] - score_pool[2])) *
-                vh
-            );
+            $(".progress-bar").css("height", progressbar_pool[2] * vh);
 
             $(".lvl3").css("height", 10 * vh);
+            $(".lvl2").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl2.png?ver=<%=version%>)
+            no-repeat right center`
+            );
+            $(".lvl3").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl3.png?ver=<%=version%>)
+            no-repeat right center`
+            );
+          } else if (score <= score_pool[4]) {
+            $(".progress-bar").css("height", progressbar_pool[2] * vh);
+
+            $(".lvl3").css("height", 10 * vh);
+            $(".lvl2").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl2.png?ver=<%=version%>)
+            no-repeat right center`
+            );
             $(".lvl3").css(
               "background",
               `url(<%=domainURL%>/images/lvl3.png?ver=<%=version%>)
             no-repeat right center`
             );
           } else {
-            $(".progress-bar").css("height", progressbar_pool[5] * vh);
+            $(".progress-bar").css("height", progressbar_pool[3] * vh);
             $(".lvl4").css("height", 10 * vh);
+            $(".lvl2").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl2.png?ver=<%=version%>)
+            no-repeat right center`
+            );
+            $(".lvl3").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl3.png?ver=<%=version%>)
+            no-repeat right center`
+            );
             $(".lvl4").css(
               "background",
               `url(<%=domainURL%>/images/lvl4.png?ver=<%=version%>)
@@ -2187,11 +2220,6 @@
         }, 100);
       }
 
-      /**
-       * Check mission completion by calling the API
-       * @param {string} missionKey - The mission key (e.g., 'registerHeal', 'tarhHeal')
-       * @param {string} modalSelector - The modal selector (e.g., '.app-modal')
-       */
       function checkMissionCompletion(missionKey, modalSelector) {
         if (!acceptAjax) return;
         acceptAjax = false;
@@ -2420,7 +2448,7 @@
           $temp.remove();
 
           var tooltip = $("#myTooltip");
-          tooltip.text("آدرس بازی کپی شد");
+          tooltip.text("لینک دعوت کپی شد");
           tooltip.fadeIn();
           setTimeout(function () {
             tooltip.fadeOut();

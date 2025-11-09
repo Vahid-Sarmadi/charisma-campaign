@@ -11,10 +11,14 @@ const missionRoutes = require("./missionRoutes");
  * Redirects to login or home page
  */
 router.get("/", (req, res) => {
+  const queryString =
+    Object.keys(req.query).length > 0
+      ? "?" + new URLSearchParams(req.query).toString()
+      : "";
   if (req.isAuthenticated()) {
-    return res.redirect("/home");
+    return res.redirect("/home" + queryString);
   } else {
-    return res.redirect("/login");
+    return res.redirect("/login" + queryString);
   }
 });
 

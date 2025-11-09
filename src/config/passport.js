@@ -30,7 +30,7 @@ passport.use(
         if (!user) {
           let nextHeal = new Date();
           nextHeal.setHours(
-            nextHeal.getHours() + Number(Campaign.profiles.nextHealTime),
+            nextHeal.getHours() + Number(Campaign.profiles.nextHealTime)
           );
 
           let newUser = new User({
@@ -53,7 +53,7 @@ passport.use(
               deleted: false,
             }).exec();
             if (__user) {
-              __user.profile.heal++;
+              __user.profile.heal += Campaign.profiles.shareHeal;
               if (__user.profile.heal > Campaign.profiles.maxHeal)
                 __user.profile.heal = Campaign.profiles.maxHeal;
               __user.profile.shares++;
@@ -75,8 +75,8 @@ passport.use(
       } catch (error) {
         return done(error);
       }
-    },
-  ),
+    }
+  )
 );
 
 /**
