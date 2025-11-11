@@ -2,26 +2,65 @@ version: "3.8"
 services:
   app:
     build: .
+    container_name: charisma-landing-app
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     env_file:
       - .env
-    depends_on:
-      - mongo
-    volumes:
-      - .:/usr/src/app
-    command: npm run dev
+    # depends_on:
+    #   mongo:
+    #     condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "require('http').get('http://localhost:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    # networks:
+      # - app-network
+    network_mode: host
+    user: "1001:1001"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
-  mongo:
-    image: mongo:6.0
-    container_name: charisma-landing-db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    ports:
-      - "27017:27017"
-    volumes:
-      - db-data:/data/db
+#   mongo:
+#     image: mongodb/mongodb-enterprise-server:7.0-ubi9
+#     container_name: charisma-landing-db
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-root}
+#       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-changeme}
+#     ports:
+#       - "27017:27017"
+#     volumes:
+#       - db-data:/data/db
+#     restart: unless-stopped
+#     healthcheck:
+#       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+#       interval: 10s
+#       timeout: 5s
+#       retries: 5
+#       start_period: 10s
+#     networks:
+#       - app-network
+#     logging:
+#       driver: "json-file"
+#       options:
+#         max-size: "10m"
+#         max-file: "3"
 
-volumes:
-  db-data:
+# volumes:
+#   db-data:
+
+networks:
+  app-network:
+    driver: bridge

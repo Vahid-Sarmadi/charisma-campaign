@@ -57,7 +57,7 @@ exports.checkMissionCompletion = async (missionKey, mobileNumber) => {
 
     const mission = MISSIONS[missionKey];
     const auth = new BearerAuth();
-    const serverUrl = "https://apig-gw.charisma.tech/gam/v1.0";
+    const serverUrl = process.env.CHARISMA_API_URL;
     // Remove leading zero from mobile number if present
     const cleanMobileNumber = mobileNumber.startsWith("0")
       ? mobileNumber.slice(1)

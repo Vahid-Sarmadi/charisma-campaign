@@ -32,8 +32,6 @@ router.post(
   userController.submitScore
 );
 
-router.post("/loseScore", ensureAuth, cpUpload, userController.loseScore);
-
 /**
  * POST /addHeal
  * add Heal and updates the user's profile.type
@@ -44,13 +42,13 @@ router.post("/addHeal/:type", ensureAuth, cpUpload, userController.addHeal);
  * POST /sendInvite
  * Send invitation to a friend via phone number
  */
-router.post(
-  "/sendInvite",
-  ensureAuth,
-  cpUpload,
-  csrfProtection,
-  userController.sendInvite
-);
+// router.post(
+//   "/sendInvite",
+//   ensureAuth,
+//   cpUpload,
+//   csrfProtection,
+//   userController.sendInvite
+// );
 
 /**
  * POST /sendSmsScore

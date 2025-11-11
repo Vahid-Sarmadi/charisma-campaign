@@ -10,9 +10,7 @@
     toPersianNumber (str) { var index, result = ""; for( var i = 0; i <
     str.length; i++ ) { index = numerals.english.indexOf(str[i]); if( index ==
     -1 ) result += str[i]; else result += numerals.persian[index]; } return
-    result; } %> <%let shareLinkText = `من در بازی کاریزما ${profile.score | 0}
-    امتیاز گرفتم! 🎯 حالا نوبت توعه که این چالش رو قبول کنی و ببینی می‌تونی بهتر
-    عمل کنی. با کلی جایزه از آیفون ۱۷ پرو تا اسمارت واچ!`%>
+    result; } %> <%let shareLinkText = `من در بازی کاریزما ${profile.score | 0}امتیاز گرفتم! 🎯 حالا نوبت توعه که این چالش رو قبول کنی و ببینی می‌تونی بهتر عمل کنی. با کلی جایزه از آیفون ۱۷ پرو تا اسمارت واچ!`%>
     <script type="text/javascript">
       var numerals = {
         persian: ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],

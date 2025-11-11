@@ -1,5 +1,4 @@
-const axios = require("axios");
-const { BearerAuth } = require("../services/charismaAuthService");
+const { default: axios } = require("axios");
 
 const numerals = {
   persian: ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
@@ -26,62 +25,31 @@ exports.isEmptyObject = (obj) => {
   return !Object.keys(obj).length;
 };
 
-exports.sendSms = async (text, phone) => {
+exports.sendOtp = async (phone, code) => {
   try {
-    if (!phone || !text)
-      return { done: false, error: "شماره موبایل یا متن پیامک وارد نشده است" };
+    if (!phone) return { done: false, error: "شماره موبایل وارد نشده است" };
 
-    let url = `https://hypersmsc.ir/api/json/sendgroupget?username=${
-      process.env.SMS_USERNAME
-    }&password=${encodeURIComponent(
-      process.env.SMS_PASSWORD
-    )}&api=39&from=200032217400&to=${phone}&text=${encodeURIComponent(text)}`;
+    const endpoint = process.env.MEDIANA_API_URL;
 
-    const response = await axios({
-      method: "GET",
-      url: url,
-      headers: {
-        "Content-Type": "application/text; charset=utf-8",
-      },
-    });
-
-    if (response.statusText !== "OK") {
-      return { done: false, error: "خطا در ارسال کد تایید!" };
-    }
-    return { done: true };
-  } catch (e) {
-    console.error("SendSmsError:", e.message);
-    return { done: false, error: e };
-  }
-};
-
-exports.sendSmsCharisma = async (text, phone) => {
-  try {
-    if (!phone || !text)
-      return { done: false, error: "شماره موبایل یا متن پیامک وارد نشده است" };
-
-    const params = {
-      notification: {
-        priority: 1,
-        channelType: 1,
-        subject: "",
-        body: text,
-        receivers: [phone],
-      },
+    const headers = {
+      accept: "application/json",
+      "X-API-KEY": process.env.MEDIANA_API_KEY,
+      "Content-Type": "application/json",
     };
 
-    const endpoint =
-      "https://apig-gw.charisma.tech/ntf/v1.0/notifications/instant";
+    const data = {
+      patternCode: process.env.MEDIANA_PATTERN_CODE,
+      recipient: phone,
+      otpCode: code,
+    };
 
-    const auth = new BearerAuth();
-
-    const response = await auth.post(endpoint, params);
+    const response = await axios.post(endpoint, data, { headers });
     if (response.status !== 200 && response.status !== 201) {
       return { done: false, error: `خطا در ارسال پیامک: ${response.status}` };
     }
     return { done: true };
   } catch (e) {
-    console.log(e);
+    console.log(e.response);
     console.error("SendSmsCharismaError:", e.message);
     return { done: false, error: e };
   }

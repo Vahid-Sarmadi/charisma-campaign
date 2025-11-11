@@ -1,0 +1,86 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: charisma-landing-app
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.production
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: always
+    # healthcheck:
+    #   test:
+    #     [
+    #       "CMD",
+    #       "node",
+    #       "-e",
+    #       "require('http').get('http://localhost:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})",
+    #     ]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 5s
+    networks:
+      - app-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # Optional: Add resource limits
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: "1"
+    #       memory: 512M
+    #     reservations:
+    #       cpus: "0.5"
+    #       memory: 256M
+
+#   mongo:
+#     image: mongo:6.0-alpine
+#     container_name: charisma-landing-db
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+#       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+#     ports:
+#       - "27017:27017"
+#     volumes:
+#       - db-data:/data/db
+#     restart: always
+#     healthcheck:
+#       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+#       interval: 10s
+#       timeout: 5s
+#       retries: 5
+#       start_period: 10s
+#     networks:
+#       - app-network
+#     logging:
+#       driver: "json-file"
+#       options:
+#         max-size: "10m"
+#         max-file: "3"
+#     # Optional: Add resource limits
+#     # deploy:
+#     #   resources:
+#     #     limits:
+#     #       cpus: "1"
+#     #       memory: 1G
+#     #     reservations:
+#     #       cpus: "0.5"
+#     #       memory: 512M
+
+# volumes:
+#   db-data:
+#     driver: local
+
+networks:
+  app-network:
+    driver: bridge

@@ -29,7 +29,7 @@ app.use(
   helmet({
     contentSecurityPolicy: false,
     crossOriginEmbedderPolicy: false,
-  }),
+  })
 );
 app.use(compression());
 app.use(morgan("dev"));
@@ -50,7 +50,7 @@ app.use(
       removeEmptyAttributes: true,
       minifyJS: true,
     },
-  }),
+  })
 );
 
 // 3) Session configuration
@@ -69,7 +69,7 @@ app.use(
       dbName: process.env.DB_NAME,
       stringify: false,
     }),
-  }),
+  })
 );
 
 // 4) Flash messages

@@ -16,8 +16,8 @@ export class BearerAuth {
   }
 
   async getToken() {
-    const clientId = "IpcnOtc6VbA_uXFJXFjlbhOu2fsa";
-    const clientSecret = "iHfFoimuQab6Nym9BR5c5AEcYkoa";
+    const clientId = process.env.CHARISMA_CLIENT_ID;
+    const clientSecret = process.env.CHARISMA_CLIENT_SECRET;
 
     const credentials = Buffer.from(`${clientId}:${clientSecret}`).toString(
       "base64"
@@ -30,16 +30,15 @@ export class BearerAuth {
 
     const data = new URLSearchParams({
       grant_type: "client_credentials",
-      scope: "chr_marketing",
+      scope: process.env.CHARISMA_SCOPE,
     });
 
     const httpsAgent = new https.Agent({ rejectUnauthorized: false }); // Like verify=False
 
-    const response = await axios.post(
-      "https://apig-is.charisma.tech/oauth2/token",
-      data,
-      { headers, httpsAgent }
-    );
+    const response = await axios.post(process.env.CHARISMA_AUTH_URL, data, {
+      headers,
+      httpsAgent,
+    });
 
     return response.data.access_token;
   }

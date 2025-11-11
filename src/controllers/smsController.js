@@ -5,13 +5,11 @@
  */
 
 const validator = require("validator");
-const axios = require("axios");
 const Sms = require("../models/sms");
 const {
   toNormalNumber,
   isEmptyObject,
-  sendSms,
-  sendSmsCharisma,
+  sendOtp,
 } = require("../utils/helper");
 
 // A helper function to generate a numeric OTP code of given length
@@ -62,8 +60,7 @@ exports.sendSmsCode = async (req, res) => {
       // code: "12345",
     });
 
-    const text = "کد ورود شما: " + code + "\n\n کاریزما";
-    const { done } = await sendSmsCharisma(text, phone);
+    const { done } = await sendOtp(phone, code);
     if (!done) {
       return res.json({ status: 502, message: "خطا در ارسال کد تایید!" });
     }
