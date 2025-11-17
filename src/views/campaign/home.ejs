@@ -10,7 +10,9 @@
     toPersianNumber (str) { var index, result = ""; for( var i = 0; i <
     str.length; i++ ) { index = numerals.english.indexOf(str[i]); if( index ==
     -1 ) result += str[i]; else result += numerals.persian[index]; } return
-    result; } %> <%let shareLinkText = `من در بازی کاریزما ${profile.score | 0}امتیاز گرفتم! 🎯 حالا نوبت توعه که این چالش رو قبول کنی و ببینی می‌تونی بهتر عمل کنی. با کلی جایزه از آیفون ۱۷ پرو تا اسمارت واچ!`%>
+    result; } %> <%let shareLinkText = `من در بازی کاریزما ${profile.score |
+    0}امتیاز گرفتم! 🎯 حالا نوبت توعه که این چالش رو قبول کنی و ببینی می‌تونی
+    بهتر عمل کنی. با کلی جایزه از آیفون ۱۷ پرو تا اسمارت واچ!`%>
     <script type="text/javascript">
       var numerals = {
         persian: ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
@@ -1373,6 +1375,82 @@
         border-color: #555 transparent transparent transparent;
       }
 
+      .hint2-modal .bg {
+        background: url(<%=domainURL%>/images/modal-empty.png?ver=<%=version%>)
+          no-repeat center;
+        background-size: contain;
+        height: calc(67 * var(--vh));
+        width: calc(96 * var(--vh) / var(--ratio));
+        top: calc(10 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .hint2-modal .close {
+        height: calc(7 * var(--vh));
+        width: calc(15 * var(--vh) / var(--ratio));
+        top: calc(17 * var(--vh));
+        margin-left: calc(4 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+
+      .hint2-modal .img {
+        background: url(<%=domainURL%>/images/splash-img.png?ver=<%=version%>)
+          no-repeat center;
+        background-size: contain;
+        height: calc(13.8 * var(--vh));
+        width: calc(50 * var(--vh) / var(--ratio));
+        top: calc(21 * var(--vh));
+        margin-left: calc(25 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+
+      .hint2-modal .title {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(38 * var(--vh));
+        z-index: 99;
+        width: calc(100 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(3 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .hint2-modal .text {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(44 * var(--vh));
+        z-index: 99;
+        width: calc(78 * var(--vh) / var(--ratio));
+        margin-left: calc(11 * var(--vh) / var(--ratio));
+        text-align: justify;
+        font-size: calc(2.3 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+
+      .hint2-modal .btn {
+        background: url(<%=domainURL%>/images/install-btn.png?ver=<%=version%>)
+          no-repeat center;
+        background-size: contain;
+        height: calc(6.8 * var(--vh));
+        width: calc(50 * var(--vh) / var(--ratio));
+        top: calc(58 * var(--vh));
+        margin-left: calc(25 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+
       #preloader {
         position: fixed;
         top: 0;
@@ -1964,6 +2042,19 @@
           <div class="close"></div>
         </div>
       </div>
+      <div class="layer modal hint2-modal hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="title">حالا نوبت طلای واقعیه</div>
+          <div class="img"></div>
+          <div class="text">
+            توی اپلیکیشن کاریزما هم مثل بازی، بین طلا و درآمد ثابت جابه‌جا شو؛
+            طرح طلا با امکان تبدیل و وام آنیِ بدون ضامن.
+          </div>
+          <a class="btn" target="_blank" href="https://my.charisma.ir/"></a>
+          <div class="close"></div>
+        </div>
+      </div>
     </div>
 
     <script src="<%=domainURL%>/js/jquery.min.js"></script>
@@ -2151,7 +2242,7 @@
         $(".progress-bar").css("height", 0 * vh);
 
         setTimeout(function () {
-          let score_pool = [0, 200, 500, 1000, 1499];
+          let score_pool = [0, 300, 600, 1500, 2999];
           let progressbar_pool = [0, 13.7, 23.5, 36, 36];
           if (score <= score_pool[0]) {
             $(".progress-bar").css("height", progressbar_pool[0] * vh);
@@ -2301,6 +2392,9 @@
             return false;
           });
         }
+        if (playerInfo.score > 600) {
+          showModal(".hint2-modal");
+        }
 
         $(".tab-1").on("click", () => {
           $(".tab-1").addClass("active-nav");
@@ -2400,6 +2494,10 @@
             "_blank"
           );
           addHeal("linkedin");
+        });
+
+        $(".hint2-modal .close").on("click", function () {
+          hideModal(".hint2-modal");
         });
 
         $(".mission-modal .close").on("click", function () {

@@ -38,9 +38,40 @@ exports.sendOtp = async (phone, code) => {
     };
 
     const data = {
-      patternCode: process.env.MEDIANA_PATTERN_CODE,
+      patternCode: process.env.MEDIANA_OTP_PATTERN_CODE,
       recipient: phone,
       otpCode: code,
+    };
+
+    const response = await axios.post(endpoint, data, { headers });
+    if (response.status !== 200 && response.status !== 201) {
+      return { done: false, error: `خطا در ارسال پیامک: ${response.status}` };
+    }
+    return { done: true };
+  } catch (e) {
+    console.log(e.response);
+    console.error("SendSmsCharismaError:", e.message);
+    return { done: false, error: e };
+  }
+};
+
+exports.sendRefral = async (phone) => {
+  try {
+    if (!phone) return { done: false, error: "شماره موبایل وارد نشده است" };
+
+    const endpoint = process.env.MEDIANA_API_URL;
+
+    const headers = {
+      accept: "application/json",
+      "X-API-KEY": process.env.MEDIANA_API_KEY,
+      "Content-Type": "application/json",
+    };
+
+    const data = {
+      type: "Informational",
+      patternCode: process.env.MEDIANA_REFRAL_PATTERN_CODE,
+      recipients: [phone],
+      parameters: {},
     };
 
     const response = await axios.post(endpoint, data, { headers });

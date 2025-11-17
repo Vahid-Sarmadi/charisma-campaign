@@ -3,6 +3,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/user");
 
 const Campaign = require("../config/campaign");
+const { sendRefral } = require("../utils/helper");
 
 /**
  * Passport configuration:
@@ -61,6 +62,7 @@ passport.use(
               _user.friendList.push([__user._id]);
               await _user.save();
               await __user.save();
+              await sendRefral(__user.phone);
             }
           }
           return done(null, _user, { status: 200, message: "خوش آمدید." });
