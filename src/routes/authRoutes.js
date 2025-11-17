@@ -8,6 +8,10 @@ const csrfProtection = csrf({ cookie: true });
 const multer = require("multer");
 const upload = multer();
 const cpUpload = upload.fields([]);
+const {
+  smsCodeRateLimit,
+  verifyCodeRateLimit,
+} = require("../middlewares/phoneRateLimit");
 
 /**
  * GET /login
@@ -24,6 +28,7 @@ router.post(
   "/sendSmsCode",
   cpUpload,
   csrfProtection,
+  smsCodeRateLimit,
   smsController.sendSmsCode
 );
 
@@ -37,6 +42,7 @@ router.post(
   "/verifyCode",
   cpUpload,
   csrfProtection,
+  // verifyCodeRateLimit,
   smsController.verifyCode,
   authController.loginWithPhone
 );

@@ -104,7 +104,7 @@ exports.submitScore = async (req, res) => {
       CryptoJS.enc.Utf8
     );
 
-    if (score >= 200) score = 200;
+    if (score >= 200) score = 1;
     req.user.profile.score += Number(score);
     req.user.profile.heal--;
     await req.user.save();

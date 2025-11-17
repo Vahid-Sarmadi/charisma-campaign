@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const smsSchema = new mongoose.Schema({
   phone: {
@@ -14,8 +14,8 @@ const smsSchema = new mongoose.Schema({
     default: Date.now,
     // 'expires' is a special Mongoose index that automatically
     // deletes the document after the specified time (200s).
-    expires: '200s',
+    expires: "200s",
   },
 });
 
-module.exports = mongoose.model('Sms', smsSchema);
+module.exports = mongoose.model("Sms", smsSchema);

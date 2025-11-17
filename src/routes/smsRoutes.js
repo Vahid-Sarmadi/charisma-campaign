@@ -4,6 +4,10 @@ const csrf = require("csurf");
 const router = express.Router();
 const smsController = require("../controllers/smsController");
 const authController = require("../controllers/authController");
+const {
+  smsCodeRateLimit,
+  verifyCodeRateLimit,
+} = require("../middlewares/phoneRateLimit");
 
 const upload = multer();
 const cpUpload = upload.fields([]);
@@ -18,7 +22,8 @@ router.post(
   "/sendSmsCode",
   cpUpload,
   csrfProtection,
-  smsController.sendSmsCode,
+  smsCodeRateLimit,
+  smsController.sendSmsCode
 );
 
 /**
@@ -31,8 +36,9 @@ router.post(
   "/verifyCode",
   cpUpload,
   csrfProtection,
+  verifyCodeRateLimit,
   smsController.verifyCode,
-  authController.loginWithPhone,
+  authController.loginWithPhone
 );
 
 module.exports = router;

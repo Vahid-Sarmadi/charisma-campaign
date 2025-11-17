@@ -6,11 +6,7 @@
 
 const validator = require("validator");
 const Sms = require("../models/sms");
-const {
-  toNormalNumber,
-  isEmptyObject,
-  sendOtp,
-} = require("../utils/helper");
+const { toNormalNumber, isEmptyObject, sendOtp } = require("../utils/helper");
 
 // A helper function to generate a numeric OTP code of given length
 function generateOtpCode(length = 4) {

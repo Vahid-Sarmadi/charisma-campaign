@@ -59,7 +59,7 @@ exports.sendRefral = async (phone) => {
   try {
     if (!phone) return { done: false, error: "شماره موبایل وارد نشده است" };
 
-    const endpoint = process.env.MEDIANA_API_URL;
+    const endpoint = "https://api.mediana.ir/sms/v1/send/pattern";
 
     const headers = {
       accept: "application/json",
