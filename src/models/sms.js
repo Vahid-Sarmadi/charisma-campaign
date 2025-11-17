@@ -9,6 +9,10 @@ const smsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  ip: {
+    type: String,
+    required: false,
+  },
   expires: {
     type: Date,
     default: Date.now,

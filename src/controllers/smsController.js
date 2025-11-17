@@ -8,6 +8,20 @@ const validator = require("validator");
 const Sms = require("../models/sms");
 const { toNormalNumber, isEmptyObject, sendOtp } = require("../utils/helper");
 
+/**
+ * Helper function to get client IP address
+ * Handles proxies and X-Forwarded-For headers
+ */
+function getClientIp(req) {
+  return (
+    req.headers["x-forwarded-for"]?.split(",")[0].trim() ||
+    req.headers["x-real-ip"] ||
+    req.connection.remoteAddress ||
+    req.socket.remoteAddress ||
+    req.ip
+  );
+}
+
 // A helper function to generate a numeric OTP code of given length
 function generateOtpCode(length = 4) {
   let code = "";
@@ -49,10 +63,12 @@ exports.sendSmsCode = async (req, res) => {
     }
 
     const code = generateOtpCode(5);
+    const ip = getClientIp(req);
 
     let sms = new Sms({
       phone: phone,
       code: code,
+      ip: ip,
       // code: "12345",
     });
 
