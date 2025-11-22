@@ -104,9 +104,13 @@ exports.submitScore = async (req, res) => {
       CryptoJS.enc.Utf8
     );
 
+    if (!score) return res.json({ status: 200 });
+    if (req.user.profile.heal <= 0) return res.json({ status: 200 });
+
     if (score >= 200) score = 0;
     req.user.profile.score += Number(score);
     req.user.profile.heal--;
+    if (req.user.profile.heal < 0) req.user.profile.heal = 0;
     await req.user.save();
 
     return res.json({ status: 200 });

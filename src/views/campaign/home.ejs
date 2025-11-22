@@ -2393,7 +2393,13 @@
           });
         }
         if (playerInfo.score > 600) {
-          showModal(".hint2-modal");
+          // Check if the hint2 modal has been shown before
+          const hint2ModalShown = localStorage.getItem("hint2ModalShown");
+          if (!hint2ModalShown) {
+            showModal(".hint2-modal");
+            // Set flag in localStorage to prevent showing again
+            localStorage.setItem("hint2ModalShown", "true");
+          }
         }
 
         $(".tab-1").on("click", () => {

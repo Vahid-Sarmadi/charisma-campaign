@@ -32,7 +32,7 @@ exports.smsCodeRateLimit = async (req, res, next) => {
     const phone = req.body?.phone;
     const ip = getClientIp(req);
 
-    if (!phone || !ip) {
+    if (!phone) {
       return next();
     }
 
@@ -44,7 +44,7 @@ exports.smsCodeRateLimit = async (req, res, next) => {
       createdAt: { $gte: oneHourAgo },
     });
 
-    if (phoneCount >= 10) {
+    if (phoneCount >= 5) {
       return res.json({
         status: 429,
         message:
@@ -53,6 +53,9 @@ exports.smsCodeRateLimit = async (req, res, next) => {
       });
     }
 
+    if (!ip) {
+      return next();
+    }
     // Check 2: IP limit (50 per hour)
     const ipCount = await Sms.countDocuments({
       ip: ip,
