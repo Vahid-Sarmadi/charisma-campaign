@@ -404,7 +404,7 @@
         transition: all 0.5s;
       }
       .layer1 .lvl1 {
-        background: url(<%=domainURL%>/images/lvl1.png?ver=<%=version%>)
+        background: url(<%=domainURL%>/images/lvl1-off.png?ver=<%=version%>)
           no-repeat right center;
         background-size: contain !important;
         height: calc(9.8 * var(--vh));
@@ -2242,7 +2242,7 @@
         $(".progress-bar").css("height", 0 * vh);
 
         setTimeout(function () {
-          let score_pool = [0, 300, 600, 1500, 2999];
+          let score_pool = [300, 600, 1500, 2999];
           let progressbar_pool = [0, 13.7, 23.5, 36, 36];
           if (score <= score_pool[0]) {
             $(".progress-bar").css("height", progressbar_pool[0] * vh);
@@ -2250,9 +2250,20 @@
           } else if (score <= score_pool[1]) {
             $(".progress-bar").css("height", progressbar_pool[0] * vh);
             $(".lvl1").css("height", 10 * vh);
+            $(".lvl1").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl1.png?ver=<%=version%>)
+            no-repeat right center`
+            );
           } else if (score <= score_pool[2]) {
             $(".progress-bar").css("height", progressbar_pool[1] * vh);
             $(".lvl2").css("height", 10 * vh);
+            
+            $(".lvl1").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl1.png?ver=<%=version%>)
+            no-repeat right center`
+            );
             $(".lvl2").css(
               "background",
               `url(<%=domainURL%>/images/lvl2.png?ver=<%=version%>)
@@ -2262,6 +2273,11 @@
             $(".progress-bar").css("height", progressbar_pool[2] * vh);
 
             $(".lvl3").css("height", 10 * vh);
+            $(".lvl1").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl1.png?ver=<%=version%>)
+            no-repeat right center`
+            );
             $(".lvl2").css(
               "background",
               `url(<%=domainURL%>/images/lvl2.png?ver=<%=version%>)
@@ -2276,6 +2292,11 @@
             $(".progress-bar").css("height", progressbar_pool[2] * vh);
 
             $(".lvl3").css("height", 10 * vh);
+            $(".lvl1").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl1.png?ver=<%=version%>)
+            no-repeat right center`
+            );
             $(".lvl2").css(
               "background",
               `url(<%=domainURL%>/images/lvl2.png?ver=<%=version%>)
@@ -2289,6 +2310,11 @@
           } else {
             $(".progress-bar").css("height", progressbar_pool[3] * vh);
             $(".lvl4").css("height", 10 * vh);
+            $(".lvl1").css(
+              "background",
+              `url(<%=domainURL%>/images/lvl1.png?ver=<%=version%>)
+            no-repeat right center`
+            );
             $(".lvl2").css(
               "background",
               `url(<%=domainURL%>/images/lvl2.png?ver=<%=version%>)
@@ -2480,7 +2506,10 @@
 
         // Social media mission handlers
         $(".mission-instagram").on("click", () => {
-          window.open("https://www.instagram.com/charismaholding", "_blank");
+          window.open(
+            "https://www.instagram.com/charismainvest?igsh=MWltYXBsOGhsNHF6eg==",
+            "_blank"
+          );
           addHeal("instagram");
         });
 
