@@ -135,22 +135,22 @@ exports.addHeal = async (req, res) => {
     if (type === "instagram") {
       if (req.user.profile.instagramHeal)
         return res.json({ status: 400, message: "شما قبلا دریافت کرده‌اید!" });
-      req.user.profile.heal += 2;
+      req.user.profile.heal += 1;
       req.user.profile.instagramHeal = true;
     } else if (type === "telegram") {
       if (req.user.profile.telegramHeal)
         return res.json({ status: 400, message: "شما قبلا دریافت کرده‌اید!" });
-      req.user.profile.heal += 2;
+      req.user.profile.heal += 1;
       req.user.profile.telegramHeal = true;
     } else if (type === "twitter") {
       if (req.user.profile.twitterHeal)
         return res.json({ status: 400, message: "شما قبلا دریافت کرده‌اید!" });
-      req.user.profile.heal += 2;
+      req.user.profile.heal += 1;
       req.user.profile.twitterHeal = true;
     } else if (type === "linkedin") {
       if (req.user.profile.linkedinHeal)
         return res.json({ status: 400, message: "شما قبلا دریافت کرده‌اید!" });
-      req.user.profile.heal += 2;
+      req.user.profile.heal += 1;
       req.user.profile.linkedinHeal = true;
     } else if (type === "app") {
       if (req.user.profile.appHeal)
