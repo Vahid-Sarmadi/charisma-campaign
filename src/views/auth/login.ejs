@@ -683,7 +683,7 @@
           <div class="page1_btn"></div>
         </div>
       </div>
-      <div class="layer layer1">
+      <div class="layer layer1" style="display: none">
         <div class="wrapper">
           <div class="bg"></div>
           <div class="header"></div>
@@ -794,60 +794,114 @@
     <script src="<%=domainURL%>/js/jquery.min.js"></script>
 
     <script type="text/javascript">
-      // محاسبه ratio بر اساس ابعاد واقعی صفحه نمایش کاربر
-      const defaultRatio = 2.168; // ratio پیش‌فرض برای حالت landscape
-      let baseRatio = defaultRatio;
+      const DEFAULT_RATIO = 2.168;
+      let baseRatio = DEFAULT_RATIO;
 
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-      document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+      const setValues = () => {
+        const vh = (window.visualViewport?.height || window.innerHeight) * 0.01;
+        const vw = window.visualViewport?.width || window.innerWidth;
 
-      window.addEventListener("resize", () => {
-        if (window.innerHeight > window.innerWidth) {
-          // حالت portrait: ratio رو از ابعاد واقعی صفحه محاسبه می‌کنیم
-          baseRatio = window.innerHeight / window.innerWidth;
-          vh = window.innerHeight * 0.01;
+        const realH = window.visualViewport?.height || window.innerHeight;
+        const realW = window.visualViewport?.width || window.innerWidth;
+
+        const deviceRatio = realH / realW;
+
+        // ---- Portrait ----
+        if (realH > realW) {
+          // جلوگیری از زوم سامسونگ:
+          const safeRatio = Math.min(deviceRatio, 2.4); // محدود کردن نسبت
+
+          baseRatio = safeRatio;
+
+          document.documentElement.style.setProperty("--ratio", baseRatio);
           document.documentElement.style.setProperty("--vh", `${vh}px`);
-          document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
 
-          if (window.innerHeight / window.innerWidth > baseRatio) {
-            vh = window.innerWidth * 0.01 * baseRatio;
-            document.documentElement.style.setProperty("--vh", `${vh}px`);
+          // اگر ارتفاع بیش‌از نسبت باشد → وسط‌چین
+          if (deviceRatio > baseRatio) {
+            const newVh = realW * 0.01 * baseRatio;
+            document.documentElement.style.setProperty("--vh", `${newVh}px`);
 
-            let diff = window.innerHeight - window.innerWidth * baseRatio;
+            const diff = realH - realW * baseRatio;
             document.documentElement.style.setProperty(
               "--margin",
               `${diff / 2}px`
             );
           }
-        } else {
-          // حالت landscape: از ratio پیش‌فرض استفاده می‌کنیم
-          baseRatio = defaultRatio;
-          vh = window.innerHeight * 0.01;
-          document.documentElement.style.setProperty("--vh", `${vh}px`);
-          document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
         }
-      });
 
-      if (window.innerHeight > window.innerWidth) {
-        if (window.innerHeight / window.innerWidth > baseRatio) {
-          vh = window.innerWidth * 0.01 * baseRatio;
+        // ---- Landscape ----
+        else {
+          baseRatio = DEFAULT_RATIO;
+          document.documentElement.style.setProperty("--ratio", baseRatio);
           document.documentElement.style.setProperty("--vh", `${vh}px`);
-
-          let diff = window.innerHeight - window.innerWidth * baseRatio;
-          document.documentElement.style.setProperty(
-            "--margin",
-            `${diff / 2}px`
-          );
+          document.documentElement.style.setProperty("--margin", `0px`);
         }
-      } else {
-        baseRatio = defaultRatio;
-        vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty("--vh", `${vh}px`);
-        document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+      };
 
-        // document.documentElement.style.setProperty('--vw', `${(vh / 1.78)}px`);
-      }
+      // first load
+      setValues();
+
+      // safe resize
+      window.visualViewport?.addEventListener("resize", setValues);
+      window.addEventListener("resize", setValues);
+    </script>
+
+    <script type="text/javascript">
+      // محاسبه ratio بر اساس ابعاد واقعی صفحه نمایش کاربر
+      // const defaultRatio = 2.168; // ratio پیش‌فرض برای حالت landscape
+      // let baseRatio = defaultRatio;
+
+      // let vh = window.innerHeight * 0.01;
+      // document.documentElement.style.setProperty("--vh", `${vh}px`);
+      // document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+      // window.addEventListener("resize", () => {
+      //   if (window.innerHeight > window.innerWidth) {
+      //     // حالت portrait: ratio رو از ابعاد واقعی صفحه محاسبه می‌کنیم
+      //     baseRatio = window.innerHeight / window.innerWidth;
+      //     // baseRatio = defaultRatio;
+      //     vh = window.innerHeight * 0.01;
+      //     document.documentElement.style.setProperty("--vh", `${vh}px`);
+      //     document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+      //     if (window.innerHeight / window.innerWidth > baseRatio) {
+      //       vh = window.innerWidth * 0.01 * baseRatio;
+      //       document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+      //       let diff = window.innerHeight - window.innerWidth * baseRatio;
+      //       document.documentElement.style.setProperty(
+      //         "--margin",
+      //         `${diff / 2}px`
+      //       );
+      //     }
+      //   } else {
+      //     // حالت landscape: از ratio پیش‌فرض استفاده می‌کنیم
+      //     baseRatio = defaultRatio;
+      //     vh = window.innerHeight * 0.01;
+      //     document.documentElement.style.setProperty("--vh", `${vh}px`);
+      //     document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+      //   }
+      // });
+
+      // if (window.innerHeight > window.innerWidth) {
+      //   if (window.innerHeight / window.innerWidth > baseRatio) {
+      //     vh = window.innerWidth * 0.01 * baseRatio;
+      //     document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+      //     let diff = window.innerHeight - window.innerWidth * baseRatio;
+      //     document.documentElement.style.setProperty(
+      //       "--margin",
+      //       `${diff / 2}px`
+      //     );
+      //   }
+      // } else {
+      //   baseRatio = defaultRatio;
+      //   vh = window.innerHeight * 0.01;
+      //   document.documentElement.style.setProperty("--vh", `${vh}px`);
+      //   document.documentElement.style.setProperty("--ratio", `${baseRatio}`);
+
+      //   // document.documentElement.style.setProperty('--vw', `${(vh / 1.78)}px`);
+      // }
     </script>
     <script type="text/javascript">
       var timerStarted = false;
