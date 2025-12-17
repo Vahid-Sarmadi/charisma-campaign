@@ -1451,6 +1451,66 @@
         cursor: pointer;
       }
 
+      .contest-ended-modal .bg {
+        background: url(<%=domainURL%>/images/modal-empty.png?ver=<%=version%>)
+          no-repeat center;
+        background-size: contain;
+        height: calc(67 * var(--vh));
+        width: calc(96 * var(--vh) / var(--ratio));
+        top: calc(10 * var(--vh));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        position: absolute;
+      }
+      .contest-ended-modal .close {
+        height: calc(7 * var(--vh));
+        width: calc(15 * var(--vh) / var(--ratio));
+        top: calc(17 * var(--vh));
+        margin-left: calc(4 * var(--vh) / var(--ratio));
+        position: absolute;
+        cursor: pointer;
+      }
+      .contest-ended-modal .title {
+        position: absolute;
+        height: calc(5 * var(--vh));
+        top: calc(28 * var(--vh));
+        z-index: 99;
+        width: calc(100 * var(--vh) / var(--ratio));
+        margin-left: calc(0 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(3.2 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: bolder;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .contest-ended-modal .text {
+        position: absolute;
+        height: auto;
+        top: calc(36 * var(--vh));
+        z-index: 99;
+        width: calc(78 * var(--vh) / var(--ratio));
+        margin-left: calc(11 * var(--vh) / var(--ratio));
+        text-align: center;
+        font-size: calc(2.2 * var(--vh));
+        line-height: calc(4 * var(--vh));
+        color: #fff;
+        direction: rtl;
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0;
+        font-family: "Yekan Bakh", sans-serif;
+      }
+      .contest-ended-modal .instagram-link {
+        color: #ffd700;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      .contest-ended-modal .instagram-link:hover {
+        text-decoration: underline;
+      }
+
       #preloader {
         position: fixed;
         top: 0;
@@ -1721,7 +1781,7 @@
             <p class="lvl4-title">گرگ وال‌استریت</p>
             <p class="lvl4-text">قرعه‌کشی یک دستگاه آیفون ۱۷ پرو!</p>
           </div>
-          <a href="/game" class="start-btn" id="start-btn-link"></a>
+          <a class="start-btn" id="start-btn-link"></a>
         </div>
       </div>
       <div class="layer layer2">
@@ -2055,6 +2115,24 @@
           <div class="close"></div>
         </div>
       </div>
+      <div class="layer modal contest-ended-modal hide">
+        <div class="wrapper">
+          <div class="bg"></div>
+          <div class="title">مسابقه طلاباز ۴شنبه به پایان رسید</div>
+          <div class="text">
+            اما قسمت هیجان‌انگیز بازی یعنی قرعه‌کشی، قراره ۲۹ آذر برگزار بشه.<br /><br />
+            نتایج قرعه‌کشی رو از پیج اینستاگرامی ما به آیدی
+            <a
+              class="instagram-link"
+              href="https://www.instagram.com/charismainvest"
+              target="_blank"
+              >@charismainvest</a
+            >
+            دنبال کن.
+          </div>
+          <div class="close"></div>
+        </div>
+      </div>
     </div>
 
     <script src="<%=domainURL%>/js/jquery.min.js"></script>
@@ -2258,7 +2336,7 @@
           } else if (score <= score_pool[2]) {
             $(".progress-bar").css("height", progressbar_pool[1] * vh);
             $(".lvl2").css("height", 10 * vh);
-            
+
             $(".lvl1").css(
               "background",
               `url(<%=domainURL%>/images/lvl1.png?ver=<%=version%>)
@@ -2404,6 +2482,9 @@
         $("#preloader").delay(200).fadeOut("fade");
         loadProgressBar(playerInfo.score);
 
+        // نمایش پاپ‌آپ اتمام مسابقه
+        showModal(".contest-ended-modal");
+
         // اگر جون منفی بود، صفر نشون بده
         if (playerInfo.heal < 0) {
           $(".heal-text").html(toPersianNumber("0"));
@@ -2485,6 +2566,10 @@
           $(".layer3").addClass("active-tab");
         });
 
+        $(".start-btn").on("click", () => {
+          showModal(".contest-ended-modal");
+        });
+
         $(".mission-app").on("click", () => {
           showModal(".app-modal");
         });
@@ -2533,6 +2618,10 @@
 
         $(".hint2-modal .close").on("click", function () {
           hideModal(".hint2-modal");
+        });
+
+        $(".contest-ended-modal .close").on("click", function () {
+          hideModal(".contest-ended-modal");
         });
 
         $(".mission-modal .close").on("click", function () {
